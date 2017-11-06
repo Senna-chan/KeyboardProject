@@ -12,6 +12,7 @@
 #include <ClickEncoder.h>
 #include "KeyboardCodes.h"
 #include "ConsumerKeyCodes.h"
+#include "SerialAnything.h"
 
 #define DATA_PIN 5 // green
 #define CLOCK_PIN 6 // white
@@ -71,7 +72,7 @@ bool leftMouseButton = 0;
 bool rightMouseButton = 0;
 TimedAction doMouseStuffAction = TimedAction();
 I2CMatrixClass matrix;
-
+float batteryVoltage;
 FunctionType funcType = MEDIA; // 0 = function buttons are media keys and no special keys 1 = Function buttons are duckyscripts and certain keys are special keys
 FunctionType oldFuncType = MEDIA; // 0 = function buttons are media keys and no special keys 1 = Function buttons are duckyscripts and certain keys are special keys
 OperateMode operateMode;
@@ -161,6 +162,7 @@ void checkForLeds() {
 	else
 		rowChip.digitalWrite(13, HIGH);
 }
+
 void setup() {
 	Serial.begin(115200);
 	while (!Serial); // We want Serial to debug
@@ -312,7 +314,7 @@ void checkKeys() {
 }
 void checkHIDSerial() {
 	while (HIDSerial.available()) {
-		char command = Serial.read();
+		char command = HIDSerial.read();
 		switch (command) {
 		case 'l'://Leds
 			leds = Serial.read();
@@ -320,8 +322,11 @@ void checkHIDSerial() {
 		case'o': // OperateMode
 			operateMode = (OperateMode)Serial.read();
 			break;
-		case 'b':
-
+		case 'b': // Battery status
+			uint16_t tempBat;
+			Serial2_readAnything(tempBat);
+			batteryVoltage = tempBat / 100;
+			break;
 		default:
 			break;
 		}

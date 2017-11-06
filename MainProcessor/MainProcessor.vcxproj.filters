@@ -36,6 +36,9 @@
     <ClInclude Include="KeyboardCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SerialAnything.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="I2CMatrix.cpp">

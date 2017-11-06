@@ -86,6 +86,7 @@
     <ClInclude Include="KeyboardCodes.h" />
     <ClInclude Include="I2CMatrix.h" />
     <ClInclude Include="Key.h" />
+    <ClInclude Include="SerialAnything.h" />
     <ClInclude Include="__vm\.MainProcessor.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>

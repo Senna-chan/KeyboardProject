@@ -10,6 +10,7 @@
 #define DATA_PIN 5 // green
 #define CLOCK_PIN 6 // white
 #define SD_ENABLE 10
+#define BATPIN A0
 #define analogReadVoltage(pin) analogRead(pin) * (5.0 / 1023)
 
 HardwareSerial MainSerial = Serial1;
@@ -35,6 +36,7 @@ ConsumerKeycode mediakeys[9]{HID_CONSUMER_VOLUME_DECREMENT, HID_CONSUMER_MUTE, H
 bool leftMouseButton = 0;
 bool rightMouseButton = 0;
 //TimedAction doMouseStuffAction = TimedAction();
+TimedAction checkBatteryAction = TimedAction();
 
 FunctionType funcType = MEDIA; // 0 = function buttons are media keys and no special keys 1 = Function buttons are duckyscripts and certain keys are special keys
 FunctionType oldFuncType = MEDIA; // 0 = function buttons are media keys and no special keys 1 = Function buttons are duckyscripts and certain keys are special keys
@@ -98,6 +100,11 @@ void doMouseStuff()
 	Mouse.move(data.position.x, data.position.y);*/
 }
 
+typedef union {
+	float floatingPoint;
+	byte binary[4];
+} binaryFloat;
+
 void checkForLeds() {
 	leds = BootKeyboard.getLeds();
 	if (leds != oldLeds) {
@@ -105,6 +112,12 @@ void checkForLeds() {
 		MainSerial.write(leds);
 	}
 	oldLeds = leds;
+}
+
+void checkBattery() {
+	uint16_t batVolt = analogReadVoltage(BATPIN) * 100;
+	MainSerial.write('b');
+	MainSerial.write(batVolt);
 }
 void setup() {
 	Serial.begin(115200);
@@ -117,6 +130,7 @@ void setup() {
 	//ps2_mouse.initialize(); // If it is not connected DO NOT CALL ANY PS2 MOUSE FUNCTION
 	//doMouseStuffAction = TimedAction(10, *doMouseStuff);
 	//Serial.println(F("PS2 Mouse Initialized"));
+	checkBatteryAction = TimedAction(1000, *checkBattery);
 	Serial.println(F("Initializing HID"));
 	BootMouse.begin();
 	BootKeyboard.begin();
@@ -235,7 +249,9 @@ void checkSerial() {
 		case 's': // We recieved settings
 			Serial1_readAnything(settings);
 			break;
-
+		case 'f': // function mode
+			funcType = (FunctionType)Serial.read();
+			break;
 		default:
 			break;
 		}
@@ -257,6 +273,7 @@ void loop() {
 	}
 	oldOperateMode = operateMode;
 	//doMouseStuffAction.check();
+	checkBatteryAction.check();
 	checkForLeds();
 	checkKeys();
 }
