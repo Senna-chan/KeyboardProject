@@ -12,11 +12,12 @@
 
 #include "Key.h"
 #include "Adafruit_MCP23017.h"
-#include <HID-Project.h>
+#include "KeyboardCodes.h"
 
 #define OPEN LOW
 #define CLOSED HIGH
 
+enum KeyboardKeycode : unsigned char;
 typedef char KeypadEvent;
 typedef unsigned int uint;
 typedef unsigned long ulong;

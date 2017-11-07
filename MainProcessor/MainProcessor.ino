@@ -2,7 +2,6 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <DuckyParser.h>
-#include <LiquidCrystal_PCF8574.h>
 #include <Adafruit_MCP23017.h>
 #include <Wire.h>
 #include "I2CMatrix.h"

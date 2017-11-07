@@ -3,15 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HIDProcessor", "HIDProcessor\HIDProcessor.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MainProcessor", "MainProcessor\MainProcessor.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MainProcessor", "MainProcessor\MainProcessor.vcxproj", "{2192B6F3-AC89-4C80-BEC6-A35BF59CE3A6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test Sketches", "Test Sketches", "{D5A82361-1DE2-4807-BD1C-BCAAA97C99E6}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "I2CSlaveTest", "SpiSlaveTest\SpiSlaveTest.vcxproj", "{55D4DECB-D1ED-4B79-96C5-7C2DE8F45CB0}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "I2CMasterTest", "SpiMasterTest\SpiMasterTest.vcxproj", "{29F5721A-5843-4120-8D09-B9CD73CBE704}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HIDProcessor", "HIDProcessor\HIDProcessor.vcxproj", "{7A6D83B3-6AB8-43E2-9209-93786275BF14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,25 +17,13 @@ Global
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
-		{2192B6F3-AC89-4C80-BEC6-A35BF59CE3A6}.Debug|x86.ActiveCfg = Debug|Win32
-		{2192B6F3-AC89-4C80-BEC6-A35BF59CE3A6}.Debug|x86.Build.0 = Debug|Win32
-		{2192B6F3-AC89-4C80-BEC6-A35BF59CE3A6}.Release|x86.ActiveCfg = Release|Win32
-		{2192B6F3-AC89-4C80-BEC6-A35BF59CE3A6}.Release|x86.Build.0 = Release|Win32
-		{55D4DECB-D1ED-4B79-96C5-7C2DE8F45CB0}.Debug|x86.ActiveCfg = Debug|Win32
-		{55D4DECB-D1ED-4B79-96C5-7C2DE8F45CB0}.Debug|x86.Build.0 = Debug|Win32
-		{55D4DECB-D1ED-4B79-96C5-7C2DE8F45CB0}.Release|x86.ActiveCfg = Release|Win32
-		{55D4DECB-D1ED-4B79-96C5-7C2DE8F45CB0}.Release|x86.Build.0 = Release|Win32
-		{29F5721A-5843-4120-8D09-B9CD73CBE704}.Debug|x86.ActiveCfg = Debug|Win32
-		{29F5721A-5843-4120-8D09-B9CD73CBE704}.Debug|x86.Build.0 = Debug|Win32
-		{29F5721A-5843-4120-8D09-B9CD73CBE704}.Release|x86.ActiveCfg = Release|Win32
-		{29F5721A-5843-4120-8D09-B9CD73CBE704}.Release|x86.Build.0 = Release|Win32
+		{7A6D83B3-6AB8-43E2-9209-93786275BF14}.Debug|x86.ActiveCfg = Debug|Win32
+		{7A6D83B3-6AB8-43E2-9209-93786275BF14}.Debug|x86.Build.0 = Debug|Win32
+		{7A6D83B3-6AB8-43E2-9209-93786275BF14}.Release|x86.ActiveCfg = Release|Win32
+		{7A6D83B3-6AB8-43E2-9209-93786275BF14}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{55D4DECB-D1ED-4B79-96C5-7C2DE8F45CB0} = {D5A82361-1DE2-4807-BD1C-BCAAA97C99E6}
-		{29F5721A-5843-4120-8D09-B9CD73CBE704} = {D5A82361-1DE2-4807-BD1C-BCAAA97C99E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {36E481DC-E9A1-414B-814E-C45D34D1359C}

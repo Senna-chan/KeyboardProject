@@ -100,11 +100,6 @@ void doMouseStuff()
 	Mouse.move(data.position.x, data.position.y);*/
 }
 
-typedef union {
-	float floatingPoint;
-	byte binary[4];
-} binaryFloat;
-
 void checkForLeds() {
 	leds = BootKeyboard.getLeds();
 	if (leds != oldLeds) {
@@ -144,6 +139,31 @@ void setup() {
 		Serial.println(F("DuckyParser failed to Initialized"));
 	}
 	Serial.println(F("Initializing Done, Type away"));
+}
+
+void pressKeyboardKey(KeyboardKeycode key) {
+	if (operateMode == BLUETOOTH) {
+		
+	}
+	else if (operateMode == USB) {
+		BootKeyboard.press(key);
+	}
+}
+void releaseKeyboardKey(KeyboardKeycode key) {
+	if (operateMode == BLUETOOTH) {
+		
+	}
+	else if (operateMode == USB) {
+		BootKeyboard.release(key);
+	}
+}
+void writeKeyboardKey(KeyboardKeycode key) {
+	if (operateMode == BLUETOOTH) {
+		
+	}
+	else if (operateMode == USB) {
+		BootKeyboard.write(key);
+	}
 }
 
 void processPressedKey(Key key) {
