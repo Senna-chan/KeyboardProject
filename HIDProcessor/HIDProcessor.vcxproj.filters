@@ -13,9 +13,66 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{36486945-deee-43ee-9ddb-4ae5d4a7dac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly">
+      <UniqueIdentifier>{a91ec867-e942-4b95-b3a9-8bd48fed2333}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\core">
+      <UniqueIdentifier>{92d95129-b742-4479-b05d-bab572accb9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries">
+      <UniqueIdentifier>{03b2f0b1-8693-401d-8b2d-bc407f5f1c67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\AltSoftSerial">
+      <UniqueIdentifier>{c8a34f48-77ad-44ca-93de-1875355f408e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\BPLib">
+      <UniqueIdentifier>{4a55126f-57de-452c-b489-3fb659d57e5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\DuckyParser">
+      <UniqueIdentifier>{0dcb7d45-d7bb-43f4-9068-0d52b4340fdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\HID-Project">
+      <UniqueIdentifier>{5ccca1c8-2270-4dd4-9454-a6ae7b907568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\i2ckeypad">
+      <UniqueIdentifier>{0d1e7cbc-5796-4ee7-8d73-9340c05d8e3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\PS2Mouse">
+      <UniqueIdentifier>{f0cf2778-628d-45bf-a71a-bb19ba87d323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\TimedAction">
+      <UniqueIdentifier>{8758031f-470b-47e9-82e1-1c6061f0c8cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Wire">
+      <UniqueIdentifier>{bef8c02a-1acb-4ca9-ac30-22269b2039e8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="HIDProcessor.ino" />
+    <None Include="..\..\..\..\hardware\arduino\avr\cores\arduino\wiring_pulse.S">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </None>
+    <None Include="..\..\libraries\AltSoftSerial\library.json">
+      <Filter>src\_micro-api-readonly\libraries\AltSoftSerial</Filter>
+    </None>
+    <None Include="..\..\libraries\AltSoftSerial\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\AltSoftSerial</Filter>
+    </None>
+    <None Include="..\..\libraries\BPLib\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\BPLib</Filter>
+    </None>
+    <None Include="..\..\libraries\HID-Project\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </None>
+    <None Include="..\..\libraries\i2ckeypad\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\i2ckeypad</Filter>
+    </None>
+    <None Include="..\..\..\..\hardware\arduino\avr\libraries\Wire\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.HIDProcessor.vsarduino.h">
@@ -24,5 +81,375 @@
     <ClInclude Include="SerialAnything.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\Arduino.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\binary.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\Client.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\HardwareSerial.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\HardwareSerial_private.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\IPAddress.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\new.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\PluggableUSB.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\Print.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\Printable.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\Server.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\Stream.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\Udp.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\USBAPI.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\USBCore.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\USBDesc.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\WCharacter.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\wiring_private.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\cores\arduino\WString.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\packages\SparkFun\hardware\avr\1.1.7\variants\promicro\pins_arduino.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\AltSoftSerial\AltSoftSerial.h">
+      <Filter>src\_micro-api-readonly\libraries\AltSoftSerial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\BPLib\src\BPLib.h">
+      <Filter>src\_micro-api-readonly\libraries\BPLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\DuckyParser\DuckyParser.h">
+      <Filter>src\_micro-api-readonly\libraries\DuckyParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\extras\rawhid\hid.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-Project.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-Settings.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\AbsoluteMouseAPI.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\AbsoluteMouseAPI.hpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\ConsumerAPI.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\ConsumerAPI.hpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\DefaultKeyboardAPI.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\DefaultKeyboardAPI.hpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\GamepadAPI.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\GamepadAPI.hpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\ImprovedKeylayouts.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\KeyboardAPI.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\KeyboardAPI.hpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\MouseAPI.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\MouseAPI.hpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\NKROKeyboardAPI.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\NKROKeyboardAPI.hpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\SurfaceDialAPI.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\SurfaceDialAPI.hpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\SystemAPI.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\SystemAPI.hpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\TeensyKeyboardAPI.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\TeensyKeyboardAPI.hpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\HID-APIs\TeensyKeylayouts.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\MultiReport\AbsoluteMouse.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\MultiReport\Consumer.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\MultiReport\Gamepad.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\MultiReport\ImprovedKeyboard.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\MultiReport\ImprovedMouse.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\MultiReport\NKROKeyboard.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\MultiReport\SurfaceDial.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\MultiReport\System.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\SingleReport\BootKeyboard.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\SingleReport\BootMouse.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\SingleReport\RawHID.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\SingleReport\SingleAbsoluteMouse.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\SingleReport\SingleConsumer.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\SingleReport\SingleGamepad.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\SingleReport\SingleNKROKeyboard.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\HID-Project\src\SingleReport\SingleSystem.h">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\i2ckeypad\src\I2CKeypad.h">
+      <Filter>src\_micro-api-readonly\libraries\i2ckeypad</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\i2ckeypad\src\Key.h">
+      <Filter>src\_micro-api-readonly\libraries\i2ckeypad</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\PS2Mouse\PS2Mouse.h">
+      <Filter>src\_micro-api-readonly\libraries\PS2Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\TimedAction\TimedAction.h">
+      <Filter>src\_micro-api-readonly\libraries\TimedAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\libraries\Wire\src\Wire.h">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\hardware\arduino\avr\libraries\Wire\src\utility\twi.h">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\abi.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\CDC.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\HardwareSerial.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\HardwareSerial0.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\HardwareSerial1.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\HardwareSerial2.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\HardwareSerial3.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\IPAddress.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\main.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\new.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\PluggableUSB.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\Print.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\Stream.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\Tone.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\USBCore.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\WMath.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\cores\arduino\WString.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\AltSoftSerial\AltSoftSerial.cpp">
+      <Filter>src\_micro-api-readonly\libraries\AltSoftSerial</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\BPLib\src\BPLib.cpp">
+      <Filter>src\_micro-api-readonly\libraries\BPLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\DuckyParser\DuckyParser.cpp">
+      <Filter>src\_micro-api-readonly\libraries\DuckyParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\extras\rawhid\hid_LINUX.c">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\extras\rawhid\hid_MACOSX.c">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\extras\rawhid\hid_WINDOWS.c">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\extras\rawhid\rawhid_test.c">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\MultiReport\AbsoluteMouse.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\MultiReport\Consumer.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\MultiReport\Gamepad.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\MultiReport\ImprovedKeyboard.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\MultiReport\ImprovedMouse.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\MultiReport\NKROKeyboard.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\MultiReport\SurfaceDial.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\MultiReport\System.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\SingleReport\BootKeyboard.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\SingleReport\BootMouse.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\SingleReport\RawHID.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\SingleReport\SingleAbsoluteMouse.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\SingleReport\SingleConsumer.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\SingleReport\SingleGamepad.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\SingleReport\SingleNKROKeyboard.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\HID-Project\src\SingleReport\SingleSystem.cpp">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\i2ckeypad\src\I2CKeypad.cpp">
+      <Filter>src\_micro-api-readonly\libraries\i2ckeypad</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\i2ckeypad\src\Key.cpp">
+      <Filter>src\_micro-api-readonly\libraries\i2ckeypad</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\PS2Mouse\PS2Mouse.cpp">
+      <Filter>src\_micro-api-readonly\libraries\PS2Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\TimedAction\TimedAction.cpp">
+      <Filter>src\_micro-api-readonly\libraries\TimedAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\libraries\Wire\src\Wire.cpp">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\hardware\arduino\avr\libraries\Wire\src\utility\twi.c">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\libraries\AltSoftSerial\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\AltSoftSerial</Filter>
+    </Text>
+    <Text Include="..\..\libraries\DuckyParser\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\DuckyParser</Filter>
+    </Text>
+    <Text Include="..\..\libraries\HID-Project\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\HID-Project</Filter>
+    </Text>
+    <Text Include="..\..\libraries\i2ckeypad\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\i2ckeypad</Filter>
+    </Text>
+    <Text Include="..\..\libraries\TimedAction\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\TimedAction</Filter>
+    </Text>
+    <Text Include="..\..\..\..\hardware\arduino\avr\libraries\Wire\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </Text>
   </ItemGroup>
 </Project>

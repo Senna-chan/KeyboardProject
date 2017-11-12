@@ -43,7 +43,7 @@ char I2CMatrixClass::getKey() {
 
 	single_key = false;
 
-	return NO_KEY;
+	return KEY_RESERVED;
 }
 
 // Populate the key list.
@@ -194,8 +194,8 @@ int I2CMatrixClass::findInList(int keyCode) {
 
 // New in 2.0
 char I2CMatrixClass::waitForKey() {
-	char waitKey = NO_KEY;
-	while ((waitKey = getKey()) == NO_KEY);	// Block everything while waiting for a keypress.
+	char waitKey = KEY_RESERVED;
+	while ((waitKey = getKey()) == KEY_RESERVED);	// Block everything while waiting for a keypress.
 	return waitKey;
 }
 

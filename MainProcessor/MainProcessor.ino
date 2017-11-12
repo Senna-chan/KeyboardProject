@@ -1,7 +1,6 @@
 #include <gfxfont.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include <DuckyParser.h>
 #include <Adafruit_MCP23017.h>
 #include <Wire.h>
 #include "I2CMatrix.h"
@@ -13,12 +12,10 @@
 #include "ConsumerKeyCodes.h"
 #include "SerialAnything.h"
 
-#define DATA_PIN 5 // green
-#define CLOCK_PIN 6 // white
-#define SD_ENABLE 10
-#define OPERATEMODEPIN PB1
+#define DATA_PIN PB3 // green
+#define CLOCK_PIN PB4 // white
 #define analogReadVoltage(pin) analogRead(pin) * (5.0 / 1023)
-
+#define DEBUG
 const int numOfScreens = 10;
 
 HardwareTimer timer(1);
@@ -26,7 +23,7 @@ HardwareTimer timer(1);
 #define OLED_CS     7
 #define OLED_RESET  8
 Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
-HardwareSerial HIDSerial = Serial2;
+HardwareSerial &HIDSerial = Serial2;
 ClickEncoder *encoder;
 int16_t lastEncPos, currentEncPos;
 void timerIsr() {
@@ -40,7 +37,6 @@ String screens[numOfScreens][2] = { { "Function Mode" },{ "Active Mode" },{ "Act
 int parameters[numOfScreens];
 #define resetToHomeScreen 5000
 bool checkResetHomeScreen, doValueChange;
-//LiquidCrystal_PCF8574 lcd(0x27);
 enum FunctionType { MEDIA, ONEPRESS };
 enum OperateMode { USB, BLUETOOTH, CHARGING };
 enum KeyboardLeds : uint8_t {
@@ -50,7 +46,6 @@ enum KeyboardLeds : uint8_t {
 };
 byte leds;
 Adafruit_MCP23017 rowChip, colChip;
-DuckyParser duckyParser;
 const byte ROWS = 8;
 const byte COLS = 16;
 KeyboardKeycode keys[ROWS][COLS] =
@@ -64,18 +59,16 @@ KeyboardKeycode keys[ROWS][COLS] =
 	{ KEY_PRINTSCREEN,(KeyboardKeycode)0xF5,(KeyboardKeycode)0xF0,KEY_1,KEY_2,KEY_3,KEY_4,KEY_7,KEY_F11,KEY_RESERVED,KEY_F12,KEY_RESERVED,KEY_F10,KEY_0,KEY_9,KEY_8 },
 	{ (KeyboardKeycode)0xF9,KEY_RESERVED,KEY_LEFT_CTRL,KEY_TILDE,KEY_F1,KEY_F2,KEY_5,KEY_6,KEY_DELETE,KEY_RESERVED,KEY_RESERVED,KEY_RESERVED,KEY_F9,KEY_MINUS,KEY_F8,KEY_EQUAL }
 };
-
-ConsumerKeycode mediakeys[9]{ HID_CONSUMER_VOLUME_DECREMENT, HID_CONSUMER_MUTE, HID_CONSUMER_VOLUME_INCREMENT, MEDIA_PREVIOUS, MEDIA_PLAY_PAUSE, MEDIA_NEXT, /*Opens media player*/ HID_CONSUMER_AL_AUDIO_PLAYER, };
-//PS2Mouse ps2_mouse(CLOCK_PIN, DATA_PIN);
+PS2Mouse ps2_mouse(CLOCK_PIN, DATA_PIN);
 bool leftMouseButton = 0;
 bool rightMouseButton = 0;
+bool capsState, numState, scrollState;
 TimedAction doMouseStuffAction = TimedAction();
 I2CMatrixClass matrix;
 float batteryVoltage;
 FunctionType funcType = MEDIA; // 0 = function buttons are media keys and no special keys 1 = Function buttons are duckyscripts and certain keys are special keys
 FunctionType oldFuncType = MEDIA; // 0 = function buttons are media keys and no special keys 1 = Function buttons are duckyscripts and certain keys are special keys
 OperateMode operateMode;
-uint16_t spiBuffer[52];
 struct Settings {
 	byte btaddr1[6];
 	byte btaddr2[6];
@@ -90,38 +83,20 @@ bool GetBit(byte thebyte, int position)
 
 void doMouseStuff()
 {
-	/*MouseData data = ps2_mouse.readData();
+	MouseData data = ps2_mouse.readData();
 	leftMouseButton = GetBit(data.status, 0);
 	rightMouseButton = GetBit(data.status, 1);
-	Serial.print("\tx=");
+#ifdef DEBUG
+	Serial.print("x=");
 	Serial.print(data.position.x);
 	Serial.print("\ty=");
 	Serial.print(data.position.y *-1);
 	Serial.print("\ts=");
 	Serial.print(data.status, BIN);
 	Serial.println();
-	if (leftMouseButton) {
-	if (!Mouse.isPressed(MOUSE_LEFT)) {
-	Mouse.press(MOUSE_LEFT);
-	}
-	}
-	else {
-	if (Mouse.isPressed(MOUSE_LEFT)) {
-	Mouse.release(MOUSE_LEFT);
-	}
-	}
-
-	if (rightMouseButton) {
-	if (!Mouse.isPressed(MOUSE_RIGHT)) {
-	Mouse.press(MOUSE_RIGHT);
-	}
-	}
-	else {
-	if (Mouse.isPressed(MOUSE_RIGHT)) {
-	Mouse.release(MOUSE_RIGHT);
-	}
-	}
-	Mouse.move(data.position.x, data.position.y);*/
+#endif
+	HIDSerial.write('m');
+	Serial2_writeAnything(data); // Write the struct
 }
 
 void printScreen() {
@@ -148,11 +123,11 @@ void printScreen() {
 	}*/
 }
 void checkForLeds() {
-	if (leds & LED_CAPS_LOCK)
+	if (leds & LED_CAPS_LOCK && !capsState)
 		rowChip.digitalWrite(15, LOW);
-	else
+	else if(capsState)
 		rowChip.digitalWrite(15, HIGH);
-	if (leds & LED_NUM_LOCK)
+	if (leds & LED_NUM_LOCK && !)
 		rowChip.digitalWrite(14, LOW);
 	else
 		rowChip.digitalWrite(14, HIGH);
@@ -164,9 +139,7 @@ void checkForLeds() {
 
 void setup() {
 	Serial.begin(115200);
-	while (!Serial); // We want Serial to debug
-	HIDSerial.begin(1000000);
-	Serial.println(F("Initing Wire things"));
+	Serial.println(F("Initializing Wire things"));
 	Wire.setClock(400000);
 	Wire.begin();
 	rowChip.begin(B000);
@@ -176,23 +149,17 @@ void setup() {
 	rowChip.digitalWrite(14, HIGH);
 	rowChip.digitalWrite(15, HIGH);
 	Serial.println(F("Wire initialized"));
-	//Serial.println(F("Initializing PS2 Mouse"));
-	//ps2_mouse.initialize(); // If it is not connected DO NOT CALL ANY PS2 MOUSE FUNCTION
-	//doMouseStuffAction = TimedAction(10, *doMouseStuff);
-	//Serial.println(F("PS2 Mouse Initialized"));
-	Serial.println(F("Initializing HID"));
-	Serial.println(F("HID Initilized"));
-	Serial.println(F("Initializing DuckyParser"));
-	if (duckyParser.init(SD_ENABLE)) {
-		Serial.println(F("DuckyParser Initialized"));
-	}
-	else {
-		Serial.println(F("DuckyParser failed to Initialized"));
-	}
-	//Serial.println(F("Initializing Encoder"));
-	//encoder = new ClickEncoder(A2, A3, 8);  
-	//encoder->setAccelerationEnabled(false);
-	//encoder->setDoubleClickEnabled(true);
+	Serial.println(F("Initializing HID Serial port"));
+	HIDSerial.begin(115200);
+	Serial.println(F("HID Serial Initialized"));
+	Serial.println(F("Initializing PS2 Mouse"));
+	ps2_mouse.initialize(); // If it is not connected DO NOT CALL ANY PS2 MOUSE FUNCTION
+	doMouseStuffAction = TimedAction(10, *doMouseStuff);
+	Serial.println(F("PS2 Mouse Initialized"));
+	Serial.println(F("Initializing Encoder"));
+	encoder = new ClickEncoder(PB12, PB13, PB14, 4);  
+	encoder->setAccelerationEnabled(false);
+	encoder->setDoubleClickEnabled(true);
 	timer.pause();
 	timer.setPeriod(1000);
 	// Set up an interrupt on channel 1
@@ -201,8 +168,8 @@ void setup() {
 	timer.attachCompare1Interrupt(timerIsr);
 	timer.refresh(); // Refresh the timer's count, prescale, and overflow
 	timer.resume(); // Start the timer counting
-	//lastEncPos = -1;
-	//Serial.println(F("Encoder Initialized"));
+	lastEncPos = -1;
+	Serial.println(F("Encoder Initialized"));
 	//Serial.println(F("Initializing LCD"));
 	//lcd.begin(16, 2);
 	//lcd.setBacklight(255);
@@ -219,7 +186,7 @@ void setup() {
 void handleEncoder() {
 	currentEncPos += encoder->getValue();
 
-	if (currentEncPos != lastEncPos && currentEncPos % 2) {
+	if (currentEncPos != lastEncPos) {
 		if (currentEncPos < lastEncPos) {
 			if (doValueChange) {
 				parameters[currentScreen]--;
@@ -283,23 +250,26 @@ void checkKeys() {
 			HIDSerial.write('k');
 			if (matrix.key[i].stateChanged)   // Only find keys that have changed state.
 			{
-				HIDSerial.write('k');
 				HIDSerial.write(matrix.key[i].kcode);
 				switch (matrix.key[i].kstate) {  // Report active key state : IDLE, PRESSED, HOLD, or RELEASED
 				case PRESSED:
-					/*Serial.print("Key: ");
-					Serial.print((uint8_t)matrix.key[i].kcode);
-					Serial.print("\t\ton pos: ");
-					Serial.print(matrix.key[i].kpos);
-					Serial.println("\tpressed");*/
+					#ifdef DEBUG
+						Serial.print("Key: ");
+						Serial.print((uint8_t)matrix.key[i].kcode);
+						Serial.print("\t\ton pos: ");
+						Serial.print(matrix.key[i].kpos);
+						Serial.println("\tpressed");
+					#endif
 					HIDSerial.write(matrix.key[i].kstate);
 					break;
 				case RELEASED:
-					/*Serial.print("Key: ");
-					Serial.print((uint8_t)matrix.key[i].kcode);
-					Serial.print("\t\ton pos: ");
-					Serial.print(matrix.key[i].kpos);
-					Serial.println("\treleased");*/
+					#ifdef DEBUG
+						Serial.print("Key: ");
+						Serial.print((uint8_t)matrix.key[i].kcode);
+						Serial.print("\t\ton pos: ");
+						Serial.print(matrix.key[i].kpos);
+						Serial.println("\treleased");
+					#endif
 					HIDSerial.write(matrix.key[i].kstate);
 					break;
 				case IDLE:
@@ -333,8 +303,8 @@ void checkHIDSerial() {
 }
 void loop() {
 	checkHIDSerial();
-	//doMouseStuffAction.check();
+	doMouseStuffAction.check();
 	checkForLeds();
 	checkKeys();
-	//handleEncoder();
+	handleEncoder();
 }

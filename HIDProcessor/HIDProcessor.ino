@@ -1,10 +1,10 @@
+#include <AltSoftSerial.h>
+#include <BPLib.h>
 #include <HID-Settings.h>
 #include <HID-Project.h>
 #include <DuckyParser.h>
 #include <Wire.h>
-#include "Key.h"
 #include <TimedAction.h>
-#include "PS2Mouse.h"
 #include "SerialAnything.h"
 
 #define DATA_PIN 5 // green
@@ -13,9 +13,21 @@
 #define BATPIN A0
 #define analogReadVoltage(pin) analogRead(pin) * (5.0 / 1023)
 
-HardwareSerial MainSerial = Serial1;
+//AltSoftSerial btSerial = AltSoftSerial(4, 5);
+//BPLib *bt = new BPLib(btSerial);
+//HardwareSerial &Serial1 = Serial1;
 enum FunctionType {NORMAL, MEDIA, ONEPRESS };
 enum OperateMode{NONE, USB, BLUETOOTH, CHARGING};
+typedef enum { IDLE, PRESSED, HOLD, RELEASED } KeyState;
+typedef struct {
+	int8_t x, y;
+} Position;
+
+typedef struct {
+	byte status;
+	Position position;
+	uint8_t wheel;
+} MouseData;
 DuckyParser duckyParser;
 const byte ROWS = 8;
 const byte COLS = 16;
@@ -32,10 +44,6 @@ KeyboardKeycode keys[ROWS][COLS] =
 };
 
 ConsumerKeycode mediakeys[9]{HID_CONSUMER_VOLUME_DECREMENT, HID_CONSUMER_MUTE, HID_CONSUMER_VOLUME_INCREMENT, MEDIA_PREVIOUS, MEDIA_PLAY_PAUSE, MEDIA_NEXT, /*Opens media player*/ HID_CONSUMER_AL_AUDIO_PLAYER,  };
-//PS2Mouse ps2_mouse(CLOCK_PIN, DATA_PIN);
-bool leftMouseButton = 0;
-bool rightMouseButton = 0;
-//TimedAction doMouseStuffAction = TimedAction();
 TimedAction checkBatteryAction = TimedAction();
 
 FunctionType funcType = MEDIA; // 0 = function buttons are media keys and no special keys 1 = Function buttons are duckyscripts and certain keys are special keys
@@ -97,40 +105,41 @@ void doMouseStuff()
 			Mouse.release(MOUSE_RIGHT);
 		}
 	}
-	Mouse.move(data.position.x, data.position.y);*/
+	if (operateMode == BLUETOOTH) {
+		bt->mouseMove(data.position.x, data.position.y);
+	}
+	else if (operateMode == USB) {
+		BootMouse.move(data.position.x, data.position.y);
+	}
+	*/
 }
 
 void checkForLeds() {
 	leds = BootKeyboard.getLeds();
 	if (leds != oldLeds) {
-		MainSerial.write('l');
-		MainSerial.write(leds);
+		Serial1.write('l');
+		Serial1.write(leds);
 	}
 	oldLeds = leds;
 }
 
 void checkBattery() {
 	uint16_t batVolt = analogReadVoltage(BATPIN) * 100;
-	MainSerial.write('b');
-	MainSerial.write(batVolt);
+	Serial1.write('b');
+	Serial1.write(batVolt);
 }
 void setup() {
 	Serial.begin(115200);
-	while (!Serial); // We want Serial to debug
-	Serial.println(F("Initing Wire things"));
-	Wire.begin();
-	Serial.println(F("Wire initialized")); 
-	MainSerial.begin(1000000); // REALLY FREAKING FAST
-	//Serial.println(F("Initializing PS2 Mouse"));
-	//ps2_mouse.initialize(); // If it is not connected DO NOT CALL ANY PS2 MOUSE FUNCTION
-	//doMouseStuffAction = TimedAction(10, *doMouseStuff);
-	//Serial.println(F("PS2 Mouse Initialized"));
+	Serial.println(F("Initializing HIDProcessor"));
 	checkBatteryAction = TimedAction(1000, *checkBattery);
 	Serial.println(F("Initializing HID"));
 	BootMouse.begin();
 	BootKeyboard.begin();
 	Consumer.begin();
 	Serial.println(F("HID Initilized"));
+	Serial.println(F("Inititing BTModule"));
+	//bt->begin(BP_MODE_HID, BP_HID_COMBO);
+	Serial.println(F("BTModule initialized"));
 	Serial.println(F("Initializing DuckyParser"));
 	if (duckyParser.init(SD_ENABLE)) {
 		Serial.println(F("DuckyParser Initialized"));
@@ -138,12 +147,15 @@ void setup() {
 	else {
 		Serial.println(F("DuckyParser failed to Initialized"));
 	}
+	Serial.println(F("Initializing link to Main Processor"));
+	Serial1.begin(115200); 
+	Serial.println(F("Main processor link initialized"));
 	Serial.println(F("Initializing Done, Type away"));
 }
 
 void pressKeyboardKey(KeyboardKeycode key) {
 	if (operateMode == BLUETOOTH) {
-		
+		//bt->keyboardPress(key, BP_MOD_NOMOD);
 	}
 	else if (operateMode == USB) {
 		BootKeyboard.press(key);
@@ -151,7 +163,6 @@ void pressKeyboardKey(KeyboardKeycode key) {
 }
 void releaseKeyboardKey(KeyboardKeycode key) {
 	if (operateMode == BLUETOOTH) {
-		
 	}
 	else if (operateMode == USB) {
 		BootKeyboard.release(key);
@@ -159,23 +170,31 @@ void releaseKeyboardKey(KeyboardKeycode key) {
 }
 void writeKeyboardKey(KeyboardKeycode key) {
 	if (operateMode == BLUETOOTH) {
-		
 	}
 	else if (operateMode == USB) {
 		BootKeyboard.write(key);
 	}
 }
 
-void processPressedKey(Key key) {
-	if (key.code == 0xF0) {
+void ConsumerWrite(ConsumerKeycode key) {
+	if (operateMode == BLUETOOTH) {
+		//bt->sendConsumerCommand(lowByte(key), highByte(key));
+		//bt->keyRelease();
+	}
+	else if (operateMode == USB) {
+		Consumer.write(key);
+	}
+}
+
+void processPressedKey(byte key) {
+	if (key == 0xF0) {
 		oldFuncType = funcType;
 		funcType = ONEPRESS;
 	}
-	if (key.code >= 0xF1 && key.code <= 0xF9) {
-		int func = key.code - 0xF1;
+	if (key >= 0xF1 && key <= 0xF9) {
+		int func = key - 0xF1;
 		switch (MEDIA) {
 		case 0:
-			Consumer.write(mediakeys[func]);
 			break;
 		case 1:
 			break;
@@ -183,7 +202,7 @@ void processPressedKey(Key key) {
 		return;
 	}
 	if (funcType == ONEPRESS) {
-		switch (key.code)
+		switch (key)
 		{
 		case KEY_UP_ARROW:
 			//Consumer.write(LAPTOP_BRIGHTNESS_UP);
@@ -197,24 +216,27 @@ void processPressedKey(Key key) {
 		return;
 	}
 	// From here on we know it is not a special key so we can use some special things without directly pressing the button
-	BootKeyboard.press(key.code);
+	pressKeyboardKey((KeyboardKeycode)key);
 }
-void processReleasedKey(Key key) {
-	if (key.code == 0xF0) {
+void processReleasedKey(byte key) {
+	if (key == 0xF0) {
 		funcType = oldFuncType;
 	}
-	if (key.code >= 0xF1 && key.code <= 0xF9) {
-		int func = key.code - 0xF1;
+	if (key >= 0xF1 && key <= 0xF9) {
+		int func = key - 0xF1;
 		switch (funcType) {
 			case MEDIA:
+				ConsumerWrite(mediakeys[func]);
 				break;
 			case ONEPRESS:
-				duckyParser.ExecDucky(func); // This is gonna be on release
+				if (operateMode == USB) { // I dont think bluetooth is gonna handle this
+					duckyParser.ExecDucky(func); // This is gonna be on release
+				}
 				break;
 		}
 		return;
 	}
-	BootKeyboard.release(key.code);
+	BootKeyboard.release((KeyboardKeycode)key);
 }
 void checkKeys() {
 	if (processKeys)
@@ -223,20 +245,16 @@ void checkKeys() {
 		{
 			switch (rkeys[i]->state) {  // Report active key state : IDLE, PRESSED, HOLD, or RELEASED
 			case PRESSED:
-				/*Serial.print("Key: ");
-				Serial.print((uint8_t)matrix.key[i].code);
-				Serial.print("\t\ton pos: ");
-				Serial.print(matrix.key[i].kpos);
-				Serial.println("\tpressed");*/
-				processPressedKey(*rkeys[i]);
+				Serial.print("Key: ");
+				Serial.print((uint8_t)rkeys[i]->code);
+				Serial.println("\tpressed");
+				processPressedKey(rkeys[i]->code);
 				break;
 			case RELEASED:
-				/*Serial.print("Key: ");
-				Serial.print((uint8_t)matrix.key[i].code);
-				Serial.print("\t\ton pos: ");
-				Serial.print(matrix.key[i].kpos);
-				Serial.println("\treleased");*/
-				processReleasedKey(*rkeys[i]);
+				Serial.print("Key: ");
+				Serial.print((uint8_t)rkeys[i]->code);
+				Serial.println("\treleased");
+				processReleasedKey(rkeys[i]->code);
 				break;
 			case IDLE:
 			case HOLD:
@@ -247,8 +265,8 @@ void checkKeys() {
 	}
 }
 void checkSerial() {
-	while(MainSerial.available()) { // Read
-		char command = (char)MainSerial.read();
+	while(Serial1.available()) { // Read
+		char command = (char)Serial1.read();
 		switch (command)
 		{
 		case 'k': // We recieved keys
@@ -272,6 +290,16 @@ void checkSerial() {
 		case 'f': // function mode
 			funcType = (FunctionType)Serial.read();
 			break;
+		case 'm': // Mouse data
+			MouseData data;
+			Serial1_readAnything(data);
+			Serial.print("\tx=");
+			Serial.print(data.position.x);
+			Serial.print("\ty=");
+			Serial.print(data.position.y *-1);
+			Serial.print("\ts=");
+			Serial.print(data.status, BIN);
+			Serial.println();
 		default:
 			break;
 		}
@@ -286,14 +314,13 @@ void loop() {
 	}
 	else if (analogReadVoltage(A1) > 4) {
 		operateMode = OperateMode::USB;
+		checkForLeds();
 	}
 	if (operateMode != oldOperateMode) {
-		MainSerial.write('o');
-		MainSerial.write(operateMode);
+		Serial1.write('o');
+		Serial1.write(operateMode);
 	}
 	oldOperateMode = operateMode;
-	//doMouseStuffAction.check();
 	checkBatteryAction.check();
-	checkForLeds();
 	checkKeys();
 }

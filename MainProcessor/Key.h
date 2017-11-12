@@ -33,15 +33,13 @@
 #define Keypadlib_KEY_H_
 
 #include <Arduino.h>
-#include <HID-Project.h>
+#include "KeyboardCodes.h"
 
 #define OPEN LOW
 #define CLOSED HIGH
 
 typedef unsigned int uint;
 typedef enum{ IDLE, PRESSED, HOLD, RELEASED } KeyState;
-
-const char NO_KEY = '\0';
 
 class Key {
 public:

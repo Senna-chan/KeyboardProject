@@ -1,7 +1,7 @@
 #include "Key.h"
 // default constructor
 Key::Key() {
-	kcode = NO_KEY;
+	kcode = KEY_RESERVED;
 	kstate = IDLE;
 	stateChanged = false;
 }

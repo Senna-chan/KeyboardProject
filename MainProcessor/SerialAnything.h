@@ -21,3 +21,21 @@ template <typename T> unsigned int Serial_readAnything(T& value)
 		*p++ = Serial2.read();
 	return i;
 }
+
+template <typename T> unsigned int Serial_writeAnything(const T& value)
+{
+	Serial.write((byte *)&value, sizeof(value));
+	return sizeof(value);
+}
+
+template <typename T> unsigned int Serial1_writeAnything(const T& value)
+{
+	Serial1.write((byte *)&value, sizeof(value));
+	return sizeof(value);
+}
+
+template <typename T> unsigned int Serial2_writeAnything(const T& value)
+{
+	Serial2.write((byte *)&value, sizeof(value));
+	return sizeof(value);
+}

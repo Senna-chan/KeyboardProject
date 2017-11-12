@@ -76,6 +76,12 @@
     <Filter Include="src\_micro-api-readonly\libraries\Wire">
       <UniqueIdentifier>{bc220304-8221-42e3-b413-fb0626caf941}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Keyboard">
+      <UniqueIdentifier>{f96344e2-c594-4aad-8587-fb213de24519}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Mouse">
+      <UniqueIdentifier>{7529d5a9-6b37-429d-92c2-a8f6537c31ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="MainProcessor.ino" />
@@ -93,6 +99,12 @@
     </None>
     <None Include="..\..\libraries\LiquidCrystal_PCF8574\library.properties">
       <Filter>src\_micro-api-readonly\libraries\LiquidCrystal_PCF8574</Filter>
+    </None>
+    <None Include="..\..\..\..\libraries\Keyboard\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\Keyboard</Filter>
+    </None>
+    <None Include="..\..\..\..\libraries\Mouse\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\Mouse</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +270,12 @@
     <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\WireBase.h">
       <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\libraries\Keyboard\src\Keyboard.h">
+      <Filter>src\_micro-api-readonly\libraries\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libraries\Mouse\src\Mouse.h">
+      <Filter>src\_micro-api-readonly\libraries\Mouse</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="I2CMatrix.cpp">
@@ -371,6 +389,12 @@
     <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\WireBase.cpp">
       <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\libraries\Keyboard\src\Keyboard.cpp">
+      <Filter>src\_micro-api-readonly\libraries\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libraries\Mouse\src\Mouse.cpp">
+      <Filter>src\_micro-api-readonly\libraries\Mouse</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\libraries\Adafruit_GFX_Library\license.txt">
@@ -402,6 +426,12 @@
     </Text>
     <Text Include="..\..\libraries\TimedAction\keywords.txt">
       <Filter>src\_micro-api-readonly\libraries\TimedAction</Filter>
+    </Text>
+    <Text Include="..\..\..\..\libraries\Keyboard\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\Keyboard</Filter>
+    </Text>
+    <Text Include="..\..\..\..\libraries\Mouse\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\Mouse</Filter>
     </Text>
   </ItemGroup>
 </Project>
