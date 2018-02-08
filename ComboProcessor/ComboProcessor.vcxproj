@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C5F80730-F44F-4478-BDAE-6634EFC2CA88}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectName>ComboProcessor</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>
+    </PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>
+    </PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ComboProcessor;$(ProjectDir)..\..\libraries\eepromi2c_Anything;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire;$(ProjectDir)..\..\libraries\USBHID_stm32f1;$(ProjectDir)..\..\libraries\BPLib\src;$(ProjectDir)..\..\libraries\Adafruit_GFX_Library;$(ProjectDir)..\..\libraries\Adafruit_SSD1306;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\src;$(ProjectDir)..\..\libraries\Adafruit_MCP23017_Arduino_Library;$(ProjectDir)..\..\libraries\TimedAction;$(ProjectDir)..\..\libraries\PS2Mouse;$(ProjectDir)..\..\libraries\encoder;$(ProjectDir)..\..\libraries\SdFat\src;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\utility;$(ProjectDir)..\..\..\..\libraries;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\libraries;$(ProjectDir)..\..\libraries;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\cores\maple;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\cores\maple\avr;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\cores\maple\libmaple;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\cores\maple\stm32f1;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\variants\generic_stm32f103c;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\system\libmaple;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\system\libmaple\include;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\system\libmaple\stm32f1\include;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\system\libmaple\usb\stm32f1;$(ProjectDir)..\..\hardware\Arduino_STM32\STM32F1\system\libmaple\usb\usb_lib;$(ProjectDir)..\..\hardware\Arduino_STM32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ProjectDir)__vm\.ComboProcessor.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>DEBUG_LEVEL=DEBUG_NONE;BOARD_generic_stm32f103c;VECT_TAB_ADDR=0x8000000;ERROR_LED_PORT=GPIOB;ERROR_LED_PIN=1;F_CPU=72000000L;ARDUINO=10805;ARDUINO_GENERIC_STM32F103C;ARDUINO_ARCH_STM32F1;CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG;MCU_STM32F103CB;__STM32F1__;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="VisualMicro" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\library.properties" />
+    <None Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\library.properties" />
+    <None Include="..\..\libraries\Adafruit_GFX_Library\library.properties" />
+    <None Include="..\..\libraries\Adafruit_MCP23017_Arduino_Library\library.properties" />
+    <None Include="..\..\libraries\Adafruit_SSD1306\library.properties" />
+    <None Include="..\..\libraries\BPLib\library.properties" />
+    <None Include="..\..\libraries\encoder\library.json" />
+    <None Include="..\..\libraries\SdFat\extras\html\annotated.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\bufstream_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classes.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classfstream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classfstream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classibufstream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classibufstream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classifstream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classifstream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classios-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classios.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classiostream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classiostream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classios__base-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classios__base.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classistream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classistream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classobufstream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classobufstream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classofstream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classofstream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classostream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\classostream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_arduino_in_stream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_arduino_in_stream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_arduino_out_stream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_arduino_out_stream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_base_block_driver-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_base_block_driver.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_fat_cache-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_fat_cache.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_fat_file-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_fat_file.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_fat_file_system-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_fat_file_system.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_fat_stream_base-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_fat_stream_base.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_fat_volume-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_fat_volume.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_file-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_file.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_minimum_serial-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_minimum_serial.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_print_file-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_print_file.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd2_card-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd2_card.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sdio_card-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sdio_card.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_base_file-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_base_file.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_fat-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_fat.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_fat_e_x-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_fat_e_x.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_fat_sdio-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_fat_sdio.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_fat_soft_spi-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_fat_soft_spi.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_fat_soft_spi_e_x-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_fat_soft_spi_e_x.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_file-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_file.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_file_system-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_file_system.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_spi_card-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_spi_card.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_spi_card_e_x-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sd_spi_card_e_x.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_stdio_stream-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_stdio_stream.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sys_call-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\class_sys_call.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\dir_000004_000006.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\dir_1281b15c327061056ab3b326e90c50cf.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\dir_481cc946b8a81b8d9363a4aad6201160.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\dir_63fabcaba1b3b939579f46003349a6c5.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\dir_7e472674a7b7d2590a789f197241f95f.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\dir_a70af2fb8f1edf8b7124f41d82dbf480.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\dir_a991eec27578c865874ede3d8ec657c2.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\dir_c18d6c86f7b0afecac5c3a8a9885031e.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\files.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\fstream_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_b.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_c.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_d.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_e.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_enum.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_eval.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_f.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_b.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_c.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_d.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_e.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_f.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_g.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_i.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_l.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_m.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_n.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_o.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_p.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_r.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_s.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_t.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_u.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_v.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_w.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_func_y.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_g.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_i.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_j.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_l.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_m.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_n.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_o.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_p.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_r.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_s.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_t.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_type.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_u.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_v.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_vars.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_w.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\functions_y.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\globals.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\globals_defs.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\globals_func.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\globals_type.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\globals_vars.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\graph_legend.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\hierarchy.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\index.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\inherits.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\iostream_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\ios_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\istream_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\ostream_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_0.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_1.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_10.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_11.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_12.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_13.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_14.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_15.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_16.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_2.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_3.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_4.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_5.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_6.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_7.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_8.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_9.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_a.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_b.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_c.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_d.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_e.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\all_f.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_0.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_1.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_2.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_3.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_4.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_5.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_6.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_7.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_8.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_9.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\classes_a.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\defines_0.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\defines_1.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\defines_2.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\defines_3.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\defines_4.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\defines_5.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\defines_6.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\defines_7.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\defines_8.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\defines_9.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\enums_0.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\enumvalues_0.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\enumvalues_1.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\enumvalues_2.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\files_0.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\files_1.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\files_2.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\files_3.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\files_4.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\files_5.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\files_6.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_0.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_1.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_10.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_11.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_12.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_13.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_14.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_2.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_3.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_4.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_5.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_6.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_7.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_8.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_9.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_a.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_b.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_c.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_d.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_e.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\functions_f.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\nomatches.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\pages_0.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\typedefs_0.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\typedefs_1.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\typedefs_2.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\typedefs_3.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\typedefs_4.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\typedefs_5.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\typedefs_6.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\typedefs_7.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\typedefs_8.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_0.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_1.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_10.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_11.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_12.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_13.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_14.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_15.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_2.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_3.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_4.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_5.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_6.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_7.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_8.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_9.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_a.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_b.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_c.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_d.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_e.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\search\variables_f.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structbios_parm_block-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structbios_parm_block.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structdirectory_entry-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structdirectory_entry.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structfat32__boot-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structfat32__boot.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structfat32__fsinfo-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structfat32__fsinfo.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structfat__boot-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structfat__boot.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structfname__t-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structfname__t.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structlong_directory_entry-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structlong_directory_entry.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structmaster_boot_record-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structmaster_boot_record.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structpartition_table-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structpartition_table.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structsetfill-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structsetfill.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structsetprecision-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structsetprecision.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structsetw-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\structsetw.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\struct_fat_pos__t-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\struct_fat_pos__t.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\unioncache__t-members.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\unioncache__t.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_arduino_files_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_arduino_stream_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_block_driver_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_fat_file_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_fat_file_system_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_fat_lib_config_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_fat_structs_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_fat_volume_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_free_stack_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_minimum_serial_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_sd_fat_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_sd_fat_config_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_sd_spi_card_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_stdio_stream_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\html\_sys_call_8h.html" />
+    <None Include="..\..\libraries\SdFat\extras\SdFat.html" />
+    <None Include="..\..\libraries\SdFat\library.properties" />
+    <None Include="..\..\libraries\USBHID_stm32f1\library.properties" />
+    <None Include="ComboProcessor.ino">
+      <FileType>CppCode</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\Arduino.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\avr\dtostrf.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\avr\interrupt.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\avr\pgmspace.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\bits.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\bit_constants.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\boards.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\boards_private.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\Client.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\ext_interrupts.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\HardwareSerial.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\HardwareTimer.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\io.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\IPAddress.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\itoa.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\Print.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\Printable.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\pwm.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\Server.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\Stream.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\tone.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\Udp.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\usb_serial.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\WCharacter.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wiring_private.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wiring_pulse.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish_constants.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish_debug.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish_math.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish_time.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish_types.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\WProgram.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\WString.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\SPI.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\SoftWire.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\utility\WireBase.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\Wire.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\Wire_slave.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\variants\generic_stm32f103c\pins_arduino.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\variants\generic_stm32f103c\variant.h" />
+    <ClInclude Include="..\..\libraries\Adafruit_GFX_Library\Adafruit_GFX.h" />
+    <ClInclude Include="..\..\libraries\Adafruit_GFX_Library\gfxfont.h" />
+    <ClInclude Include="..\..\libraries\Adafruit_MCP23017_Arduino_Library\Adafruit_MCP23017.h" />
+    <ClInclude Include="..\..\libraries\Adafruit_SSD1306\Adafruit_SSD1306.h" />
+    <ClInclude Include="..\..\libraries\BPLib\src\BPLib.h" />
+    <ClInclude Include="..\..\libraries\eepromi2c_Anything\eepromi2c_Anything.h" />
+    <ClInclude Include="..\..\libraries\encoder\ClickEncoder.h" />
+    <ClInclude Include="..\..\libraries\PS2Mouse\PS2Mouse.h" />
+    <ClInclude Include="..\..\libraries\SdFat\extras\AnalogBinLoggerExtras\bintocsv\AnalogBinLogger.h" />
+    <ClInclude Include="..\..\libraries\SdFat\extras\MainPage\SdFatmainpage.h" />
+    <ClInclude Include="..\..\libraries\SdFat\extras\SdFatTestSuite\SdFatTestSuite.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\BlockDriver.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\ArduinoFiles.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\ArduinoStream.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\BaseBlockDriver.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\bufstream.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\FatApiConstants.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\FatFile.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\FatFileSystem.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\FatLib.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\FatLibConfig.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\FatStructs.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\FatVolume.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\FmtNumber.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\fstream.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\ios.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\iostream.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\istream.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\ostream.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FatLib\StdioStream.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\FreeStack.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\MinimumSerial.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SdCard\SdInfo.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SdCard\SdioCard.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SdCard\SdSpiCard.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SdFat.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SdFatConfig.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\boards\AvrDevelopersGpioPinMap.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\boards\BobuinoGpioPinMap.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\boards\GpioPinMap.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\boards\LeonardoGpioPinMap.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\boards\MegaGpioPinMap.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\boards\SleepingBeautyGpioPinMap.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\boards\Standard1284GpioPinMap.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\boards\Teensy2GpioPinMap.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\boards\Teensy2ppGpioPinMap.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\boards\UnoGpioPinMap.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\DigitalPin.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\SdSpiBaseDriver.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\SdSpiDriver.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SpiDriver\SoftSPI.h" />
+    <ClInclude Include="..\..\libraries\SdFat\src\SysCall.h" />
+    <ClInclude Include="..\..\libraries\TimedAction\TimedAction.h" />
+    <ClInclude Include="..\..\libraries\USBHID_stm32f1\HIDReportDescriptorGenerator.h" />
+    <ClInclude Include="..\..\libraries\USBHID_stm32f1\MidiSpecs.h" />
+    <ClInclude Include="..\..\libraries\USBHID_stm32f1\MinSysex.h" />
+    <ClInclude Include="..\..\libraries\USBHID_stm32f1\USBHID.h" />
+    <ClInclude Include="..\..\libraries\USBHID_stm32f1\USBMIDI.h" />
+    <ClInclude Include="..\..\libraries\USBHID_stm32f1\usb_composite.h" />
+    <ClInclude Include="..\..\libraries\USBHID_stm32f1\usb_generic.h" />
+    <ClInclude Include="..\..\libraries\USBHID_stm32f1\usb_midi_device.h" />
+    <ClInclude Include="..\..\libraries\USBHID_stm32f1\usb_x360.h" />
+    <ClInclude Include="..\..\libraries\USBHID_stm32f1\XBox360.h" />
+    <ClInclude Include="ConsumerKeyCodes.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="CustomIcons.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="DuckyParser.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="I2CMatrix.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="KeyboardCodes.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="__vm\.ComboProcessor.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\cxxabi-compat.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\ext_interrupts.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\HardwareSerial.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\HardwareTimer.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\IPAddress.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\main.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\new.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\Print.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\pwm.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\sdio.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\stm32f1\wiring_pulse_f1.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\stm32f1\wirish_debug.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\stm32f1\wirish_digital_f1.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\Stream.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\tone.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\usb_serial.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish_analog.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish_digital.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish_math.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish_shift.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\wirish_time.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\cores\maple\WString.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\SPI.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\SoftWire.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\utility\WireBase.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\Wire.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\variants\generic_stm32f103c\board.cpp" />
+    <ClCompile Include="..\..\libraries\Adafruit_GFX_Library\Adafruit_GFX.cpp" />
+    <ClCompile Include="..\..\libraries\Adafruit_GFX_Library\glcdfont.c" />
+    <ClCompile Include="..\..\libraries\Adafruit_MCP23017_Arduino_Library\Adafruit_MCP23017.cpp" />
+    <ClCompile Include="..\..\libraries\Adafruit_SSD1306\Adafruit_SSD1306.cpp" />
+    <ClCompile Include="..\..\libraries\BPLib\src\BPLib.cpp" />
+    <ClCompile Include="..\..\libraries\encoder\ClickEncoder.cpp" />
+    <ClCompile Include="..\..\libraries\PS2Mouse\PS2Mouse.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\extras\AnalogBinLoggerExtras\bintocsv\bintocsv.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\extras\SdFatTestSuite\SdFatTestSuite.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\FatLib\FatFile.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\FatLib\FatFileLFN.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\FatLib\FatFilePrint.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\FatLib\FatFileSFN.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\FatLib\FatVolume.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\FatLib\FmtNumber.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\FatLib\fstream.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\FatLib\istream.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\FatLib\ostream.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\FatLib\StdioStream.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\MinimumSerial.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\SdCard\SdioCardEX.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\SdCard\SdioTeensy.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\SdCard\SdSpiCard.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\SdCard\SdSpiCardEX.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\SpiDriver\SdSpiESP8266.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\SpiDriver\SdSpiSAM3X.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\SpiDriver\SdSpiSTM32.cpp" />
+    <ClCompile Include="..\..\libraries\SdFat\src\SpiDriver\SdSpiTeensy3.cpp" />
+    <ClCompile Include="..\..\libraries\TimedAction\TimedAction.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\AbsMouse.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\BootKeyboard.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\BootKeyboardReport.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\CompositeSerial.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\Consumer.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\Joystick.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\JoystickReport.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\Keyboard.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\KeyboardJoystickReport.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\KeyboardMouseJoystickReport.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\KeyboardMouseReport.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\KeyboardReport.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\MinSysex.c" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\Mouse.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\MouseReport.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\usb_composite.c" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\usb_generic.c" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\usb_hid_device.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\usb_midi.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\usb_midi_device.c" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\usb_setup.cpp" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\usb_x360.c" />
+    <ClCompile Include="..\..\libraries\USBHID_stm32f1\x360.cpp" />
+    <ClCompile Include="DuckyParser.cpp" />
+    <ClCompile Include="I2CMatrix.cpp" />
+    <ClCompile Include="Key.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\keywords.txt" />
+    <Text Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\README.txt" />
+    <Text Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\keywords.txt" />
+    <Text Include="..\..\libraries\Adafruit_GFX_Library\license.txt" />
+    <Text Include="..\..\libraries\Adafruit_MCP23017_Arduino_Library\keywords.txt" />
+    <Text Include="..\..\libraries\Adafruit_MCP23017_Arduino_Library\license.txt" />
+    <Text Include="..\..\libraries\Adafruit_MCP23017_Arduino_Library\README.txt" />
+    <Text Include="..\..\libraries\Adafruit_SSD1306\license.txt" />
+    <Text Include="..\..\libraries\Adafruit_SSD1306\README.txt" />
+    <Text Include="..\..\libraries\encoder\LICENSING.txt" />
+    <Text Include="..\..\libraries\SdFat\extras\AnalogBinLoggerExtras\AdcErrorStudy.txt" />
+    <Text Include="..\..\libraries\SdFat\extras\AnalogBinLoggerExtras\RateTable.txt" />
+    <Text Include="..\..\libraries\SdFat\extras\AnalogBinLoggerExtras\readme.txt" />
+    <Text Include="..\..\libraries\SdFat\extras\changes.txt" />
+    <Text Include="..\..\libraries\TimedAction\keywords.txt" />
+    <Text Include="..\..\libraries\USBHID_stm32f1\keywords.txt" />
+  </ItemGroup>
+  <PropertyGroup>
+    <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties arduino.upload.port="COM4" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

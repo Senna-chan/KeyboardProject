@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FB01852B-FE58-4FE4-B9FC-A6004A338466}</ProjectGuid>
+    <RootNamespace>OledBitmapTest</RootNamespace>
+    <ProjectName>OledBitmapTest</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>
+    </PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>
+    </PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\OledBitmapTest;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\src;$(ProjectDir)..\..\libraries\Adafruit_GFX_Library;$(ProjectDir)..\..\libraries\Adafruit_SSD1306;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire;$(ProjectDir)..\..\..\..\libraries;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\libraries;$(ProjectDir)..\..\libraries;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\avr;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\libmaple;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\stm32f1;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\variants\generic_stm32f103c;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\system\libmaple;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\system\libmaple\include;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\system\libmaple\stm32f1\include;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\system\libmaple\usb\stm32f1;$(ProjectDir)..\..\hardware\Arduino_STM32_HID\STM32F1\system\libmaple\usb\usb_lib;$(ProjectDir)..\..\hardware\Arduino_STM32_HID;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ProjectDir)__vm\.OledBitmapTest.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>DEBUG_LEVEL=DEBUG_NONE;BOARD_generic_stm32f103c;VECT_TAB_ADDR=0x8000000;ERROR_LED_PORT=GPIOB;ERROR_LED_PIN=1;F_CPU=72000000L;ARDUINO=10805;ARDUINO_GENERIC_STM32F103C;ARDUINO_ARCH_STM32F1;NO_USB;USB_HARDWARE;GENERIC_BOOTLOADER;CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG;MCU_STM32F103CB;__STM32F1__;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="VisualMicro" />
+  </ItemGroup>
+  <PropertyGroup>
+    <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\library.properties" />
+    <None Include="..\..\libraries\Adafruit_GFX_Library\library.properties" />
+    <None Include="..\..\libraries\Adafruit_SSD1306\library.properties" />
+    <None Include="OledBitmapTest.ino">
+      <FileType>CppCode</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Arduino.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\avr\dtostrf.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\avr\interrupt.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\avr\pgmspace.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\bits.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\bit_constants.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\boards.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\boards_private.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Client.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\ext_interrupts.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\HardwareSerial.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\HardwareTimer.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\io.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\IPAddress.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\itoa.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\MinSysex.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Print.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Printable.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\pwm.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Server.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Stream.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\tone.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Udp.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_hid_device.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_midi.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_serial.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\WCharacter.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wiring_private.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wiring_pulse.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_constants.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_debug.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_math.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_time.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_types.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\WProgram.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\WString.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Adafruit_SSD1306_STM32\Adafruit_SSD1306_STM32.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\src\SPI.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\SoftWire.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\Wire.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\WireBase.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\variants\generic_stm32f103c\pins_arduino.h" />
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\variants\generic_stm32f103c\variant.h" />
+    <ClInclude Include="..\..\libraries\Adafruit_GFX_Library\Adafruit_GFX.h" />
+    <ClInclude Include="..\..\libraries\Adafruit_GFX_Library\gfxfont.h" />
+    <ClInclude Include="..\..\libraries\Adafruit_SSD1306\Adafruit_SSD1306.h" />
+    <ClInclude Include="__vm\.OledBitmapTest.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\cxxabi-compat.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\ext_interrupts.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\HardwareSerial.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\HardwareTimer.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\IPAddress.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\main.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\new.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Print.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\pwm.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\sdio.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\stm32f1\wiring_pulse_f1.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\stm32f1\wirish_debug.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\stm32f1\wirish_digital_f1.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Stream.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\tone.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_hid_device.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_midi.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_serial.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_analog.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_digital.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_math.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_shift.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_time.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\WString.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Adafruit_SSD1306_STM32\Adafruit_SSD1306_STM32.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\src\SPI.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\SoftWire.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\Wire.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\WireBase.cpp" />
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\variants\generic_stm32f103c\board.cpp" />
+    <ClCompile Include="..\..\libraries\Adafruit_GFX_Library\Adafruit_GFX.cpp" />
+    <ClCompile Include="..\..\libraries\Adafruit_GFX_Library\glcdfont.c" />
+    <ClCompile Include="..\..\libraries\Adafruit_SSD1306\Adafruit_SSD1306.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Adafruit_SSD1306_STM32\license.txt" />
+    <Text Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Adafruit_SSD1306_STM32\README.txt" />
+    <Text Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Adafruit_SSD1306_STM32\STM32 README.txt" />
+    <Text Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\keywords.txt" />
+    <Text Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\src\README.txt" />
+    <Text Include="..\..\libraries\Adafruit_GFX_Library\license.txt" />
+    <Text Include="..\..\libraries\Adafruit_SSD1306\license.txt" />
+    <Text Include="..\..\libraries\Adafruit_SSD1306\README.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties arduino.upload.port="COM12" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

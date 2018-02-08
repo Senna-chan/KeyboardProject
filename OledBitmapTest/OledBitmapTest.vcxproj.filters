@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{3236b535-5693-43dd-8376-718a131d6b3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly">
+      <UniqueIdentifier>{a62a4843-65d3-44e1-9281-cf1a03f01f0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\core">
+      <UniqueIdentifier>{7a5b8ca0-410d-4682-8ac0-5262acdbfe93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\core\avr">
+      <UniqueIdentifier>{e54609a9-38c4-408c-b000-4e29ed92f7c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\core\libmaple">
+      <UniqueIdentifier>{d13c6b9b-c798-4968-8183-b1e0b61ee478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\core\libmaple\stm32f1">
+      <UniqueIdentifier>{14605153-bf04-46bf-8e52-0dd8b8e94764}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\core\libmaple\stm32f1\performance">
+      <UniqueIdentifier>{57b85ebe-c45c-4f68-810c-4cf4754bd35f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\core\libmaple\usb">
+      <UniqueIdentifier>{ba35f33f-1b3b-499e-a4d6-e7f6750f26a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\core\libmaple\usb\stm32f1">
+      <UniqueIdentifier>{1242c415-ece0-4f74-b0fb-9928e55f3a69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\core\libmaple\usb\usb_lib">
+      <UniqueIdentifier>{10dc3d75-b7df-4bc8-b907-ee8487f9cbfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\core\stm32f1">
+      <UniqueIdentifier>{957796a7-4ff6-4d2d-a9af-378ccb26ad5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries">
+      <UniqueIdentifier>{d3e19d7d-1bdd-45ad-bdf4-9668f4f6c9c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_GFX_Library">
+      <UniqueIdentifier>{f8d4c698-1e65-4ae7-96c3-722f3d295cdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_SSD1306">
+      <UniqueIdentifier>{7ac0def4-b9da-4d81-873b-a2208566747c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_SSD1306_STM32">
+      <UniqueIdentifier>{2187f93f-24b5-4d81-804a-744fd8f86484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\SPI">
+      <UniqueIdentifier>{40cfeee2-5ea7-48b6-ae99-5cddbb3c39bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Wire">
+      <UniqueIdentifier>{f8f21057-2466-4ea5-8a7d-dc1c658f7817}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OledBitmapTest.ino" />
+    <None Include="..\..\libraries\Adafruit_GFX_Library\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_GFX_Library</Filter>
+    </None>
+    <None Include="..\..\libraries\Adafruit_SSD1306\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
+    </None>
+    <None Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="__vm\.OledBitmapTest.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Arduino.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\bits.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\bit_constants.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\boards.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\boards_private.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Client.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\ext_interrupts.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\HardwareSerial.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\HardwareTimer.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\io.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\IPAddress.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\itoa.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\MinSysex.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Print.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Printable.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\pwm.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Server.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Stream.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\tone.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Udp.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_hid_device.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_midi.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_serial.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\WCharacter.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wiring_private.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wiring_pulse.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_constants.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_debug.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_math.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_time.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_types.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\WProgram.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\WString.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\avr\dtostrf.h">
+      <Filter>src\_micro-api-readonly\core\avr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\avr\interrupt.h">
+      <Filter>src\_micro-api-readonly\core\avr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\avr\pgmspace.h">
+      <Filter>src\_micro-api-readonly\core\avr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\variants\generic_stm32f103c\pins_arduino.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\variants\generic_stm32f103c\variant.h">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\Adafruit_GFX_Library\Adafruit_GFX.h">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_GFX_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\Adafruit_GFX_Library\gfxfont.h">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_GFX_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libraries\Adafruit_SSD1306\Adafruit_SSD1306.h">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Adafruit_SSD1306_STM32\Adafruit_SSD1306_STM32.h">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306_STM32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\src\SPI.h">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\SoftWire.h">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\Wire.h">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\WireBase.h">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\cxxabi-compat.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\ext_interrupts.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\HardwareSerial.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\HardwareTimer.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\IPAddress.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\main.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\new.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Print.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\pwm.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\sdio.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\Stream.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\tone.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_hid_device.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_midi.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\usb_serial.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_analog.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_digital.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_math.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_shift.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\wirish_time.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\WString.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\stm32f1\wiring_pulse_f1.cpp">
+      <Filter>src\_micro-api-readonly\core\stm32f1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\stm32f1\wirish_debug.cpp">
+      <Filter>src\_micro-api-readonly\core\stm32f1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\cores\maple\stm32f1\wirish_digital_f1.cpp">
+      <Filter>src\_micro-api-readonly\core\stm32f1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\variants\generic_stm32f103c\board.cpp">
+      <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\Adafruit_GFX_Library\Adafruit_GFX.cpp">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_GFX_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\Adafruit_GFX_Library\glcdfont.c">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_GFX_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libraries\Adafruit_SSD1306\Adafruit_SSD1306.cpp">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Adafruit_SSD1306_STM32\Adafruit_SSD1306_STM32.cpp">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306_STM32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\src\SPI.cpp">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\SoftWire.cpp">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\Wire.cpp">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Wire\WireBase.cpp">
+      <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\libraries\Adafruit_GFX_Library\license.txt">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_GFX_Library</Filter>
+    </Text>
+    <Text Include="..\..\libraries\Adafruit_SSD1306\license.txt">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
+    </Text>
+    <Text Include="..\..\libraries\Adafruit_SSD1306\README.txt">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
+    </Text>
+    <Text Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Adafruit_SSD1306_STM32\license.txt">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306_STM32</Filter>
+    </Text>
+    <Text Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Adafruit_SSD1306_STM32\README.txt">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306_STM32</Filter>
+    </Text>
+    <Text Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\Adafruit_SSD1306_STM32\STM32 README.txt">
+      <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306_STM32</Filter>
+    </Text>
+    <Text Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </Text>
+    <Text Include="..\..\hardware\Arduino_STM32_HID\STM32F1\libraries\SPI\src\README.txt">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

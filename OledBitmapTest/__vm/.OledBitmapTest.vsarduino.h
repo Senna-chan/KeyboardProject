@@ -17,13 +17,15 @@
 #define VECT_TAB_ADDR 0x8000000
 #define ERROR_LED_PORT GPIOB
 #define ERROR_LED_PIN 1
-#define F_CPU 48000000L
+#define F_CPU 72000000L
 #define ARDUINO 10805
 #define ARDUINO_GENERIC_STM32F103C
 #define ARDUINO_ARCH_STM32F1
 #define NO_USB
+#define USB_HARDWARE
+#define GENERIC_BOOTLOADER
 #define CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG
-#define MCU_STM32F103C8
+#define MCU_STM32F103CB
 #define __STM32F1__
 #define __cplusplus 201103L
 #define __inline__
@@ -95,6 +97,6 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <board.cpp> 
 #undef cli
 #define cli()
-#include "MainProcessor.ino"
+#include "OledBitmapTest.ino"
 #endif
 #endif

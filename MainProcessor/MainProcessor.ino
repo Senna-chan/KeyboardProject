@@ -14,15 +14,24 @@
 
 #define DATA_PIN PB3 // green
 #define CLOCK_PIN PB4 // white
-#define analogReadVoltage(pin) analogRead(pin) * (5.0 / 1023)
+#define analogReadVoltage(pin) analogRead(pin) * (3.3 / 1023)
+
+
 #define DEBUG
+#define ENCODER_ENABLED
+//#define MOUSE_ENABLED
 const int numOfScreens = 10;
 
+
+#define ENC_SW PB14
+#define ENC_DT PB13
+#define ENC_CLK PB12
+
 HardwareTimer timer(1);
-#define OLED_DC     6
-#define OLED_CS     7
-#define OLED_RESET  8
-Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
+//#define OLED_DC     6
+//#define OLED_CS     7
+//#define OLED_RESET  8
+//Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
 HardwareSerial &HIDSerial = Serial2;
 ClickEncoder *encoder;
 int16_t lastEncPos, currentEncPos;
@@ -38,7 +47,7 @@ int parameters[numOfScreens];
 #define resetToHomeScreen 5000
 bool checkResetHomeScreen, doValueChange;
 enum FunctionType { MEDIA, ONEPRESS };
-enum OperateMode { USB, BLUETOOTH, CHARGING };
+enum OperateMode { CABLE, BLUETOOTH, CHARGING };
 enum KeyboardLeds : uint8_t {
 	LED_NUM_LOCK = (1 << 0),
 	LED_CAPS_LOCK = (1 << 1),
@@ -63,6 +72,7 @@ PS2Mouse ps2_mouse(CLOCK_PIN, DATA_PIN);
 bool leftMouseButton = 0;
 bool rightMouseButton = 0;
 bool capsState, numState, scrollState;
+bool sendKeys = true;
 TimedAction doMouseStuffAction = TimedAction();
 I2CMatrixClass matrix;
 float batteryVoltage;
@@ -127,13 +137,13 @@ void checkForLeds() {
 		rowChip.digitalWrite(15, LOW);
 	else if(capsState)
 		rowChip.digitalWrite(15, HIGH);
-	if (leds & LED_NUM_LOCK && !)
+	if (leds & LED_NUM_LOCK && !numState)
 		rowChip.digitalWrite(14, LOW);
-	else
+	else if(numState)
 		rowChip.digitalWrite(14, HIGH);
-	if (leds & LED_SCROLL_LOCK)
+	if (leds & LED_SCROLL_LOCK && !scrollState)
 		rowChip.digitalWrite(13, LOW);
-	else
+	else if(scrollState)
 		rowChip.digitalWrite(13, HIGH);
 }
 
@@ -152,12 +162,15 @@ void setup() {
 	Serial.println(F("Initializing HID Serial port"));
 	HIDSerial.begin(115200);
 	Serial.println(F("HID Serial Initialized"));
+#ifdef MOUSE_ENABLED
 	Serial.println(F("Initializing PS2 Mouse"));
-	ps2_mouse.initialize(); // If it is not connected DO NOT CALL ANY PS2 MOUSE FUNCTION
-	doMouseStuffAction = TimedAction(10, *doMouseStuff);
+	//ps2_mouse.initialize(); // If it is not connected DO NOT CALL ANY PS2 MOUSE FUNCTION
+	//doMouseStuffAction = TimedAction(10, *doMouseStuff);
 	Serial.println(F("PS2 Mouse Initialized"));
+#endif // MOUSE_ENABLED
+#ifdef ENCODER_ENABLED
 	Serial.println(F("Initializing Encoder"));
-	encoder = new ClickEncoder(PB12, PB13, PB14, 4);  
+	encoder = new ClickEncoder(ENC_DT, ENC_CLK, ENC_SW, 4);
 	encoder->setAccelerationEnabled(false);
 	encoder->setDoubleClickEnabled(true);
 	timer.pause();
@@ -170,12 +183,7 @@ void setup() {
 	timer.resume(); // Start the timer counting
 	lastEncPos = -1;
 	Serial.println(F("Encoder Initialized"));
-	//Serial.println(F("Initializing LCD"));
-	//lcd.begin(16, 2);
-	//lcd.setBacklight(255);
-	//lcd.clear();
-	//printScreen();
-	//Serial.println(F("LCD Initialized"));
+#endif // ENCODER_ENABLED
 	Serial.println(F("Initializing Matrix"));
 	matrix = I2CMatrixClass(makeKeymap(keys), rowChip, colChip, ROWS, COLS);
 	matrix.setDebounceTime(1);
@@ -187,7 +195,7 @@ void handleEncoder() {
 	currentEncPos += encoder->getValue();
 
 	if (currentEncPos != lastEncPos) {
-		if (currentEncPos < lastEncPos) {
+		/*if (currentEncPos < lastEncPos) {
 			if (doValueChange) {
 				parameters[currentScreen]--;
 			}
@@ -213,7 +221,7 @@ void handleEncoder() {
 				}
 			}
 		}
-		printScreen();
+		printScreen();*/
 		lastEncPos = currentEncPos;
 		Serial.print(F("Encoder Value: "));
 		Serial.println(currentEncPos);
@@ -247,36 +255,44 @@ void checkKeys() {
 	{
 		for (int i = 0; i<LIST_MAX; i++)   // Scan the whole key list.
 		{
-			HIDSerial.write('k');
+			if(sendKeys)
+				HIDSerial.write('k');
 			if (matrix.key[i].stateChanged)   // Only find keys that have changed state.
 			{
-				HIDSerial.write(matrix.key[i].kcode);
+				if(sendKeys)
+					HIDSerial.write(matrix.key[i].kcode);
 				switch (matrix.key[i].kstate) {  // Report active key state : IDLE, PRESSED, HOLD, or RELEASED
 				case PRESSED:
 					#ifdef DEBUG
 						Serial.print("Key: ");
 						Serial.print((uint8_t)matrix.key[i].kcode);
-						Serial.print("\t\ton pos: ");
-						Serial.print(matrix.key[i].kpos);
 						Serial.println("\tpressed");
 					#endif
-					HIDSerial.write(matrix.key[i].kstate);
+					if(sendKeys)
+						HIDSerial.write(matrix.key[i].kstate);
 					break;
 				case RELEASED:
 					#ifdef DEBUG
 						Serial.print("Key: ");
 						Serial.print((uint8_t)matrix.key[i].kcode);
-						Serial.print("\t\ton pos: ");
-						Serial.print(matrix.key[i].kpos);
 						Serial.println("\treleased");
 					#endif
-					HIDSerial.write(matrix.key[i].kstate);
+					if(sendKeys)
+						HIDSerial.write(matrix.key[i].kstate);
 					break;
-				case IDLE:
 				case HOLD:
+					#ifdef DEBUG
+						Serial.print("Key: ");
+						Serial.print((uint8_t)matrix.key[i].kcode);
+						Serial.println("\tholded");
+					#endif
+					if (sendKeys)
+						HIDSerial.write(matrix.key[i].kstate);
+				case IDLE:
 					break;
 				}
-				HIDSerial.write(i);
+				if(sendKeys)
+					HIDSerial.write(i);
 			}
 		}
 	}
@@ -303,8 +319,12 @@ void checkHIDSerial() {
 }
 void loop() {
 	checkHIDSerial();
+#ifdef MOUSE_ENABELD
 	doMouseStuffAction.check();
+#endif // MOUSE_ENABELD
 	checkForLeds();
 	checkKeys();
+#ifdef ENCODER_ENABLED
 	handleEncoder();
+#endif // ENCODER_ENABLED
 }

@@ -14,73 +14,64 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="src">
-      <UniqueIdentifier>{edc9e607-99b8-43d1-9247-f339cd2c1e58}</UniqueIdentifier>
+      <UniqueIdentifier>{53a2f3b9-6d71-40fb-a297-aa6757d559ad}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly">
-      <UniqueIdentifier>{c129d3ed-9c97-4c72-9656-3f7d3f2b57c0}</UniqueIdentifier>
+      <UniqueIdentifier>{a989d84c-5535-4848-a5e9-8ad8968db939}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core">
-      <UniqueIdentifier>{1165156e-d7fe-4ba1-98ab-cfa9586452cb}</UniqueIdentifier>
+      <UniqueIdentifier>{4eb8007f-8afa-4e0f-926e-aa30bb5502e6}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\avr">
-      <UniqueIdentifier>{400f29b1-e35f-4dd2-8154-4cc463b294fe}</UniqueIdentifier>
+      <UniqueIdentifier>{5ad1f4b5-fcb8-4359-b030-00444db26952}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple">
-      <UniqueIdentifier>{2b317e1a-d939-4aab-9501-1bf2b7db31d2}</UniqueIdentifier>
+      <UniqueIdentifier>{5bf76b8e-a050-49d1-bc18-856273a7f8ad}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple\stm32f1">
-      <UniqueIdentifier>{c6ceab93-ecaa-48cb-89f0-6b3f9867af45}</UniqueIdentifier>
+      <UniqueIdentifier>{cd26a154-a32f-43ff-a03d-dca7c8ace0aa}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple\stm32f1\performance">
-      <UniqueIdentifier>{5b975407-4e72-4806-a160-ca8153b374b9}</UniqueIdentifier>
+      <UniqueIdentifier>{7e9a7cae-bbce-497b-82ad-56c9b25a4d22}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple\usb">
-      <UniqueIdentifier>{1c2809e5-8096-4b02-aba2-4f3962656ad5}</UniqueIdentifier>
+      <UniqueIdentifier>{56f936d4-39ed-4add-9439-a79f0fceaef2}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple\usb\stm32f1">
-      <UniqueIdentifier>{6af88580-6fe9-49a4-8dc9-bacfb7cf60a7}</UniqueIdentifier>
+      <UniqueIdentifier>{303d02fd-b9e6-4fd9-89aa-d029a857aee7}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple\usb\usb_lib">
-      <UniqueIdentifier>{7166e651-6262-4c69-9125-f5708698833d}</UniqueIdentifier>
+      <UniqueIdentifier>{85298fd5-d26c-4b2c-8cc7-25ae2c4aa06c}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\stm32f1">
-      <UniqueIdentifier>{b2390f73-2ce5-428c-a304-3888800dfb52}</UniqueIdentifier>
+      <UniqueIdentifier>{d64ea73e-3ead-4022-94cf-e8c9ae4b10f4}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries">
-      <UniqueIdentifier>{c6cc2a78-1ea3-4a21-bfab-ff49fda21856}</UniqueIdentifier>
+      <UniqueIdentifier>{a77e5280-7649-4f76-a966-944ed642b6a3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\Adafruit_GFX_Library">
-      <UniqueIdentifier>{a6c0f351-f3f7-4ec7-92c9-e9bfc6687619}</UniqueIdentifier>
+      <UniqueIdentifier>{6bac8f0c-bbe6-4a4c-8359-63e2794febea}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\Adafruit_MCP23017_Arduino_Library">
-      <UniqueIdentifier>{33f179a9-adc5-4e95-a037-6487f6fbf3d5}</UniqueIdentifier>
+      <UniqueIdentifier>{afb91448-1146-4078-87e2-0693f10f41e7}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\Adafruit_SSD1306">
-      <UniqueIdentifier>{04e5a1a0-b314-454f-986f-40bbc6f87658}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\DuckyParser">
-      <UniqueIdentifier>{fac288ca-1c0a-4e99-9312-40500333c244}</UniqueIdentifier>
+      <UniqueIdentifier>{aea7ccce-a50b-4b9f-88cf-fb245010e9fb}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\encoder">
-      <UniqueIdentifier>{5e4bbffa-e586-44ef-a295-8694d564b619}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\LiquidCrystal_PCF8574">
-      <UniqueIdentifier>{77ed35b0-8817-46ea-a740-8b296b619e0e}</UniqueIdentifier>
+      <UniqueIdentifier>{3564befc-cb7a-42f9-aac8-b3ed0aa0fdd6}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\PS2Mouse">
-      <UniqueIdentifier>{c998f9b2-e874-48bc-b125-99b2eb7f5b8b}</UniqueIdentifier>
+      <UniqueIdentifier>{4aff0f39-bf56-482e-be54-c6269fff3104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\SPI">
+      <UniqueIdentifier>{bd396ec1-be29-4ace-903a-c3e91dc596b4}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\TimedAction">
-      <UniqueIdentifier>{3ec32c40-f16a-4754-8b93-5577d18cc344}</UniqueIdentifier>
+      <UniqueIdentifier>{a56dadad-f585-4c79-856f-fde7f164f6e9}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\Wire">
-      <UniqueIdentifier>{bc220304-8221-42e3-b413-fb0626caf941}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\Keyboard">
-      <UniqueIdentifier>{f96344e2-c594-4aad-8587-fb213de24519}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\Mouse">
-      <UniqueIdentifier>{7529d5a9-6b37-429d-92c2-a8f6537c31ab}</UniqueIdentifier>
+      <UniqueIdentifier>{b70874fd-48b0-4792-a843-5b50a27ae42b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -97,14 +88,8 @@
     <None Include="..\..\libraries\encoder\library.json">
       <Filter>src\_micro-api-readonly\libraries\encoder</Filter>
     </None>
-    <None Include="..\..\libraries\LiquidCrystal_PCF8574\library.properties">
-      <Filter>src\_micro-api-readonly\libraries\LiquidCrystal_PCF8574</Filter>
-    </None>
-    <None Include="..\..\..\..\libraries\Keyboard\library.properties">
-      <Filter>src\_micro-api-readonly\libraries\Keyboard</Filter>
-    </None>
-    <None Include="..\..\..\..\libraries\Mouse\library.properties">
-      <Filter>src\_micro-api-readonly\libraries\Mouse</Filter>
+    <None Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -246,17 +231,14 @@
     <ClInclude Include="..\..\libraries\Adafruit_SSD1306\Adafruit_SSD1306.h">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libraries\DuckyParser\DuckyParser.h">
-      <Filter>src\_micro-api-readonly\libraries\DuckyParser</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\libraries\encoder\ClickEncoder.h">
       <Filter>src\_micro-api-readonly\libraries\encoder</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libraries\LiquidCrystal_PCF8574\src\LiquidCrystal_PCF8574.h">
-      <Filter>src\_micro-api-readonly\libraries\LiquidCrystal_PCF8574</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\libraries\PS2Mouse\PS2Mouse.h">
       <Filter>src\_micro-api-readonly\libraries\PS2Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\SPI.h">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libraries\TimedAction\TimedAction.h">
       <Filter>src\_micro-api-readonly\libraries\TimedAction</Filter>
@@ -269,12 +251,6 @@
     </ClInclude>
     <ClInclude Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\WireBase.h">
       <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libraries\Keyboard\src\Keyboard.h">
-      <Filter>src\_micro-api-readonly\libraries\Keyboard</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libraries\Mouse\src\Mouse.h">
-      <Filter>src\_micro-api-readonly\libraries\Mouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -365,17 +341,14 @@
     <ClCompile Include="..\..\libraries\Adafruit_SSD1306\Adafruit_SSD1306.cpp">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libraries\DuckyParser\DuckyParser.cpp">
-      <Filter>src\_micro-api-readonly\libraries\DuckyParser</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\libraries\encoder\ClickEncoder.cpp">
       <Filter>src\_micro-api-readonly\libraries\encoder</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libraries\LiquidCrystal_PCF8574\src\LiquidCrystal_PCF8574.cpp">
-      <Filter>src\_micro-api-readonly\libraries\LiquidCrystal_PCF8574</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\libraries\PS2Mouse\PS2Mouse.cpp">
       <Filter>src\_micro-api-readonly\libraries\PS2Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\SPI.cpp">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libraries\TimedAction\TimedAction.cpp">
       <Filter>src\_micro-api-readonly\libraries\TimedAction</Filter>
@@ -388,12 +361,6 @@
     </ClCompile>
     <ClCompile Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\Wire\WireBase.cpp">
       <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libraries\Keyboard\src\Keyboard.cpp">
-      <Filter>src\_micro-api-readonly\libraries\Keyboard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libraries\Mouse\src\Mouse.cpp">
-      <Filter>src\_micro-api-readonly\libraries\Mouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -415,23 +382,17 @@
     <Text Include="..\..\libraries\Adafruit_SSD1306\README.txt">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
     </Text>
-    <Text Include="..\..\libraries\DuckyParser\keywords.txt">
-      <Filter>src\_micro-api-readonly\libraries\DuckyParser</Filter>
-    </Text>
     <Text Include="..\..\libraries\encoder\LICENSING.txt">
       <Filter>src\_micro-api-readonly\libraries\encoder</Filter>
     </Text>
-    <Text Include="..\..\libraries\LiquidCrystal_PCF8574\keywords.txt">
-      <Filter>src\_micro-api-readonly\libraries\LiquidCrystal_PCF8574</Filter>
+    <Text Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </Text>
+    <Text Include="..\..\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\README.txt">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
     </Text>
     <Text Include="..\..\libraries\TimedAction\keywords.txt">
       <Filter>src\_micro-api-readonly\libraries\TimedAction</Filter>
-    </Text>
-    <Text Include="..\..\..\..\libraries\Keyboard\keywords.txt">
-      <Filter>src\_micro-api-readonly\libraries\Keyboard</Filter>
-    </Text>
-    <Text Include="..\..\..\..\libraries\Mouse\keywords.txt">
-      <Filter>src\_micro-api-readonly\libraries\Mouse</Filter>
     </Text>
   </ItemGroup>
 </Project>

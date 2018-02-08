@@ -15,8 +15,8 @@
 #define DEBUG_LEVEL DEBUG_NONE
 #define BOARD_generic_stm32f103c
 #define VECT_TAB_ADDR 0x8000000
-#define ERROR_LED_PORT GPIOB
-#define ERROR_LED_PIN 1
+#define ERROR_LED_PORT GPIOC
+#define ERROR_LED_PIN 13
 #define F_CPU 72000000L
 #define ARDUINO 10805
 #define ARDUINO_GENERIC_STM32F103C
@@ -94,6 +94,6 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <board.cpp> 
 #undef cli
 #define cli()
-#include "I2CMasterTest.ino"
+#include "ComboProcessor.ino"
 #endif
 #endif

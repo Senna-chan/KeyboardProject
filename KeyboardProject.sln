@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MainProcessor", "MainProcessor\MainProcessor.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OledTest", "OledTest\OledTest.vcxproj", "{10B58EB8-FCD7-4908-84D9-E897356D1E61}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HIDProcessor", "HIDProcessor\HIDProcessor.vcxproj", "{7A6D83B3-6AB8-43E2-9209-93786275BF14}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OledBitmapTest", "OledBitmapTest\OledBitmapTest.vcxproj", "{FB01852B-FE58-4FE4-B9FC-A6004A338466}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HCToRN42ConfigProgram", "..\HCToRN42ConfigProgram\HCToRN42ConfigProgram.vcxproj", "{945E9054-DC9A-4620-A59B-DAA019029C58}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComboProcessor", "ComboProcessor\ComboProcessor.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +17,22 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10B58EB8-FCD7-4908-84D9-E897356D1E61}.Debug|x86.ActiveCfg = Debug|Win32
+		{10B58EB8-FCD7-4908-84D9-E897356D1E61}.Debug|x86.Build.0 = Debug|Win32
+		{10B58EB8-FCD7-4908-84D9-E897356D1E61}.Release|x86.ActiveCfg = Release|Win32
+		{10B58EB8-FCD7-4908-84D9-E897356D1E61}.Release|x86.Build.0 = Release|Win32
+		{FB01852B-FE58-4FE4-B9FC-A6004A338466}.Debug|x86.ActiveCfg = Debug|Win32
+		{FB01852B-FE58-4FE4-B9FC-A6004A338466}.Debug|x86.Build.0 = Debug|Win32
+		{FB01852B-FE58-4FE4-B9FC-A6004A338466}.Release|x86.ActiveCfg = Release|Win32
+		{FB01852B-FE58-4FE4-B9FC-A6004A338466}.Release|x86.Build.0 = Release|Win32
+		{945E9054-DC9A-4620-A59B-DAA019029C58}.Debug|x86.ActiveCfg = Debug|Win32
+		{945E9054-DC9A-4620-A59B-DAA019029C58}.Debug|x86.Build.0 = Debug|Win32
+		{945E9054-DC9A-4620-A59B-DAA019029C58}.Release|x86.ActiveCfg = Release|Win32
+		{945E9054-DC9A-4620-A59B-DAA019029C58}.Release|x86.Build.0 = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.ActiveCfg = Debug|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
-		{7A6D83B3-6AB8-43E2-9209-93786275BF14}.Debug|x86.ActiveCfg = Debug|Win32
-		{7A6D83B3-6AB8-43E2-9209-93786275BF14}.Debug|x86.Build.0 = Debug|Win32
-		{7A6D83B3-6AB8-43E2-9209-93786275BF14}.Release|x86.ActiveCfg = Release|Win32
-		{7A6D83B3-6AB8-43E2-9209-93786275BF14}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
