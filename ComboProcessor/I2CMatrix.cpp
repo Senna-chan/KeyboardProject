@@ -6,7 +6,7 @@
 
 I2CMatrixClass::I2CMatrixClass(){}
 
-I2CMatrixClass::I2CMatrixClass(KeyboardKeycode *userKeymap, Adafruit_MCP23017 rowchip, Adafruit_MCP23017 colchip, byte numRows, byte numCols) {
+void I2CMatrixClass::init(KeyboardKeycode *userKeymap, Adafruit_MCP23017 *rowchip, Adafruit_MCP23017 *colchip, byte numRows, byte numCols) {
 	rowChip = rowchip;
 	colChip = colchip;
 	sizeKpd.rows = numRows;
@@ -22,16 +22,32 @@ I2CMatrixClass::I2CMatrixClass(KeyboardKeycode *userKeymap, Adafruit_MCP23017 ro
 
 // Initialize the chips
 void I2CMatrixClass::begin() {
-	
-	for (int i = 0; i < 16; i++) {
-		if (i < 14) {
-			rowChip.pinMode(i, INPUT);
-			rowChip.pullUp(i, HIGH);
-		}
-		colChip.pinMode(i, OUTPUT);
-		colChip.pullUp(i, HIGH);
-		colChip.digitalWrite(i, HIGH);
-	}
+	Serial.println("Setting rowchip regs");
+	rowChip->writeRegister(MCP23017_IODIRA, 0xFF);
+	rowChip->writeRegister(MCP23017_IODIRB, 0xFF);
+	rowChip->writeRegister(MCP23017_GPPUA, 0xFF);
+	rowChip->writeRegister(MCP23017_GPPUB, 0xFF);
+
+	Serial.println("Setting colchip regs");
+	colChip->writeRegister(MCP23017_IODIRA, 0x00);
+	colChip->writeRegister(MCP23017_IODIRB, 0x00);
+	colChip->writeRegister(MCP23017_GPPUA, 0xFF);
+	colChip->writeRegister(MCP23017_GPPUB, 0xFF);
+//	colChip->writeGPIOAB(0xFFFF);
+//	colChip->writeRegister(MCP23017_GPIOA, 0xFF);
+//	Serial.print(count); count++;
+//	colChip->writeRegister(MCP23017_GPIOB, 0xFF);
+//	Serial.print(count); count++;
+
+//	for (int i = 0; i < 16; i++) {
+//		if (i < 14) {
+//			rowChip->pinMode(i, INPUT);
+//			rowChip->pullUp(i, HIGH);
+//		}
+//		colChip->pinMode(i, OUTPUT);
+//		colChip->pullUp(i, HIGH);
+//		colChip->digitalWrite(i, HIGH);
+//	}
 }
 
 // Returns a single key only. Retained for backwards compatibility.
@@ -63,16 +79,16 @@ bool I2CMatrixClass::getKeys() {
 // Private : Hardware scan
 void I2CMatrixClass::scanKeys() {
 	// bitMap stores ALL the keys that are being pressed.
-	//rowChip.writeRegister(0xFF, MCP23017_IODIRA);
-	//rowChip.writeRegister(0xFF, MCP23017_GPPUA);
-	//rowChip.writeRegister(0xFF, MCP23017_IODIRB);
-	//rowChip.writeRegister(0xFF, MCP23017_GPPUB);
+	//rowChip->writeRegister(0xFF, MCP23017_IODIRA);
+	//rowChip->writeRegister(0xFF, MCP23017_GPPUA);
+	//rowChip->writeRegister(0xFF, MCP23017_IODIRB);
+	//rowChip->writeRegister(0xFF, MCP23017_GPPUB);
 
 	// bitMap stores ALL the keys that are being pressed.
 	for (byte c = 0; c<sizeKpd.columns; c++) {
-		colChip.pinMode(c, OUTPUT);
-		colChip.digitalWrite(c, LOW);	// Begin column pulse output.
-		byte rowPinValues = rowChip.readGPIO(0);
+		colChip->pinMode(c, OUTPUT);
+		colChip->digitalWrite(c, LOW);	// Begin column pulse output.
+		byte rowPinValues = rowChip->readGPIO(0);
 //		if (rowPinValues != B11111111) {
 //			Serial.print("c:");
 //			Serial.print(c);
@@ -89,8 +105,8 @@ void I2CMatrixClass::scanKeys() {
 //			bitWrite(bitMap[r], c, pin_read(r+8, false));  // keypress is active low so invert to high.
 //		}
 		// Set pin to high impedance input. Effectively ends column pulse.
-		colChip.digitalWrite(c, HIGH);	// Begin column pulse output.
-		colChip.pinMode(c, INPUT);
+		colChip->digitalWrite(c, HIGH);	// Begin column pulse output.
+		colChip->pinMode(c, INPUT);
 	}
 }
 

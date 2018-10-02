@@ -1,5 +1,5 @@
 /* 
-	Editor: http://www.visualmicro.com
+	Editor: https://www.visualmicro.com/
 			visual micro and the arduino ide ignore this code during compilation. this code is automatically maintained by visualmicro, manual changes to this file will be overwritten
 			the contents of the Visual Micro sketch sub folder can be deleted prior to publishing a project
 			all non-arduino files created by visual micro and all visual studio project or solution files can be freely deleted and are not required to compile a sketch (do not delete your own code!).
@@ -15,8 +15,8 @@
 #define DEBUG_LEVEL DEBUG_NONE
 #define BOARD_generic_stm32f103c
 #define VECT_TAB_ADDR 0x8000000
-#define ERROR_LED_PORT GPIOB
-#define ERROR_LED_PIN 1
+#define ERROR_LED_PORT GPIOC
+#define ERROR_LED_PIN 13
 #define F_CPU 72000000L
 #define ARDUINO 10805
 #define ARDUINO_GENERIC_STM32F103C
@@ -24,6 +24,7 @@
 #define CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG
 #define MCU_STM32F103CB
 #define __STM32F1__
+#define ARDUINO_ARCH_STM32
 #define __cplusplus 201103L
 #define __inline__
 #define __asm__(x)
@@ -88,7 +89,7 @@ extern "C" void __cxa_pure_virtual() {;}
 
 
 
-#include <wprogram.h>
+#include <arduino.h>
 #include <pins_arduino.h> 
 #include <variant.h> 
 #include <board.cpp> 

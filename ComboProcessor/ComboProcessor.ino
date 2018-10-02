@@ -1,68 +1,49 @@
-#include <eepromi2c_Anything.h>
-#include "KeyboardCodes.h"
-#include "ConsumerKeyCodes.h"
+#include <SdFs.h>
+#include "Variables.h"
+#include "SettingsHelper.h"
+#include "Helpers.h"
+#include <ClickEncoder.h>
+#include "Helpers.h"
+#include "Config.h"
+#include "OledFunctions.h"
+#include <PS2Mouse.h>
 #include <USBHID.h>
-#include <BPLib.h>
-#include <gfxfont.h>
+#include "usb_mass.h"
+#include <KeyboardCodes.h>
+#include <ConsumerKeyCodes.h>
+#include "HIDFunctions.h"
+#include "Variables.h"
 #include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
+#include "Adafruit_SSD1306.h"
+#include "DuckyReadWriter.h"
+#include <Adafruit_MCP23008.h>
+#include <BPLib.h>
 #include <Adafruit_MCP23017.h>
 #include <Wire.h>
 #include "I2CMatrix.h"
 #include "Key.h"
 #include <TimedAction.h>
-#include "PS2Mouse.h"
-#include <ClickEncoder.h>
-#include "CustomIcons.h" // Bitmaps for the Oled
+#include <USBComposite.h>
+//Keyboard gray = gnd blue = vcc 
+//Mouse gray = gnd blue = vcc purple = data white = clock
 
-#define analogReadVoltage(pin) analogRead(pin) * (3.3 / 4095)
-#define between(value, min, max) ((value) < (max) && (value) > (min))
-#define outside(value, min, max) ((value) > (max) || (value) < (min))
-#define DATA_PIN PB13 // green
-#define CLOCK_PIN PB14 // white
-#define BATPIN PA1
-#define MODESELECTPIN PA2
 
-#define DEBUG
-#define DEBUG_LEVEL "trace"
-//#define ENCODER_ENABLED
-#define MOUSE_ENABLED
-#define KEYBOARD_ENABLED
-#define HID_ENABLED
-//#define OLED_ENABLED
-#define EEPROM_ENABLED
-#define BT_ENABLED
+HardwareTimer timerOne(1);
 
-BPLib *bt;
+Adafruit_SSD1306 main_oled(OLED_DC, OLED_RESET, OLED_CS);
 
-#define ENC_SW PA7
-#define ENC_DT PB0
-#define ENC_CLK PB1
-HardwareTimer timer(1);
+ClickEncoder *encoder = new ClickEncoder(ENC_DT, ENC_CLK, ENC_SW, 1);
+Adafruit_MCP23008 expender = Adafruit_MCP23008();
+bool expenderinterupted = false;
 
-#define OLED_DC     PB8
-#define OLED_CS     PA4
-#define OLED_RESET  PB9
-Adafruit_SSD1306 oled(OLED_DC, OLED_RESET, OLED_CS);
-
-ClickEncoder *encoder;
 int16_t lastEncPos, currentEncPos;
-const int numOfScreens = 10;
-int currentScreen = 0;
-String screens[numOfScreens][2] = { { "Function Mode" },{ "Active Mode" },{ "Active BTAddr" },
-{ "Set BTAddr" },{ "Overload Temp.","degC" },{ "Accel Time", "Secs" },{ "Restart Time","Mins" },
-{ "Analog Out. Curr.","mA" },{ "Input Temp.","degC" },{ "Run Time", "Hours" } };
-int parameters[numOfScreens];
-#define resetToHomeScreen 5000
-bool checkResetHomeScreen, doValueChange;
-enum FunctionType { MEDIA, ONEPRESS };
-enum OperateMode { CABLE, BLUETOOTH, CHARGING };
 enum KeyboardLeds : uint8_t {
 	LED_NUM_LOCK = (1 << 0),
 	LED_CAPS_LOCK = (1 << 1),
 	LED_SCROLL_LOCK = (1 << 2)
 };
-Adafruit_MCP23017 rowChip, colChip;
+Adafruit_MCP23017 *rowChip = new Adafruit_MCP23017();
+Adafruit_MCP23017 *colChip = new Adafruit_MCP23017();
 const byte ROWS = 8;
 const byte COLS = 16;
 uint8_t keys[ROWS][COLS] =
@@ -77,58 +58,63 @@ uint8_t keys[ROWS][COLS] =
 	{ (KeyboardKeycode)0xF9,KEY_RESERVED,HID_KEYBOARD_LEFT_CONTROL,KEY_TILDE,HID_KEYBOARD_F1,HID_KEYBOARD_F2,KEY_5,KEY_6,  76  /*DELETE*/,KEY_RESERVED,KEY_RESERVED,KEY_RESERVED,HID_KEYBOARD_F9,KEY_MINUS,HID_KEYBOARD_F8,KEY_EQUAL }
 };
 uint16_t mediakeys[9]{ HID_CONSUMER_VOLUME_DECREMENT, HID_CONSUMER_MUTE, HID_CONSUMER_VOLUME_INCREMENT, MEDIA_PREVIOUS, MEDIA_PLAY_PAUSE, MEDIA_NEXT, /*Opens media player*/ HID_CONSUMER_AL_AUDIO_PLAYER, };
+uint16_t programmingKeys[9]{ HID_KEYBOARD_HOME, 0x00, HID_KEYBOARD_END, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
 PS2Mouse ps2_mouse(CLOCK_PIN, DATA_PIN);
 bool leftMouseButton = 0;
 bool rightMouseButton = 0;
-bool capsState = false ,numState = false, scrollState = false;
-TimedAction doMouseStuffAction = TimedAction(); 
+bool mouseResetSend = false;
+bool capsState = false, numState = false, scrollState = false;
+TimedAction doMouseStuffAction = TimedAction();
 TimedAction checkBatteryAction = TimedAction();
-I2CMatrixClass matrix;
-float batteryVoltage;
+I2CMatrixClass matrix = I2CMatrixClass();
+float batteryvoltage;
 FunctionType funcType = MEDIA; // 0 = function buttons are media keys and no special keys 1 = Function buttons are duckyscripts and certain keys are special keys
 FunctionType oldFuncType = MEDIA; // 0 = function buttons are media keys and no special keys 1 = Function buttons are duckyscripts and certain keys are special keys
 
 #define FORCEOPMODE
-OperateMode operateMode;
+OperateMode operateMode = CABLE;
+
+SdFs SD;
+uint32_t cardSize = 0;
 
 
+BPLib *bt;
+bool bluetoothConnected = false;
 
 
+Settings settings;
 
+uint8_t menuindex = 0; // 0 = showing func type
 
-#ifdef HID_ENABLED
+usb_dev_state oldUsbState = USB_UNCONNECTED;
+
+#if HID_ENABLED
+
 const uint8_t reportDescription[] = {
 	HID_MOUSE_REPORT_DESCRIPTOR(HID_MOUSE_REPORT_ID),
 	HID_KEYBOARD_REPORT_DESCRIPTOR(HID_KEYBOARD_REPORT_ID),
 	HID_CONSUMER_REPORT_DESCRIPTOR(HID_CONSUMER_REPORT_ID)
 };
-uint8 oldLeds = 0;
-
-HIDConsumer Consumer;
 #endif
-uint8 leds;
 
-struct EEPROMSettings {
-	byte settingsVersion;
-	char btaddr1[12];
-	char btaddr2[12];
-	char btaddr3[12];
-	char btaddr4[12];
-	byte mouseaccel[2];// X and Y seperate
-	byte reconnectaddr; // number of bt addr
-} EEPROMSettings;
-#define EEPROMSettingsVersion 2
-struct Settings {
-	float mouseaccelx;
-	float mouseaccely;
-} settings;
+USBHID HID;
+HIDKeyboard Keyboard(HID);
+HIDMouse Mouse(HID);
+HIDConsumer Consumer(HID);
+USBMassStorage MassStorage;
+bool massStarted = false;
+bool sdInitialized = false;
+
+
+uint8 leds = 0;
+uint8 oldLeds = 0;
 
 bool GetBit(byte thebyte, int position)
 {
 	return (1 == ((thebyte >> position) & 1));
 }
-void printBits(int var) {
+void printBits(int var, bool newLine) {
 	unsigned int test;
 	if (var < 255) {
 		test = 0x80;
@@ -139,50 +125,28 @@ void printBits(int var) {
 	for (test; test; test >>= 1) {
 		Serial.write(var  & test ? '1' : '0');
 	}
-	Serial.println();
-}
-
-void checkBattery() {
-	batteryVoltage = analogReadVoltage(BATPIN) * 2; // Cutting voltage in half with voltage divider to get a range of 1.5 to 2.1 volt. > 3,3 volt on ADC will kill the STM32
-	updateOled();
-}
-
-void PressMouse(uint8_t button) {
-	if (operateMode == BLUETOOTH) {
-		if(!bt->mouseIsPressed(button)) bt->mousePress(button);
-	}
-	else if (operateMode == CABLE) {
-		if (!Mouse.isPressed(button)) Mouse.press(button);
-	}
-}
-
-void ReleaseMouse(uint8_t button) {
-	if (operateMode == BLUETOOTH) {
-		if(!bt->mouseIsPressed(button))  bt->mouseRelease(button);
-	}
-	else if (operateMode == CABLE) {
-		if (Mouse.isPressed(button)) Mouse.release(button);
-	}
-}
-
-void MoveMouse(byte x, byte y) {
-	x = x * settings.mouseaccelx;
-	y = y * settings.mouseaccely;
-	if (operateMode == BLUETOOTH) {
-		bt->mouseMove(x, y);
-	}
-	else if (operateMode == CABLE) {
-		Mouse.move(x, y);
-	}
+	if (newLine)
+		Serial.println();
 }
 
 void doMouseStuff()
 {
-#ifdef MOUSE_ENABLED
+#if MOUSE_ENABLED
+	digitalWrite(PA1, HIGH);
 	MouseData data = ps2_mouse.readData();
+	digitalWrite(PA1, LOW);
 	leftMouseButton = GetBit(data.status, 0);
 	rightMouseButton = GetBit(data.status, 1);
-	#ifdef HID_ENABLED
+#if DEBUGMOUSE
+	Serial.print(F("status:"));
+	printBits(data.status, false);
+	Serial.print(F("\tX:"));
+	Serial.print(data.position.x);
+	Serial.print(F("\tY:"));
+	Serial.println(data.position.y);
+#endif
+#if HID_ENABLED || BT_ENABLED
+	if (funcType != FNKEYS) {
 		if (leftMouseButton) {
 			PressMouse(MOUSE_LEFT);
 		}
@@ -196,339 +160,324 @@ void doMouseStuff()
 		else {
 			ReleaseMouse(MOUSE_RIGHT);
 		}
-		if (data.position.x != 0 || data.position.y != 0) {
-			MoveMouse(data.position.x, data.position.y *-1);
+	}
+	else
+	{
+		if (leftMouseButton || rightMouseButton) {
+			PressMouse(MOUSE_MIDDLE);
 		}
-	#endif
+		else {
+			ReleaseMouse(MOUSE_MIDDLE);
+		}
+	}
+	if (data.position.x != 0 || data.position.y != 0) {
+		mouseResetSend = false;
+		if (funcType != FNKEYS)
+		{
+			MoveMouse(round(data.position.x * settings.mouseaccel[0]), round(data.position.y * settings.mouseaccel[1] * -1));
+		}
+		else
+		{
+			if (abs(data.position.x) > abs(data.position.y))
+			{
+				moveScrollWheel(data.position.x > 0 ? 1 : -1, 0);
+			}
+			else
+			{
+				moveScrollWheel(0, data.position.y > 0 ? 1 : -1);
+			}
+		}
+
+	}
+	else if (mouseResetSend == false) {
+		MoveMouse(0, 0);
+		moveScrollWheel(0, 0);
+		mouseResetSend = true;
+	}
+#endif
 #endif
 }
 
-void updateOled() {
-#ifndef OLED_ENABLED
-	return;
-#endif
-	oled.clearDisplay();
-	if (operateMode == BLUETOOTH) {
-		oled.drawBitmap(0, 0, bluetooth, 16, 16, WHITE);
-	}
-	else if (operateMode == CABLE) {
-		oled.drawBitmap(0, 0, usb, 16, 16, WHITE);
-	}
-	else if (operateMode == CHARGING) {
-		oled.drawBitmap(0, 0, charging, 16, 16, WHITE);
-	}
-	if (batteryVoltage > 4) {
-		oled.drawBitmap(108, 0, battery_full, 16, 16, WHITE);
-	}
-	else if (between(batteryVoltage, 3.75, 4)) {
-		oled.drawBitmap(108, 0, battery_three_quarters, 16, 16, WHITE);
-	}
-	else if (between(batteryVoltage, 3.3, 3.75)) {
-		oled.drawBitmap(108, 0, battery_half, 16, 16, WHITE);
-	}
-	else if (between(batteryVoltage, 3, 3.3)) {
-		oled.drawBitmap(108, 0, battery_quarter, 16, 16, WHITE);
-	}
-	else if (batteryVoltage < 3) {
-		oled.drawBitmap(108, 0, battery_empty, 16, 16, WHITE);
-	}
-	oled.setCursor(88, 4);
-	oled.println(batteryVoltage, WHITE);
-	oled.display();
+
+
+void checkBattery() {
+	//batteryvoltage = analogReadVoltage(BATPIN) * 2; // Cutting voltage in half with voltage divider to get a range of 1.5 to 2.1 volt. > 3,3 volt on ADC will kill the STM32
+
+	digitalWrite(PA3, HIGH);
+	redrawhud();
+	digitalWrite(PA3, LOW);
 }
+
 void checkForLeds() {
-	if (operateMode == CABLE) {
+	if (operateMode == CABLE && USBLIB->state == USB_SUSPENDED) {
 		leds = Keyboard.getLEDs();
 	}
 	else {
-		//leds = bt->keyboardGetLeds();
+		leds = bt->keyboardGetLeds();
 	}
 	if (leds != oldLeds) {
-		printBits(leds);
+		printBits(leds, true);
 		if (leds & LED_CAPS_LOCK && !capsState) {
-			rowChip.digitalWrite(15, LOW);
+			rowChip->digitalWrite(15, LOW);
 			capsState = true;
 		}
 		else if (capsState) {
-			rowChip.digitalWrite(15, HIGH);
+			rowChip->digitalWrite(15, HIGH);
 			capsState = false;
 		}
 		if (leds & LED_NUM_LOCK && !numState) {
-			rowChip.digitalWrite(14, LOW);
+			rowChip->digitalWrite(14, LOW);
 			numState = true;
 		}
 		else if (numState) {
-			rowChip.digitalWrite(14, HIGH);
+			rowChip->digitalWrite(14, HIGH);
 			numState = false;
 		}
 		if (leds & LED_SCROLL_LOCK && !scrollState) {
-			rowChip.digitalWrite(13, LOW);
+			rowChip->digitalWrite(13, LOW);
 			scrollState = true;
 		}
 		else if (scrollState) {
-			rowChip.digitalWrite(13, HIGH);
+			rowChip->digitalWrite(13, HIGH);
 			scrollState = false;
 		}
 		oldLeds = leds;
 	}
 }
 
+void mcpInt()
+{
+	expenderinterupted = true;
+}
 
 void timerIsr() {
 	encoder->service();
 }
 
+// Mass storage part
+bool massSDwrite(const uint8_t *writebuff, uint32_t startSector, uint16_t numSectors) {
+	return SD.card()->writeSectors(startSector, writebuff, numSectors);
+}
+
+bool massSDread(uint8_t *readbuff, uint32_t startSector, uint16_t numSectors) {
+	return SD.card()->readSectors(startSector, readbuff, numSectors);
+}
+
+void initSDReader() {
+	Serial.println(F("Starting MassStorage"));
+	MassStorage.setDriveData(0, cardSize, massSDread, massSDwrite);
+	massStarted = true;
+}
+
 void setup() {
 	Serial.begin(115200);
+	pinMode(INIT_LED, OUTPUT);
+	delay(300);
 	Serial.println(F("Starting custom keyboard"));
-#if defined(KEYBOARD_ENABLED) || defined(EEPROM_ENABLED)
 	Serial.println(F("Initializing Wire"));
-	Wire.setClock(100000);
-	delay(50);
 	Wire.begin();
-#endif
-#ifdef EEPROM_ENABLED
-	Serial.println(F("Reading settings"));
-	eeRead(0, EEPROMSettings);
-	if (EEPROMSettings.settingsVersion != EEPROMSettingsVersion) {
-		Serial.println(F("EEPROM Settings are not valid"));
-		EEPROMSettings.settingsVersion = EEPROMSettingsVersion;
-		EEPROMSettings.mouseaccel[0] = 100;
-		EEPROMSettings.mouseaccel[1] = 100;
-		EEPROMSettings.reconnectaddr = 0;
-		eeWrite(0, EEPROMSettings);
+	Wire.setClock(400000);
+	//Wire.setClock(1700000); // 1.7 MHz
+	Serial.println(F("Initializing SD Card "));
+	if (SD.begin(SD_CONFIG_STARTUP)) {
+		uint32_t cardSize = SD.card()->sectorCount();
+		Serial.println(F("SD Card initialized"));
+		sdInitialized = true;
 	}
-	settings.mouseaccelx = EEPROMSettings.mouseaccel[0] / 100;
-	settings.mouseaccely = EEPROMSettings.mouseaccel[1] / 100;
-#endif
-#ifdef KEYBOARD_ENABLED
+	else
+	{
+		Serial.print(F("SD ERROR: 0X"));
+		Serial.print(SD.sdErrorCode(), HEX);
+		Serial.print(F(",0X"));
+		Serial.println(SD.sdErrorData(), HEX);
+		sdInitialized = false;
+	}
+	//initVars();
+	loadSettings();
 	Serial.println(F("Initializing keyboard wire things"));
 	delay(50);
-	rowChip.begin(B000);
-	delay(50);
-	colChip.begin(B100);
-	
+	rowChip->begin(B000);
+	if (!rowChip->isConnected()) {
+		Serial.println(F("Rowchip not found. Check wiring"));
+		while (1);
+	}
+	colChip->begin(B100);
+	if (!colChip->isConnected()) {
+		Serial.println(F("Colchip not found. Check wiring"));
+		while (1);
+	}
+	expender.begin(B001);
+	if (!expender.isConnected()) {
+		Serial.println(F("MCP Expender not found. Check wiring"));
+		while (1);
+	}
 
-	rowChip.pinMode(13, OUTPUT);
-	rowChip.pinMode(14, OUTPUT);
-	rowChip.pinMode(15, OUTPUT);
-	rowChip.digitalWrite(13, HIGH);
-	rowChip.digitalWrite(14, HIGH);
-	rowChip.digitalWrite(15, HIGH);
-	Serial.println(F("Wire initialized"));
-#endif
-#ifdef BT_ENABLED
-	Serial.println(F("Initializing BT Chip"));
-	Serial2.begin(115200);
-	bt = new BPLib(Serial2);
-	if (EEPROMSettings.reconnectaddr == 0) bt->reconnect();
-	if (EEPROMSettings.reconnectaddr == 1) bt->reconnect(EEPROMSettings.btaddr1);
-	if (EEPROMSettings.reconnectaddr == 2) bt->reconnect(EEPROMSettings.btaddr2);
-	if (EEPROMSettings.reconnectaddr == 3) bt->reconnect(EEPROMSettings.btaddr3);
-	if (EEPROMSettings.reconnectaddr == 4) bt->reconnect(EEPROMSettings.btaddr4);
-#endif
-#ifdef HID_ENABLED
-	Serial.println(F("Initializing HID"));
+	pinMode(MCPINT, INPUT);
+	expender.write8(MCP23008_GPPU, 0b00111111); // All inputs to input_pullup
+	expender.write8(MCP23008_IPOL, 0b00111111); // Set pins to interupt when changed
+	expender.write8(MCP23008_INTF, 0b00111111); // Set interupt flags on the inputs
+	expender.write8(MCP23008_GPINTEN, 0b00111111); // Set interupt flags on the inputs
+												  // expender.write8(MCP23008_GPPU, 0xff); // All inputs to input_pullup
+												  // expender.write8(MCP23008_INTF, 0xff); // Set interupt flags on the inputs
+												  // expender.write8(MCP23008_GPINTEN, 0xff); // Set interupt flags on the inputs
+	expender.write8(MCP23008_INTCON, 0x00); // Set pins to interupt when changed
+	byte IOCON = expender.read8(MCP23008_IOCON);
+	IOCON &= ~(1 << 2); // Sets ODR in IOCON to Active Driver output
+	IOCON &= ~(1 << 1); // Sets INTPOL to Active LOW
+	expender.write8(MCP23008_IOCON, IOCON);
+	expender.pinMode(BT_CONNECTED_LED, OUTPUT);
+	expender.pinMode(INIT_LED, OUTPUT);
+	attachInterrupt(MCPINT, mcpInt, FALLING); // Sets interupt to detect LOW to HIGH
+	Serial.println(F("MCP Expender Initialized"));
 
-	//Reset the USB interface on generic boards - developed by Victor PV
-	gpio_set_mode(PIN_MAP[PA12].gpio_device, PIN_MAP[PA12].gpio_bit, GPIO_OUTPUT_PP);
-	gpio_write_bit(PIN_MAP[PA12].gpio_device, PIN_MAP[PA12].gpio_bit, 0);
+	delay(10);
+	Serial.println(F("keyboard wire things initialized"));
+	delay(10);
 
-	for (volatile unsigned int i = 0; i<512; i++);// Only small delay seems to be needed, and USB pins will get configured in Serial.begin
-	gpio_set_mode(PIN_MAP[PA12].gpio_device, PIN_MAP[PA12].gpio_bit, GPIO_INPUT_FLOATING);
-
-	USBHID.begin(reportDescription, sizeof(reportDescription));
-	Keyboard.begin(); // Enables leds
-	Keyboard.setKeyMapMode(true);
-	Serial.println(F("HID Initialized"));
-#endif
-#ifdef MOUSE_ENABLED
+#if MOUSE_ENABLED
 	Serial.println(F("Initializing PS2 Mouse"));
 	ps2_mouse.initialize(); // If it is not connected DO NOT CALL ANY PS2 MOUSE FUNCTION
-	doMouseStuffAction = TimedAction(10, *doMouseStuff);
+	doMouseStuffAction = TimedAction(10, &doMouseStuff);
 	Serial.println(F("PS2 Mouse Initialized"));
+	delay(10);
 #endif // MOUSE_ENABLED
 
-#ifdef ENCODER_ENABLED
+#if OLED_ENABLED
+	Serial.println(F("Initializing Oled"));
+	main_oled.begin();
+	main_oled.display();
+	delay(1000);
+	main_oled.clearDisplay();
+	main_oled.println(F("Oled Initialized"));
+	main_oled.display();
+	delay(1000);
+	main_oled.clearDisplay();
+	main_oled.display();
+	//fullupdateoled();
+	checkBatteryAction = TimedAction(1000 * 5, &checkBattery);
+	Serial.println(F("Oled Initialized"));
+	delay(10);
+#endif
+
+#if BT_ENABLED
+	Serial.println(F("Initializing BT Chip"));
+	Serial2.begin(115200);
+	delay(10);
+	bt = new BPLib(Serial2);
+	// bt->begin(BP_MODE_HID, BP_HID_COMBO); // TODO: Change this back when I know why it is misbehaving
+	// bt->setStatusString(BT_PREFIX);
+	// //bt->begin(BP_MODE_SPP, BP_SPP_SPP); // Serial
+	// if (settings.bluetoothAutoConnect == 0)
+	// {
+	// 	bt->reconnect();
+	// }
+	// else {
+	// 	BluetoothAddress bt_address = settings.bt_addressess[settings.bluetoothAutoConnect];
+	// 	Serial.print(F("Connecting to host "));
+	// 	Serial.print(bt_address.name);
+	// 	Serial.print(F(" with address "));
+	// 	Serial.println(bt_address.address);
+	// 	bt->reconnect(bt_address.address);
+	// }
+	Serial.println(F("BT Chip Initialized"));
+	delay(10);
+#endif
+#if KEYBOARD_ENABLED
+	Serial.println(F("Initializing Matrix"));
+	delay(50);
+	matrix.init(makeKeymap(keys), rowChip, colChip, ROWS, COLS);
+	Serial.println(F("Starting Matrix"));
+	digitalWrite(INIT_LED, HIGH);
+	delay(2);
+	matrix.begin();
+	delay(2);
+	digitalWrite(INIT_LED, LOW);
+	Serial.println(F("Matrix started"));
+	rowChip->pinMode(13, OUTPUT);
+	rowChip->pinMode(14, OUTPUT);
+	rowChip->pinMode(15, OUTPUT);
+	rowChip->digitalWrite(13, HIGH);
+	rowChip->digitalWrite(14, HIGH);
+	rowChip->digitalWrite(15, HIGH);
+
+	matrix.setDebounceTime(1);
+	delay(10);
+#endif
+#if ENCODER_ENABLED
 	Serial.println(F("Initializing Encoder"));
-	encoder = new ClickEncoder(ENC_DT, ENC_CLK, ENC_SW, 4);
+	delay(10);
 	encoder->setAccelerationEnabled(false);
 	encoder->setDoubleClickEnabled(true);
-	timer.pause();
-	timer.setPeriod(1000);
+	timerOne.pause();
+	timerOne.setPeriod(1000);
 	// Set up an interrupt on channel 1
-	timer.setChannel1Mode(TIMER_OUTPUT_COMPARE);
-	timer.setCompare(TIMER_CH1, 1);  // Interrupt 1 count after each update
-	timer.attachCompare1Interrupt(timerIsr);
-	timer.refresh(); // Refresh the timer's count, prescale, and overflow
-	timer.resume(); // Start the timer counting
-	lastEncPos = -1;
-	Serial.println(F("Encoder Initialized"));
+	timerOne.setChannel1Mode(TIMER_OUTPUT_COMPARE);
+	timerOne.setCompare(TIMER_CH1, 1);  // Interrupt 1 count after each update
+	timerOne.attachCompare1Interrupt(timerIsr);
+	timerOne.refresh(); // Refresh the timer's count, prescale, and overflow
+	timerOne.resume(); // Start the timer counting
+	lastEncPos = 0;
+	delay(10);
+	Serial.println(F("Encoder initialized"));
 #endif // ENCODER_ENABLED
 
-#ifdef OLED_ENABLED
-	Serial.println(F("Initializing Oled"));
-	oled.begin();
-	oled.display();
-	delay(1000);
-	oled.clearDisplay();
-	oled.println(F("Oled Initialized"));
-	oled.display();
-	delay(1000);
-	oled.clearDisplay();
-	oled.display();
-	Serial.println(F("Oled Initialized"));
+#if HID_ENABLED
+	Serial.println(F("Initializing HID"));
+	delay(100);
+	USBComposite.end();
+	USBComposite.clear();
+	USBComposite.setProductString("Adv. Keyboard");
+	USBComposite.setProductId(0x33);
+	HID.setReportDescriptor(reportDescription, sizeof(reportDescription));
+	HID.registerComponent();
+	Keyboard.begin(); // Enables leds
+	Keyboard.setKeyboardMode(RAW_HID);
+	Serial.println(F("HID Initialized"));
+	delay(10);
 #endif
-
-#ifdef KEYBOARD_ENABLED
-	Serial.println(F("Initializing Matrix"));
-	matrix = I2CMatrixClass(makeKeymap(keys), rowChip, colChip, ROWS, COLS);
-	matrix.begin();
-	matrix.setDebounceTime(2);
-	Serial.println(F("Matrix Initialized"));
+#if MASS_ENABLED
+	initSDReader();
+	MassStorage.registerComponent(); // Register MassStorage
 #endif
-#ifdef FORCEOPMODE
-	operateMode = BLUETOOTH;
-#endif
+	USBComposite.begin();	// Begins USBComposite with HID and (if enabled) MassStorage
+	expenderinterupted = true; // Force update of expender
+	//Serial.println(inputScreen(12,"HEX", HEXCHARS));
+	//Serial.println(inputScreen(12,"lowercase", LOWER_ALPHABET));
+	//Serial.println(inputScreen(12,"UPPERCASE", UPPER_ALPHABET));
+	//Serial.println(inputScreen(12,"NUMBERS.-", NUMBERS));
+	fullupdateoled();
 	Serial.println(F("Initializing Done, Keyboard is ready"));
+	delay(100);
 }
 
 void handleEncoder() {
-	currentEncPos += encoder->getValue();
-
+	currentEncPos = encoder->getValue();
 	if (currentEncPos != lastEncPos) {
-		/*if (currentEncPos < lastEncPos) {
-			if (doValueChange) {
-				parameters[currentScreen]--;
-			}
-			else {
-				if (currentScreen == 0) {
-					currentScreen = numOfScreens - 1;
-				}
-				else {
-					currentScreen--;
-				}
-			}
-		}
-		else if (currentEncPos > lastEncPos) {
-			if (doValueChange) {
-				parameters[currentScreen]++;
-			}
-			else {
-				if (currentScreen == numOfScreens - 1) {
-					currentScreen = 0;
-				}
-				else {
-					currentScreen++;
-				}
-			}
-		}
-		printScreen();*/
 		lastEncPos = currentEncPos;
 		Serial.print(F("Encoder Value: "));
 		Serial.println(currentEncPos);
 	}
-
 	ClickEncoder::Button b = encoder->getButton();
 	if (b != ClickEncoder::Open) {
 		Serial.print(F("Button: "));
-#define VERBOSECASE(label) case label: Serial.println(#label); break;
 		switch (b) {
 			VERBOSECASE(ClickEncoder::Pressed)
-			VERBOSECASE(ClickEncoder::Held)
-			VERBOSECASE(ClickEncoder::Released)
-			VERBOSECASE(ClickEncoder::Clicked)
-			VERBOSECASE(ClickEncoder::DoubleClicked)
+				VERBOSECASE(ClickEncoder::Held)
+				VERBOSECASE(ClickEncoder::Released)
+				VERBOSECASE(ClickEncoder::Clicked)
+				VERBOSECASE(ClickEncoder::DoubleClicked)
 		}
-		if (b == ClickEncoder::Clicked) {
-			/*if (!doValueChange) {
-			doValueChange = true;
-			lcd.blink();
-			}
-			else {
-			doValueChange = false;
-			lcd.noBlink();
-			}*/
-		}
-	}
-}
-
-
-void pressKeyboardKey(uint8_t key) {
-	if (operateMode == BLUETOOTH) {
-		bt->keyboardPress(key);
-#if defined(DEBUG)
-		if (DEBUG_LEVEL == "trace") {
-			for (int i = 0; i < 6; i++) {
-				Serial.print(F("\tKey "));
-				Serial.print(i);
-				Serial.print(F(":\t"));
-				Serial.print(bt->keyReport.keys[i]);
-			}
-			Serial.println();
-		}
-#endif
-	}
-	else if (operateMode == CABLE) {
-		Keyboard.press(key);
-	}
-}
-void releaseKeyboardKey(uint8_t key) {
-	if (operateMode == BLUETOOTH) {
-		bt->keyboardRelease(key);
-#if defined(DEBUG)
-		if (DEBUG_LEVEL == "trace") {
-			for (int i = 0; i < 6; i++) {
-				Serial.print(F("\tKey "));
-				Serial.print(i);
-				Serial.print(F(":\t"));
-				Serial.print(bt->keyReport.keys[i]);
-			}
-			Serial.println();
-		}
-#endif
-	}
-	else if (operateMode == CABLE) {
-		Keyboard.release(key);
-	}
-}
-void writeKeyboardKey(uint8_t key) {
-	if (operateMode == BLUETOOTH) {
-		bt->keyboardWrite(key);
-	}
-	else if (operateMode == CABLE) {
-		Keyboard.write(key);
-	}
-}
-void pressConsumerKey(uint16_t key) {
-	if (operateMode == BLUETOOTH) {
-		bt->sendConsumer(key);
-	}
-	else if (operateMode == CABLE) {
-		Consumer.press(key);
-	}
-}
-void releaseConsumerKey(uint16_t key) {
-	if (operateMode == BLUETOOTH) {
-		bt->releaseConsumer();
-	}
-	else if (operateMode == CABLE) {
-		Consumer.release();
-	}
-}
-void writeConsumerKey(uint16_t key) {
-	if (operateMode == BLUETOOTH) {
-		bt->writeConsumer(key);
-	}
-	else if (operateMode == CABLE) {
-		Consumer.write(key);
 	}
 }
 
 void processPressedKey(byte key) {
+#if DEBUGKEYBOARD
+	Serial.print(F("Processing pressed key: "));
+	Serial.println(key);
+#endif
 	if (key == 0xF0) {
 		oldFuncType = funcType;
-		funcType = ONEPRESS;
+		funcType = FNKEYS;
 	}
 	if (key >= 0xF1 && key <= 0xF9) {
 		int func = key - 0xF1;
@@ -536,12 +485,12 @@ void processPressedKey(byte key) {
 		case MEDIA:
 			pressConsumerKey(mediakeys[func]);
 			break;
-		case ONEPRESS:
+		case FNKEYS:
 			break;
 		}
 		return;
 	}
-	if (funcType == ONEPRESS) {
+	if (funcType == FNKEYS) {
 		switch (key)
 		{
 		case KEY_UP:
@@ -549,6 +498,16 @@ void processPressedKey(byte key) {
 			break;
 		case KEY_DOWN:
 			writeConsumerKey(CONSUMER_BRIGHTNESS_DOWN);
+			break;
+		case KEY_LEFT:
+			writeKeyboardKey(HID_KEYBOARD_HOME);
+			// PressMouse(MOUSE_BACK);
+			// ReleaseMouse(MOUSE_BACK);
+			break;
+		case KEY_RIGHT:
+			writeKeyboardKey(HID_KEYBOARD_END);
+			// PressMouse(MOUSE_FORWARDS);
+			// ReleaseMouse(MOUSE_FORWARDS);
 			break;
 		default:
 			break;
@@ -559,6 +518,10 @@ void processPressedKey(byte key) {
 	pressKeyboardKey(key);
 }
 void processReleasedKey(uint8_t key) {
+#if DEBUGKEYBOARD
+	Serial.print(F("Processing released key: "));
+	Serial.println(key);
+#endif
 	if (key == 0xF0) {
 		funcType = oldFuncType;
 	}
@@ -566,52 +529,52 @@ void processReleasedKey(uint8_t key) {
 		int func = key - 0xF1;
 		switch (funcType) {
 		case MEDIA:
-			Consumer.release();
+			releaseConsumerKey();
 			break;
-		case ONEPRESS:
-			if (operateMode == CABLE) {
-			}
+		case FNKEYS:
+
 			break;
 		}
 		return;
 	}
+
 	releaseKeyboardKey(key);
 }
 
 void checkKeys() {
 	if (matrix.getKeys())
 	{
-		for (int i = 0; i<LIST_MAX; i++)   // Scan the whole key list.
+		for (int i = 0; i < LIST_MAX; i++)   // Scan the whole key list.
 		{
 			if (matrix.key[i].stateChanged)   // Only find keys that have changed state.
 			{
 				switch (matrix.key[i].kstate) {  // Report active key state : IDLE, PRESSED, HOLD, or RELEASED
 				case PRESSED:
-					#ifdef DEBUG
-						Serial.print(F("Key: "));
-						Serial.print((uint8_t)matrix.key[i].kcode);
-						Serial.println(F("\tpressed"));
-					#endif
-					#ifdef HID_ENABLED
-						processPressedKey(matrix.key[i].kcode);
-					#endif
+#if DEBUG
+					Serial.print(F("Key: "));
+					Serial.print((uint8_t)matrix.key[i].kcode);
+					Serial.println(F("\tpressed"));
+#endif
+#if HID_ENABLED || BT_ENABLED
+					processPressedKey(matrix.key[i].kcode);
+#endif
 					break;
 				case RELEASED:
-					#ifdef DEBUG
-						Serial.print(F("Key: "));
-						Serial.print((uint8_t)matrix.key[i].kcode);
-						Serial.println(F("\treleased"));
-					#endif
-					#ifdef HID_ENABLED
-						processReleasedKey(matrix.key[i].kcode);
-					#endif
+#if DEBUG
+					Serial.print(F("Key: "));
+					Serial.print((uint8_t)matrix.key[i].kcode);
+					Serial.println(F("\treleased"));
+#endif
+#if HID_ENABLED || BT_ENABLED
+					processReleasedKey(matrix.key[i].kcode);
+#endif
 					break;
 				case HOLD:
-					#ifdef DEBUG
-						Serial.print(F("Key: "));
-						Serial.print((uint8_t)matrix.key[i].kcode);
-						Serial.println(F("\tholded"));
-					#endif
+					// #if DEBUG
+					// 	Serial.print(F("Key: "));
+					// 	Serial.print((uint8_t)matrix.key[i].kcode);
+					// 	Serial.println(F("\tholded"));
+					// #endif
 				case IDLE:
 					break;
 				}
@@ -619,42 +582,82 @@ void checkKeys() {
 		}
 	}
 }
+
 void loop() {
-	if (Serial.available() > 0) {
-		String line = Serial.readStringUntil('\r\n');
-		if (line.startsWith("echo")) {
-			CompositeSerial.println(line);
-		}
-	}
+	if (expenderinterupted)
+	{
+		Serial.println(F("Expender interupted"));
+		byte gpio = expender.readGPIO();
+		printBits(gpio, true);
 #ifndef FORCEOPMODE
-	if (analogReadVoltage(MODESELECTPIN) > 3) {
-		#ifdef BT_ENABLED
-			operateMode = BLUETOOTH;
-		#else
+		if (bitRead(gpio, USBMODEPIN)) {
 			operateMode = CABLE;
-		#endif
-	}
-	else if (analogReadVoltage(MODESELECTPIN) < 1) {
-		operateMode = CHARGING;
-	}
-	else {
-		operateMode = CABLE;
-	}
+		}
+		else if (bitRead(gpio, BTMODEPIN))
+		{
+			operateMode = BLUETOOTH;
+		}
+		else {
+			operateMode = CHARGING;
+		}
 #endif
+#if MASS_ENABLED
+		if (bitRead(gpio, SDUSBPIN))
+		{
+			if (!massStarted && sdInitialized)
+			{
+				initSDReader();
+			}
+		}
+		else if (!bitRead(gpio, SDUSBPIN))
+		{
+			// if (massStarted) {
+			// 	MassStorage.setDriveData(0, 0, NULL);
+			// 	massStarted = false;
+			// }
+		}
+#endif
+		expenderinterupted = false;
+	}
+	if (massStarted)
+	{
+		MassStorage.loop();
+	}
+	while (Serial2.available() > 0) {
+		Serial.write(Serial2.read());
+	}
+	while (Serial.available() > 0) {
+		Serial2.write(Serial.read());
+	}
 
 	checkBatteryAction.check();
-	#ifdef MOUSE_ENABLED
-		doMouseStuffAction.check();
-	#endif
-	
-	#ifdef KEYBOARD_ENABLED
-		#ifdef HID_ENABLED
-			checkForLeds();
-		#endif
-		checkKeys();
-	#endif
+#if MOUSE_ENABLED
+	doMouseStuffAction.check();
+#endif
+#if HID_ENABLED
+	if (USBLIB->state != oldUsbState)
+	{
+		Serial.print(F("USBSTATE: "));
+		switch (USBLIB->state)
+		{
+			VERBOSECASE(USB_UNCONNECTED)
+				VERBOSECASE(USB_ADDRESSED)
+				VERBOSECASE(USB_ATTACHED)
+				VERBOSECASE(USB_POWERED)
+				VERBOSECASE(USB_SUSPENDED)
+				VERBOSECASE(USB_CONFIGURED)
+		}
+		oldUsbState = USBLIB->state;
+	}
+#endif
+#if KEYBOARD_ENABLED
+#if HID_ENABLED
+	checkForLeds();
+#endif
+	checkKeys();
+#endif
 
-	#ifdef ENCODER_ENABLED
-		handleEncoder();
-	#endif
+#if ENCODER_ENABLED
+	handleEncoder();
+#endif
 }

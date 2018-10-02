@@ -11,7 +11,7 @@
 
 #include "Key.h"
 #include "Adafruit_MCP23017.h"
-#include "KeyboardCodes.h"
+#include <USBHID.h>
 
 #define OPEN LOW
 #define CLOSED HIGH
@@ -39,8 +39,8 @@ typedef struct {
 //class Keypad : public Key, public HAL_obj {
 class I2CMatrixClass : public Key {
 public:
-	I2CMatrixClass();
-	I2CMatrixClass(KeyboardKeycode *userKeymap, Adafruit_MCP23017 rowChip, Adafruit_MCP23017 colChip, byte numRows, byte numCols);
+	I2CMatrixClass(); 
+	void init(KeyboardKeycode* userKeymap, Adafruit_MCP23017* rowchip, Adafruit_MCP23017* colchip, byte numRows, byte numCols);
 
 	uint bitMap[MAPSIZE];	// 10 row x 16 column array of bits. Except Due which has 32 columns.
 	Key key[LIST_MAX];
@@ -62,43 +62,43 @@ public:
 	virtual void pin_mode(byte pinNum, int mode, bool col) {
 		if (mode == INPUT_PULLUP) {
 			if(col){
-				colChip.pinMode(pinNum, INPUT);
-				colChip.pullUp(pinNum, HIGH);
+				colChip->pinMode(pinNum, INPUT);
+				colChip->pullUp(pinNum, HIGH);
 			}
 			else
 			{
-				rowChip.pinMode(pinNum, INPUT);
-				rowChip.pullUp(pinNum, HIGH);
+				rowChip->pinMode(pinNum, INPUT);
+				rowChip->pullUp(pinNum, HIGH);
 			}
 			return;
 		}
 		if(col)
 		{
-			colChip.pinMode(pinNum, mode);
+			colChip->pinMode(pinNum, mode);
 		}
 		else
 		{
-			rowChip.pinMode(pinNum, mode);
+			rowChip->pinMode(pinNum, mode);
 		}
 	}
 	virtual void pin_write(byte pinNum, bool level, bool col) {
 		if (col)
 		{
-			colChip.digitalWrite(pinNum, level);
+			colChip->digitalWrite(pinNum, level);
 		}
 		else
 		{
-			rowChip.digitalWrite(pinNum, level);
+			rowChip->digitalWrite(pinNum, level);
 		}
 	}
 	virtual int  pin_read(byte pinNum, bool col) {
 		if (col)
 		{
-			colChip.digitalRead(pinNum);
+			colChip->digitalRead(pinNum);
 		}
 		else
 		{
-			rowChip.digitalRead(pinNum);
+			rowChip->digitalRead(pinNum);
 		}
 	}
 	virtual bool getBit(byte thebyte, int position)
@@ -109,8 +109,8 @@ public:
 private:
 	unsigned long startTime;
 	KeyboardKeycode *keymap;
-	Adafruit_MCP23017 rowChip;
-	Adafruit_MCP23017 colChip;
+	Adafruit_MCP23017 *rowChip;
+	Adafruit_MCP23017 *colChip;
 	KeypadSize sizeKpd;
 	uint debounceTime;
 	uint holdTime;

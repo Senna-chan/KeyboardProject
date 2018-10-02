@@ -18,10 +18,10 @@
     <None Include="OledTest.ino" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="__vm\.OledTest.vsarduino.h">
+    <ClInclude Include="..\ComboProcessor\CustomIcons.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\ComboProcessor\CustomIcons.h">
+    <ClInclude Include="__vm\.OledTest.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

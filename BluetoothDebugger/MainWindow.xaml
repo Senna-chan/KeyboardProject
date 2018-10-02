@@ -1,0 +1,88 @@
+﻿<Window x:Class="BluetoothDebugger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:BluetoothDebugger.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="800" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Column="0" x:Name="Keyboard">
+            <Grid.DataContext>
+                <viewModels:KeyboardViewModel />
+            </Grid.DataContext>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Label Content="Keyboard"></Label>
+                <Label Content="Modifiers"></Label>
+                <Label Content="Key 1"></Label>
+                <Label Content="Key 2"></Label>
+                <Label Content="Key 3"></Label>
+                <Label Content="Key 4"></Label>
+                <Label Content="Key 5"></Label>
+                <Label Content="Key 6"></Label>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Label Content=" "></Label>
+                <Label Content="{Binding Modifiers}"></Label>
+                <Label Content="{Binding Key1}" ></Label>
+                <Label Content="{Binding Key2}" ></Label>
+                <Label Content="{Binding Key3}" ></Label>
+                <Label Content="{Binding Key4}" ></Label>
+                <Label Content="{Binding Key5}" ></Label>
+                <Label Content="{Binding Key6}" ></Label>
+            </StackPanel>
+        </Grid>
+        <Grid Column="1" x:Name="Mouse">
+            <Grid.DataContext>
+                <viewModels:MouseViewModel />
+            </Grid.DataContext>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+            <Label Content="Mouse"></Label>
+            <Label Content="Buttons" ></Label>
+            <Label Content="X"></Label>
+            <Label Content="Y"></Label>
+            <Label Content="Wheel"></Label>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Label Content=" "></Label>
+                <Label Content="{Binding MouseButtons}"></Label>
+                <Label Content="{Binding MouseX}"></Label>
+                <Label Content="{Binding MouseY}"></Label>
+                <Label Content="{Binding Wheel}"></Label>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" x:Name="Misc">
+            <Grid.DataContext>
+                <viewModels:MiscViewModel />
+            </Grid.DataContext>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Label Content="BufferSize"></Label>
+                <Label Content="ReceiveTime"></Label>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Label Content="{Binding ReceiveBufferSize}"></Label>
+                <Label Content="{Binding ReceiveTime}"></Label>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

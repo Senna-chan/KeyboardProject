@@ -33,7 +33,7 @@
 #define Keypadlib_KEY_H_
 
 #include <Arduino.h>
-#include "KeyboardCodes.h"
+#include <USBHID.h>
 
 #define OPEN LOW
 #define CLOSED HIGH
@@ -53,7 +53,6 @@ public:
 	Key();
 	Key(uint8_t userKeyCode);
 	void key_update(uint8_t userKeyCode, KeyState userState, boolean userStatus);
-
 private:
 
 };
