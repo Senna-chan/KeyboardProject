@@ -6,6 +6,7 @@
 #include <SdFs.h>
 #include "Variables.h"
 
+
 char* appendCharToCharArray(char* array, char a)
 {
 	size_t len = strlen(array);

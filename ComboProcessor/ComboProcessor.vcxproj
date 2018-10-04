@@ -104,6 +104,7 @@
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23008_library\library.properties" />
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23017_Arduino_Library\library.properties" />
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_SSD1306\library.properties" />
+    <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\library.json" />
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\library.json" />
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\library.properties" />
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\BPLib\library.properties" />
@@ -437,6 +438,7 @@
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\SdFs\doc\SdFs.html" />
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\SdFs\library.properties" />
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\USBHID_stm32f1\library.properties" />
+    <None Include="..\Misc\settings.json" />
     <None Include="..\Misc\UsedBluepillPins.pdn" />
     <None Include="ComboProcessor.ino">
       <FileType>CppCode</FileType>
@@ -489,6 +491,8 @@
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23008_library\Adafruit_MCP23008.h" />
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23017_Arduino_Library\Adafruit_MCP23017.h" />
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_SSD1306\Adafruit_SSD1306.h" />
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\aJSON.h" />
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\utility\stringbuffer.h" />
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\ArduinoJson.h" />
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson.h" />
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson.hpp" />
@@ -703,6 +707,8 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23008_library\Adafruit_MCP23008.cpp" />
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23017_Arduino_Library\Adafruit_MCP23017.cpp" />
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_SSD1306\Adafruit_SSD1306.cpp" />
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\aJSON.cpp" />
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\utility\stringbuffer.c" />
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\fuzzing\fuzzer.cpp" />
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicJsonBuffer\alloc.cpp" />
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicJsonBuffer\createArray.cpp" />
@@ -852,6 +858,7 @@
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23017_Arduino_Library\README.txt" />
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_SSD1306\license.txt" />
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_SSD1306\README.txt" />
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\keywords.txt" />
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\CMakeLists.txt" />
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\keywords.txt" />
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\CMakeLists.txt" />

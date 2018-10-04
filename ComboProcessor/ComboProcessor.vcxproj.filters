@@ -88,8 +88,14 @@
     <Filter Include="src\_micro-api-readonly\libraries\SPI">
       <UniqueIdentifier>{0eb6af10-540a-4921-a25b-2de2df5e0cfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\aJson">
+      <UniqueIdentifier>{59c34e45-7f26-4740-bab6-43b2fc84c19a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\aJson\utility">
+      <UniqueIdentifier>{5e79a58a-e81a-4864-8e82-8d5c12cc5564}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\ArduinoJson">
-      <UniqueIdentifier>{0a58e244-ab56-4cd5-9dfa-d269eb2f035c}</UniqueIdentifier>
+      <UniqueIdentifier>{1b62a325-d804-4de2-b982-812dd4300c4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1108,11 +1114,17 @@
     <None Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\library.properties">
       <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
     </None>
+    <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\library.json">
+      <Filter>src\_micro-api-readonly\libraries\aJson</Filter>
+    </None>
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\library.json">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </None>
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\library.properties">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </None>
+    <None Include="..\Misc\settings.json">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1490,6 +1502,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\SPI.h">
       <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\aJSON.h">
+      <Filter>src\_micro-api-readonly\libraries\aJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\utility\stringbuffer.h">
+      <Filter>src\_micro-api-readonly\libraries\aJson\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\ArduinoJson.h">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
@@ -2036,6 +2054,12 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\SPI.cpp">
       <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\aJSON.cpp">
+      <Filter>src\_micro-api-readonly\libraries\aJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\utility\stringbuffer.c">
+      <Filter>src\_micro-api-readonly\libraries\aJson\utility</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\fuzzing\fuzzer.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
@@ -2298,6 +2322,9 @@
     </Text>
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\README.txt">
       <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\aJson</Filter>
     </Text>
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\CMakeLists.txt">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
