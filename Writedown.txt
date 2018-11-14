@@ -1,5 +1,0 @@
-Macro keys as following.
-Pressing keys will be a 2 char value for modifiers and a normal key or a consumer key. These will be seperated by 0xFF
-There will be support for delays between the keypressed with e specific sequence of chars and then 2 chars to make a uint16_t
-After that in the menu you can choose save and that will save the macro to a file on the SD
-

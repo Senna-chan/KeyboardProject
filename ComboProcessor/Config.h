@@ -2,7 +2,6 @@
 #define _CONFIG_H
 
 #include <SdFs.h>
-#include <ClickEncoder.h>
 
 #define DEBUG				1
 #define DEBUGKEYBOARD		0
@@ -22,7 +21,8 @@
 #define DATA_PIN			PB12 // green
 #define CLOCK_PIN			PB13 // white
 
-#define BT_PREFIX 			"BT_STAT%"
+// Bluetooth
+
 
 #define BATPIN				PA1
 
@@ -37,18 +37,20 @@
 
 // SD
 #define SD_CS				PA4
-#define SD_CD				0 // Card detect	
+#define SD_CD				PB4 // Card detect	
 #define SD_CONFIG_STARTUP	SdSpiConfig(SD_CS, SHARED_SPI, SD_SCK_MHZ(5))
 #define SD_CONFIG			SdSpiConfig(SD_CS, SHARED_SPI, SD_SCK_MHZ(40))
 
 // ENCODER
-#define ENC_DT				PB3
-#define ENC_CLK				PB4
-#define ENC_SW				PB5
-
+#define ENC_INT				PB5 // Encoder interrupt pin
+#define ENC_ADDR			0x41
 // Oled
 #define OLED_DC				PB8
 #define OLED_CS				PB0
 #define OLED_RESET			PB9
+
+
+// Seconds things
+const uint8_t menuReturnSeconds = 5;
 
 #endif // _CONFIG_H

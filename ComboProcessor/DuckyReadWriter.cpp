@@ -8,11 +8,8 @@
 #include "HIDFunctions.h"
 #include "Variables.h"
 
-
-
-
 void ReadDucky(String fileName) {
-	FsFile myFile = SD.open("ducky"+fileName);
+	FsFile myFile = SD.open("ducky/"+fileName+".duck");
 	if (myFile) {
 
 		String line = "";
@@ -42,16 +39,16 @@ void Line(String l)
 	{
 		Press(l);
 	}
-	else if (l.substring(0, space_1) == "STRING")
+	else if (l.substring(0, space_1) == "STRING") // This is a string to print
 	{
 		printKeyboardString(l.substring(space_1 + 1));
 	}
-	else if (l.substring(0, space_1) == "DELAY")
+	else if (l.substring(0, space_1) == "DELAY") // This is a delay
 	{
 		int delaytime = l.substring(space_1 + 1).toInt();
 		delay(delaytime);
 	}
-	else if (l.substring(0, space_1) == "REM") {}
+	else if (l.substring(0, space_1) == "REM") {} // This is a comment
 	else
 	{
 		String remain = l;
@@ -84,11 +81,11 @@ void Press(String b)
 	}
 	else if (b.equals("ENTER"))
 	{
-		pressKeyboardKey(KEY_RETURN);
+		pressKeyboardKey(KEY_ENTER);
 	}
 	else if (b.equals("CTRL"))
 	{
-		pressKeyboardKey(KEY_LEFT_CTRL);
+		pressKeyboardKey(KEY_LEFT_CONTROL);
 	}
 	else if (b.equals("SHIFT"))
 	{
@@ -104,19 +101,19 @@ void Press(String b)
 	}
 	else if (b.equals("UP") || b.equals("UPARROW"))
 	{
-		pressKeyboardKey(KEY_UP_ARROW);
+		pressKeyboardKey(KEY_UP);
 	}
 	else if (b.equals("DOWN") || b.equals("DOWNARROW"))
 	{
-		pressKeyboardKey(KEY_DOWN_ARROW);
+		pressKeyboardKey(KEY_DOWN);
 	}
 	else if (b.equals("LEFT") || b.equals("LEFTARROW"))
 	{
-		pressKeyboardKey(KEY_LEFT_ARROW);
+		pressKeyboardKey(KEY_LEFT);
 	}
 	else if (b.equals("RIGHT") || b.equals("RIGHTARROW"))
 	{
-		pressKeyboardKey(KEY_RIGHT_ARROW);
+		pressKeyboardKey(KEY_RIGHT);
 	}
 	else if (b.equals("DELETE"))
 	{
@@ -136,7 +133,7 @@ void Press(String b)
 	}
 	else if (b.equals("ESC"))
 	{
-		pressKeyboardKey(KEY_ESC);
+		pressKeyboardKey(KEY_ESCAPE);
 	}
 	else if (b.equals("INSERT"))
 	{

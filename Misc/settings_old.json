@@ -1,0 +1,35 @@
+{
+	"functypes":["MEDIA","ANIME","PROGRAMMING"],
+	"bt_addresses": [{
+			"name": "Desktop",
+			"address": "bbccddeeffaa"
+		}, {
+			"name": "Phone",
+			"address": "ddeeffaabbcc"
+		}, {
+			"name": "Junk3",
+			"address": "aabbccddeeff"
+		}, {
+			"name": "Junk4",
+			"address": "bbccddeeffaa"
+		}, {
+			"name": "Junk5",
+			"address": "ccddeeffaabb"
+		}, {
+			"name": "Junk6",
+			"address": "ddeeffaabbcc"
+		}, {
+			"name": "Junk7",
+			"address": "eeffaabbccdd"
+		}, {
+			"name": "Junk8",
+			"address": "ffaabbccddee"
+		}, {
+			"name": "Junk9",
+			"address": "aabbccddeeff"
+		}
+	],
+	"bt_connect":0,
+	"mouseaccel":[1.5,2.5]
+}
+

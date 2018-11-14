@@ -1,0 +1,87 @@
+﻿<Window x:Class="KeyboardCompanion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:KeyboardCompanion"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button x:Name="NewFile"  Content="New" />
+                <Button x:Name="OpenFile" Content="Open" Click="OpenFile_OnClick"/>
+                <Button x:Name="SaveFile" Content="Save" Click="SaveFile_Click" />
+            </ToolBar>
+            <ToolBar>
+                <Button x:Name="DisplayAll" Content="Display all" Click="DisplayAll_OnClick"></Button>
+            </ToolBar>
+        </ToolBarTray>
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <ComboBox x:Name="macroKeyCombo" Margin="0,0,0,20">
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5"/>
+                    <ComboBoxItem Content="6"/>
+                    <ComboBoxItem Content="7"/>
+                    <ComboBoxItem Content="8"/>
+                    <ComboBoxItem Content="9"/>
+                </ComboBox>
+                <StackPanel Orientation="Horizontal">
+                    
+                    <StackPanel Margin="0,0,10,0">
+                        <CheckBox x:Name="chbCtrl">CTRL</CheckBox>
+                        <CheckBox x:Name="chbShift">SHIFT</CheckBox>
+                        <CheckBox x:Name="chbAlt">ALT</CheckBox>
+                        <CheckBox x:Name="chbWin">WIN</CheckBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+
+                        <StackPanel Orientation="Vertical" Margin="0,0,10,0" >
+                            <TextBlock Height="30" Padding="3,5,3,0">Key 1</TextBlock>
+                            <TextBlock Height="30" Padding="3,5,3,0">Key 2</TextBlock>
+                            <TextBlock Height="30" Padding="3,5,3,0">Key 3</TextBlock>
+                            <TextBlock Height="30" Padding="3,5,3,0">Key 4</TextBlock>
+                            <TextBlock Height="30" Padding="3,5,3,0">Key 5</TextBlock>
+                            <TextBlock Height="30" Padding="3,5,3,0">Key 6</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <ComboBox x:Name="cbxKey1" Width="200" Height="30"/>
+                            <ComboBox x:Name="cbxKey2" Width="200" Height="30"/>
+                            <ComboBox x:Name="cbxKey3" Width="200" Height="30"/>
+                            <ComboBox x:Name="cbxKey4" Width="200" Height="30"/>
+                            <ComboBox x:Name="cbxKey5" Width="200" Height="30"/>
+                            <ComboBox x:Name="cbxKey6" Width="200" Height="30"/>
+                        </StackPanel>
+                        <StackPanel Margin="25,0">
+                            <Button x:Name="saveMacro1" Content="Save 1" Margin="0,5"></Button>
+                            <Button x:Name="saveMacro2" Content="Save 2" Margin="0,5"></Button>
+                            <Button x:Name="saveMacro3" Content="Save 3" Margin="0,5"></Button>
+                            <Button x:Name="saveMacro4" Content="Save 4" Margin="0,5"></Button>
+                            <Button x:Name="saveMacro5" Content="Save 5" Margin="0,5"></Button>
+                            <Button x:Name="saveMacro6" Content="Save 6" Margin="0,5"></Button>
+                            <Button x:Name="saveMacro7" Content="Save 7" Margin="0,5"></Button>
+                            <Button x:Name="saveMacro8" Content="Save 8" Margin="0,5"></Button>
+                            <Button x:Name="saveMacro9" Content="Save 9" Margin="0,5"></Button>
+                        </StackPanel>
+                        <StackPanel>
+                            <Button x:Name="getMacro1" Content="Get 1" Margin="0,5"></Button>
+                            <Button x:Name="getMacro2" Content="Get 2" Margin="0,5"></Button>
+                            <Button x:Name="getMacro3" Content="Get 3" Margin="0,5"></Button>
+                            <Button x:Name="getMacro4" Content="Get 4" Margin="0,5"></Button>
+                            <Button x:Name="getMacro5" Content="Get 5" Margin="0,5"></Button>
+                            <Button x:Name="getMacro6" Content="Get 6" Margin="0,5"></Button>
+                            <Button x:Name="getMacro7" Content="Get 7" Margin="0,5"></Button>
+                            <Button x:Name="getMacro8" Content="Get 8" Margin="0,5"></Button>
+                            <Button x:Name="getMacro9" Content="Get 9" Margin="0,5"></Button>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</Window>

@@ -14,94 +14,88 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="src">
-      <UniqueIdentifier>{3dee2076-026b-45a7-aa92-0eaa08b9bd1f}</UniqueIdentifier>
+      <UniqueIdentifier>{38de9452-b244-44da-a4db-2ff9cfc59337}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly">
-      <UniqueIdentifier>{1d85282b-8ecf-431d-ba33-870ccd6929e8}</UniqueIdentifier>
+      <UniqueIdentifier>{9f112765-1208-4c86-a491-da11b590f37a}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core">
-      <UniqueIdentifier>{2951b56c-4611-40d8-956d-3456a25faac4}</UniqueIdentifier>
+      <UniqueIdentifier>{f11bde4b-c1f8-4260-a297-92cce8fae233}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\avr">
-      <UniqueIdentifier>{229c81c1-9766-4ac6-9378-6de6ba84919f}</UniqueIdentifier>
+      <UniqueIdentifier>{d9d13c7c-df3f-4897-8b09-7a5bb7502a98}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple">
-      <UniqueIdentifier>{4880b94a-d3d9-49da-bf13-afcc91eeea8e}</UniqueIdentifier>
+      <UniqueIdentifier>{2c142005-95aa-4656-a1ae-bc357a5cd30f}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple\stm32f1">
-      <UniqueIdentifier>{2a3ef8ee-53ac-4ee3-8fd5-6e6fb5d85fca}</UniqueIdentifier>
+      <UniqueIdentifier>{5055ab2d-3411-4d2b-8ef2-44efc59b48b3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple\stm32f1\performance">
-      <UniqueIdentifier>{6f15e0eb-6006-4c39-b398-577c8d77ef74}</UniqueIdentifier>
+      <UniqueIdentifier>{d3d81b48-7947-4eae-9720-24416f4319b1}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple\usb">
-      <UniqueIdentifier>{fe9c22df-b2de-42b0-9f45-5f348610b6e1}</UniqueIdentifier>
+      <UniqueIdentifier>{4863caa5-0efe-4ab1-ac85-4af0307c9a19}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple\usb\stm32f1">
-      <UniqueIdentifier>{6cac32df-0928-4957-94ec-c2f5035c6504}</UniqueIdentifier>
+      <UniqueIdentifier>{56d49177-0c73-4801-86da-35e4d1d6d5f7}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\libmaple\usb\usb_lib">
-      <UniqueIdentifier>{3aecaff1-1194-4552-9773-2f300fab9f9c}</UniqueIdentifier>
+      <UniqueIdentifier>{5e5f7b52-e8a2-4014-83ce-1ba537a981d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\core\stm32f1">
-      <UniqueIdentifier>{417cf7b9-d1e9-4a19-8c12-09413475418f}</UniqueIdentifier>
+      <UniqueIdentifier>{59db0763-b7f8-4e3f-baf6-9ba71ae6c23e}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries">
-      <UniqueIdentifier>{af7d056b-7397-4836-9c0e-8a18cf53a6ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\SdFs">
-      <UniqueIdentifier>{987330b8-0f1a-4260-afbd-51a9d278cbc0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\ClickEncoder">
-      <UniqueIdentifier>{deb4ef04-91e8-49fc-80e4-6dd8ec859fc6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\PS2Mouse">
-      <UniqueIdentifier>{2f9828f0-b26d-4f0c-bc29-707a14622c8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_SSD1306">
-      <UniqueIdentifier>{a0b47072-b7c3-4dce-b38c-5dfa1f1c9ab4}</UniqueIdentifier>
+      <UniqueIdentifier>{b5d6d3af-41ce-4a2a-bcb9-03f4864b43e1}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\BPLib">
-      <UniqueIdentifier>{7e648434-6e1b-444e-a04f-038a153dfde1}</UniqueIdentifier>
+      <UniqueIdentifier>{8370890b-c425-4032-9d46-226da64da147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\SdFs">
+      <UniqueIdentifier>{497d8c46-9fcd-4f25-9a00-a5ab7ab3043d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\PS2Mouse">
+      <UniqueIdentifier>{15cce9cd-c655-4269-a581-0165baf45718}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_SSD1306">
+      <UniqueIdentifier>{2c38b0e7-6655-413c-9569-05dfd8b044e3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\Wire">
-      <UniqueIdentifier>{9908e35e-c608-454d-8fcf-e1c46f27f4e7}</UniqueIdentifier>
+      <UniqueIdentifier>{69c6b247-0e7f-4a1c-b243-f378f51d4a09}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\Wire\utility">
-      <UniqueIdentifier>{7e73f77c-22aa-4d6d-80d2-cfcb1c964582}</UniqueIdentifier>
+      <UniqueIdentifier>{b539ad83-4985-4b2c-b524-dfd203397fb0}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\TimedAction">
-      <UniqueIdentifier>{5ff87f58-8cf8-494e-96fb-ec4d79869e7f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\USBHID_stm32f1">
-      <UniqueIdentifier>{35cc81b5-32eb-4e25-a433-4539d22a7342}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_GFX_Library">
-      <UniqueIdentifier>{beee91ae-e0b9-4fdb-91ea-7287d4ddc8f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_MCP23008_library">
-      <UniqueIdentifier>{98da3bcc-4fcc-4e37-a1f2-4ab759ff35ab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_MCP23017_Arduino_Library">
-      <UniqueIdentifier>{635ba058-6546-45f5-9ef2-61979062d390}</UniqueIdentifier>
+      <UniqueIdentifier>{6f0780a7-c804-467a-aa70-a2cddb3364ac}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\SPI">
-      <UniqueIdentifier>{0eb6af10-540a-4921-a25b-2de2df5e0cfb}</UniqueIdentifier>
+      <UniqueIdentifier>{a9062c5a-bd66-415f-8890-348a59b88860}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\aJson">
-      <UniqueIdentifier>{59c34e45-7f26-4740-bab6-43b2fc84c19a}</UniqueIdentifier>
+    <Filter Include="src\_micro-api-readonly\libraries\I2CEncoderLib">
+      <UniqueIdentifier>{0c9f9597-282a-4330-a30e-260a44d5d703}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\_micro-api-readonly\libraries\aJson\utility">
-      <UniqueIdentifier>{5e79a58a-e81a-4864-8e82-8d5c12cc5564}</UniqueIdentifier>
+    <Filter Include="src\_micro-api-readonly\libraries\USBHID_stm32f1">
+      <UniqueIdentifier>{3d2e7a39-e0a7-4515-a071-64b3016cf9fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_GFX_Library">
+      <UniqueIdentifier>{c9ff8391-c957-4ced-b425-490589c52fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_MCP23008_library">
+      <UniqueIdentifier>{23a4ad7e-a4ce-419e-8e0b-f1788e7286c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\_micro-api-readonly\libraries\Adafruit_MCP23017_Arduino_Library">
+      <UniqueIdentifier>{098b894c-a9b2-4432-9859-2892c873ea17}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\_micro-api-readonly\libraries\ArduinoJson">
-      <UniqueIdentifier>{1b62a325-d804-4de2-b982-812dd4300c4a}</UniqueIdentifier>
+      <UniqueIdentifier>{c99ac051-dc19-42d5-83ef-f6e234c863ef}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ComboProcessor.ino" />
-    <None Include="..\Misc\UsedBluepillPins.pdn">
-      <Filter>Resource Files</Filter>
+    <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\BPLib\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\BPLib</Filter>
     </None>
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\SdFs\library.properties">
       <Filter>src\_micro-api-readonly\libraries\SdFs</Filter>
@@ -1087,17 +1081,14 @@
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\SdFs\doc\html\search\variables_f.html">
       <Filter>src\_micro-api-readonly\libraries\SdFs</Filter>
     </None>
-    <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ClickEncoder\library.json">
-      <Filter>src\_micro-api-readonly\libraries\ClickEncoder</Filter>
-    </None>
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_SSD1306\library.properties">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
     </None>
-    <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\BPLib\library.properties">
-      <Filter>src\_micro-api-readonly\libraries\BPLib</Filter>
-    </None>
     <None Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\Wire\library.properties">
       <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
+    </None>
+    <None Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\library.properties">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
     </None>
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\USBHID_stm32f1\library.properties">
       <Filter>src\_micro-api-readonly\libraries\USBHID_stm32f1</Filter>
@@ -1111,23 +1102,35 @@
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23017_Arduino_Library\library.properties">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_MCP23017_Arduino_Library</Filter>
     </None>
-    <None Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\library.properties">
-      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
-    </None>
-    <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\library.json">
-      <Filter>src\_micro-api-readonly\libraries\aJson</Filter>
-    </None>
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\library.json">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </None>
     <None Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\library.properties">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </None>
+    <None Include="..\Misc\macros">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Misc\UsedBluepillPins.pdn">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Misc\Screens.pdn">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Misc\settings_old.json">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="..\Misc\settings.json">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="__vm\.ComboProcessor.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Adafruit_SSD1306_EXT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -1152,13 +1155,16 @@
     <ClInclude Include="OledFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Variables.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SettingsHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="__vm\.ComboProcessor.vsarduino.h">
+    <ClInclude Include="Variables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MacroHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardHelpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\cores\maple\Arduino.h">
@@ -1268,6 +1274,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\variants\generic_stm32f103c\variant.h">
       <Filter>src\_micro-api-readonly\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\BPLib\src\BPLib.h">
+      <Filter>src\_micro-api-readonly\libraries\BPLib</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\SdFs\doc\mainpage.h">
       <Filter>src\_micro-api-readonly\libraries\SdFs</Filter>
@@ -1404,17 +1413,11 @@
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\SdFs\src\SpiDriver\SdSpiDriver.h">
       <Filter>src\_micro-api-readonly\libraries\SdFs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ClickEncoder\ClickEncoder.h">
-      <Filter>src\_micro-api-readonly\libraries\ClickEncoder</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\PS2Mouse\PS2Mouse.h">
       <Filter>src\_micro-api-readonly\libraries\PS2Mouse</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_SSD1306\Adafruit_SSD1306.h">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\BPLib\src\BPLib.h">
-      <Filter>src\_micro-api-readonly\libraries\BPLib</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\Wire\SoftWire.h">
       <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
@@ -1430,6 +1433,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\TimedAction\TimedAction.h">
       <Filter>src\_micro-api-readonly\libraries\TimedAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\SPI.h">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\I2CEncoderLib\i2cEncoderLibV2.h">
+      <Filter>src\_micro-api-readonly\libraries\I2CEncoderLib</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\USBHID_stm32f1\ConsumerKeyCodes.h">
       <Filter>src\_micro-api-readonly\libraries\USBHID_stm32f1</Filter>
@@ -1500,15 +1509,6 @@
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23017_Arduino_Library\Adafruit_MCP23017.h">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_MCP23017_Arduino_Library</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\SPI.h">
-      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\aJSON.h">
-      <Filter>src\_micro-api-readonly\libraries\aJson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\utility\stringbuffer.h">
-      <Filter>src\_micro-api-readonly\libraries\aJson\utility</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\ArduinoJson.h">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
@@ -1521,31 +1521,31 @@
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Configuration.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\DynamicJsonBuffer.hpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonArray.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonArrayImpl.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonArrayIterator.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonArraySubscript.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonBuffer.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonDocument.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonBufferBase.hpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonBufferImpl.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonKey.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonObject.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonObjectImpl.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonObjectIterator.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonObjectSubscript.hpp">
@@ -1575,19 +1575,19 @@
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\JsonVariantSubscripts.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\RawJson.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Namespace.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\StaticJsonBuffer.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\SerializedValue.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\version.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\Encoding.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Visitable.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\JsonBufferAllocated.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\ArrayFunctions.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\JsonFloat.hpp">
@@ -1599,46 +1599,112 @@
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\JsonVariantAs.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\JsonVariantContent.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\JsonVariantData.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\JsonVariantDefault.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\JsonVariantTo.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\JsonVariantType.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\ObjectFunctions.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\List.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\Slot.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\ListConstIterator.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\SlotFunctions.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\ListIterator.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\VariantAs.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\ListNode.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\VariantAsImpl.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\NonCopyable.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\VariantFunctions.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\ReferenceType.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\ArduinoStreamReader.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Data\ValueSaver.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\CharPointerReader.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\Comments.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\DeserializationError.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\JsonParser.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\deserialize.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\JsonParserImpl.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\FlashStringReader.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\StringWriter.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\IteratorReader.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Deserialization\StdStreamReader.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Json\EscapeSequence.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Json\IndentedPrint.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Json\JsonDeserializer.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Json\JsonSerializer.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Json\JsonWriter.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Json\Prettyfier.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Json\PrettyJsonSerializer.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Memory\AllocableInMemoryPool.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Memory\DynamicMemoryPool.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Memory\MemoryPool.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Memory\StaticMemoryPool.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\MsgPack\endianess.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\MsgPack\ieee754.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\MsgPack\MsgPackDeserializer.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\MsgPack\MsgPackSerializer.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Numbers\FloatParts.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Numbers\FloatTraits.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Numbers\isFloat.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Numbers\isInteger.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Numbers\parseFloat.hpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Numbers\parseInteger.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\attributes.hpp">
@@ -1647,112 +1713,106 @@
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\ctype.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\isFloat.hpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\isInteger.hpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\math.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\parseFloat.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\parseInteger.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\utility.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\DummyPrint.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\mpl\max.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\DynamicStringBuilder.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\enable_if.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\FloatParts.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\integral_constant.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\IndentedPrint.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\is_array.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\JsonPrintable.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\is_base_of.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\JsonSerializer.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\is_const.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\JsonSerializerImpl.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\is_floating_point.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\JsonWriter.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\is_integral.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\Prettyfier.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\is_same.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\StaticStringBuilder.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\is_signed.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\StreamPrintAdapter.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\is_unsigned.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\StringTraits\ArduinoStream.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\remove_const.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\StringTraits\CharPointer.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Polyfills\type_traits\remove_reference.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\StringTraits\FlashString.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\DummyWriter.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\StringTraits\StdStream.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\DynamicStringWriter.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\StringTraits\StdString.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\measure.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\StringTraits\StringTraits.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\serialize.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\EnableIf.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\StaticStringWriter.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\FloatTraits.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Serialization\StreamWriter.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\IsArray.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Strings\ArduinoString.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\IsBaseOf.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Strings\FixedSizeFlashString.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\IsChar.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Strings\FixedSizeRamString.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\IsConst.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Strings\StlString.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\IsFloatingPoint.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Strings\StringInMemoryPool.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\IsIntegral.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Strings\StringTypes.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\IsSame.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Strings\ZeroTerminatedFlashString.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\IsSignedIntegral.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Strings\ZeroTerminatedRamString.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\IsUnsignedIntegral.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\Strings\ZeroTerminatedRamStringConst.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\IsVariant.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\StringStorage\StringCopier.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\RemoveConst.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\StringStorage\StringMover.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\TypeTraits\RemoveReference.hpp">
+    <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\src\ArduinoJson\StringStorage\StringStorage.hpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\third-party\catch\catch.hpp">
@@ -1760,7 +1820,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Adafruit_SSD1306_EXT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="DuckyReadWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HIDFunctions.cpp">
@@ -1781,7 +1847,10 @@
     <ClCompile Include="Variables.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Helpers.cpp">
+    <ClCompile Include="MacroHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardHelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\cores\maple\cxxabi-compat.cpp">
@@ -1852,6 +1921,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\variants\generic_stm32f103c\board.cpp">
       <Filter>src\_micro-api-readonly\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\BPLib\src\BPLib.cpp">
+      <Filter>src\_micro-api-readonly\libraries\BPLib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\SdFs\src\FsFile.cpp">
       <Filter>src\_micro-api-readonly\libraries\SdFs</Filter>
@@ -1946,17 +2018,11 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\SdFs\src\SpiDriver\SdSpiTeensy3.cpp">
       <Filter>src\_micro-api-readonly\libraries\SdFs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ClickEncoder\ClickEncoder.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ClickEncoder</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\PS2Mouse\PS2Mouse.cpp">
       <Filter>src\_micro-api-readonly\libraries\PS2Mouse</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_SSD1306\Adafruit_SSD1306.cpp">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\BPLib\src\BPLib.cpp">
-      <Filter>src\_micro-api-readonly\libraries\BPLib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\Wire\SoftWire.cpp">
       <Filter>src\_micro-api-readonly\libraries\Wire</Filter>
@@ -1969,6 +2035,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\TimedAction\TimedAction.cpp">
       <Filter>src\_micro-api-readonly\libraries\TimedAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\SPI.cpp">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\I2CEncoderLib\i2cEncoderLibV2.cpp">
+      <Filter>src\_micro-api-readonly\libraries\I2CEncoderLib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\USBHID_stm32f1\AbsMouse.cpp">
       <Filter>src\_micro-api-readonly\libraries\USBHID_stm32f1</Filter>
@@ -2051,37 +2123,28 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23017_Arduino_Library\Adafruit_MCP23017.cpp">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_MCP23017_Arduino_Library</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\SPI.cpp">
-      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\aJSON.cpp">
-      <Filter>src\_micro-api-readonly\libraries\aJson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\utility\stringbuffer.c">
-      <Filter>src\_micro-api-readonly\libraries\aJson\utility</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\fuzzing\fuzzer.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\fuzzing\json_fuzzer.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicJsonBuffer\alloc.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\fuzzing\msgpack_fuzzer.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicJsonBuffer\createArray.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicMemoryPool\alloc.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicJsonBuffer\createObject.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicMemoryPool\no_memory.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicJsonBuffer\no_memory.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicMemoryPool\size.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicJsonBuffer\size.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicJsonBuffer\startString.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicMemoryPool\startString.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\IntegrationTests\gbathree.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\IntegrationTests\issue772.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\IntegrationTests\round_trip.cpp">
@@ -2090,25 +2153,22 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\add.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\basics.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\copyFrom.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\copyTo.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\invalid.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\createNested.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\equals.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\isNull.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\iterator.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\prettyPrintTo.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\printTo.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\remove.cpp">
@@ -2120,28 +2180,58 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\size.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\std_string.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\subscript.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonBuffer\nested.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\undefined.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonBuffer\nestingLimit.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDeserializer\DeserializationError.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonBuffer\parse.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDeserializer\deserializeJsonArray.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonBuffer\parseArray.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDeserializer\deserializeJsonArrayStatic.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonBuffer\parseObject.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDeserializer\deserializeJsonObject.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\basics.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDeserializer\deserializeJsonObjectStatic.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDeserializer\deserializeJsonValue.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDeserializer\input_types.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDeserializer\nestingLimit.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDocument\DynamicJsonDocument.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDocument\StaticJsonDocument.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\containsKey.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\copy.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\createNestedArray.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\createNestedObject.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\equals.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\get.cpp">
@@ -2150,13 +2240,13 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\invalid.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\is.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\isNull.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\iterator.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\prettyPrintTo.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\printTo.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\remove.cpp">
@@ -2168,7 +2258,34 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\size.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\std_string.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\subscript.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonSerializer\JsonArray.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonSerializer\JsonArrayPretty.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonSerializer\JsonObject.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonSerializer\JsonObjectPretty.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonSerializer\JsonVariant.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonSerializer\misc.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonSerializer\std_stream.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonSerializer\std_string.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\as.cpp">
@@ -2183,19 +2300,19 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\is.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\or.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\isnull.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\printTo.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\misc.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\or.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\set_get.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\subscript.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\success.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\undefined.cpp">
@@ -2207,22 +2324,10 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonWriter\writeString.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\deprecated.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\FloatParts.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\std_stream.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\std_string.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\StringBuilder.cpp">
-      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\StringTraits.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\StringWriter.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\TypeTraits.cpp">
@@ -2234,40 +2339,82 @@
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\version.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\vla.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MixedConfiguration\use_double_0.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Polyfills\isFloat.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MixedConfiguration\use_double_1.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Polyfills\isInteger.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MixedConfiguration\use_long_long_0.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Polyfills\parseFloat.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MixedConfiguration\use_long_long_1.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Polyfills\parseInteger.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackDeserializer\deserializeArray.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticJsonBuffer\alloc.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackDeserializer\deserializeObject.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticJsonBuffer\createArray.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackDeserializer\deserializeStaticVariant.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticJsonBuffer\createObject.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackDeserializer\deserializeVariant.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticJsonBuffer\parseArray.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackDeserializer\doubleToFloat.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticJsonBuffer\parseObject.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackDeserializer\incompleteInput.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticJsonBuffer\size.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackDeserializer\input_types.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticJsonBuffer\startString.cpp">
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackDeserializer\nestingLimit.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackDeserializer\notSupported.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackSerializer\destination_types.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackSerializer\measure.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackSerializer\misc.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackSerializer\serializeArray.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackSerializer\serializeObject.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackSerializer\serializeVariant.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Numbers\isFloat.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Numbers\isInteger.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Numbers\parseFloat.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Numbers\parseInteger.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticMemoryPool\alloc.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticMemoryPool\size.cpp">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticMemoryPool\startString.cpp">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\third-party\catch\catch.cpp">
@@ -2281,9 +2428,6 @@
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\SdFs\extras\cpplint.txt">
       <Filter>src\_micro-api-readonly\libraries\SdFs</Filter>
     </Text>
-    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ClickEncoder\LICENSING.txt">
-      <Filter>src\_micro-api-readonly\libraries\ClickEncoder</Filter>
-    </Text>
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_SSD1306\license.txt">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_SSD1306</Filter>
     </Text>
@@ -2295,6 +2439,12 @@
     </Text>
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\TimedAction\keywords.txt">
       <Filter>src\_micro-api-readonly\libraries\TimedAction</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\keywords.txt">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\README.txt">
+      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
     </Text>
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\USBHID_stm32f1\keywords.txt">
       <Filter>src\_micro-api-readonly\libraries\USBHID_stm32f1</Filter>
@@ -2317,15 +2467,6 @@
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\Adafruit_MCP23017_Arduino_Library\README.txt">
       <Filter>src\_micro-api-readonly\libraries\Adafruit_MCP23017_Arduino_Library</Filter>
     </Text>
-    <Text Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\keywords.txt">
-      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
-    </Text>
-    <Text Include="..\..\..\..\Arduino\portable\sketchbook\hardware\Arduino_STM32\STM32F1\libraries\SPI\src\README.txt">
-      <Filter>src\_micro-api-readonly\libraries\SPI</Filter>
-    </Text>
-    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\aJson\keywords.txt">
-      <Filter>src\_micro-api-readonly\libraries\aJson</Filter>
-    </Text>
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\CMakeLists.txt">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </Text>
@@ -2335,7 +2476,7 @@
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\CMakeLists.txt">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </Text>
-    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicJsonBuffer\CMakeLists.txt">
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\DynamicMemoryPool\CMakeLists.txt">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </Text>
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\IntegrationTests\CMakeLists.txt">
@@ -2344,10 +2485,16 @@
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonArray\CMakeLists.txt">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </Text>
-    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonBuffer\CMakeLists.txt">
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDeserializer\CMakeLists.txt">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonDocument\CMakeLists.txt">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </Text>
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonObject\CMakeLists.txt">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonSerializer\CMakeLists.txt">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </Text>
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\JsonVariant\CMakeLists.txt">
@@ -2359,10 +2506,19 @@
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Misc\CMakeLists.txt">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </Text>
-    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Polyfills\CMakeLists.txt">
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MixedConfiguration\CMakeLists.txt">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </Text>
-    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticJsonBuffer\CMakeLists.txt">
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackDeserializer\CMakeLists.txt">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\MsgPackSerializer\CMakeLists.txt">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\Numbers\CMakeLists.txt">
+      <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\test\StaticMemoryPool\CMakeLists.txt">
       <Filter>src\_micro-api-readonly\libraries\ArduinoJson</Filter>
     </Text>
     <Text Include="..\..\..\..\Arduino\portable\sketchbook\libraries\ArduinoJson\third-party\catch\CMakeLists.txt">

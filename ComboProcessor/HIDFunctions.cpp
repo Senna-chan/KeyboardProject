@@ -4,12 +4,22 @@
 
 #include "HIDFunctions.h"
 #include "Variables.h"
-#include <BPLib.h>
 #include <USBHID.h>
 #include "Config.h"
 #include <Arduino.h>
 
-void PressMouse(uint8_t button) {
+/**
+ * \brief Release EVERYTHING and resets mouse
+ */
+void releaseAllKeyboardMouse()
+{
+	releaseAllKeyboardKeys();
+	moveMouse(0, 0, 0, 0);
+	releaseMouseAll();
+}
+
+
+void pressMouse(uint8_t button) {
 	if (operateMode == BLUETOOTH) {
 		if (!bt->mouseIsPressed(button)) bt->mousePress(button);
 	}
@@ -18,7 +28,7 @@ void PressMouse(uint8_t button) {
 	}
 }
 
-void ReleaseMouse(uint8_t button) {
+void releaseMouse(uint8_t button) {
 	if (operateMode == BLUETOOTH) {
 		if (!bt->mouseIsPressed(button))  bt->mouseRelease(button);
 	}
@@ -27,7 +37,24 @@ void ReleaseMouse(uint8_t button) {
 	}
 }
 
-void MoveMouse(byte x, byte y) {
+void releaseMouseAll()
+{
+	if (operateMode == BLUETOOTH) {
+		bt->mouseReleaseAll();
+	}
+	else if (operateMode == CABLE && USBLIB->state == USB_CONFIGURED) {
+		Mouse.release(0xFF);
+	}
+}
+
+void moveMouse(byte x, byte y, byte wheelx, byte wheely)
+{
+	moveMouse(x, y);
+	moveScrollWheel(wheelx, wheely);
+}
+
+
+void moveMouse(byte x, byte y) {
 	if (operateMode == BLUETOOTH) {
 		bt->mouseMove(x, y);
 	}
@@ -58,10 +85,6 @@ void printKeyboardString(String string)
 
 void pressKeyboardKey(uint8_t key) {
 	if (key == 0x00) return;
-#if DEBUGKEYBOARD
-	Serial.print("pressing 0x");
-	Serial.println(key, HEX);
-#endif
 	if (operateMode == BLUETOOTH) {
 		bt->keyboardPress(key);
 	}
@@ -70,10 +93,6 @@ void pressKeyboardKey(uint8_t key) {
 	}
 }
 void releaseKeyboardKey(uint8_t key) {
-#if DEBUGKEYBOARD
-	Serial.print("releasing 0x");
-	Serial.println(key, HEX);
-#endif
 	if (key == 0x00) return;
 	if (operateMode == BLUETOOTH) {
 		bt->keyboardRelease(key);
@@ -126,5 +145,37 @@ void writeConsumerKey(uint16_t key) {
 	}
 	else if (operateMode == CABLE && USBLIB->state == USB_CONFIGURED) {
 		Consumer.write(key);
+	}
+}
+
+void writeKeyReport(keyReport report)
+{
+	if(report.modifier == 0xFF) // Consumer key
+	{
+		writeConsumerKey(makeWord(report.keys[0], report.keys[1]));
+	}
+	else {
+		if (operateMode == BLUETOOTH) {
+			bt->keyReport.modifiers = report.modifier;
+			bt->keyReport.keys[0] = report.keys[0];
+			bt->keyReport.keys[1] = report.keys[1];
+			bt->keyReport.keys[2] = report.keys[2];
+			bt->keyReport.keys[3] = report.keys[3];
+			bt->keyReport.keys[4] = report.keys[4];
+			bt->keyReport.keys[5] = report.keys[5];
+			bt->writeKeyReport();
+			bt->keyboardReleaseAll();
+		}
+		else if (operateMode == CABLE && USBLIB->state == USB_CONFIGURED) {
+			Keyboard.keyReport.modifiers = report.modifier;
+			Keyboard.keyReport.keys[0] = report.keys[0];
+			Keyboard.keyReport.keys[1] = report.keys[1];
+			Keyboard.keyReport.keys[2] = report.keys[2];
+			Keyboard.keyReport.keys[3] = report.keys[3];
+			Keyboard.keyReport.keys[4] = report.keys[4];
+			Keyboard.keyReport.keys[5] = report.keys[5];
+			Keyboard.sendReport();
+			Keyboard.releaseAll();
+		}
 	}
 }

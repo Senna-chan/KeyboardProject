@@ -8,6 +8,8 @@
 
 void loadSettings();
 void saveSettings();
+ConnectionConfig getConfigByName(String name);
+ConnectionConfig getConfigByBTAddress(String btaddress);
 
 #endif
 

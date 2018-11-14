@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComboProcessorSetup", "ComboProcessorSetup\ComboProcessorSetup.vcxproj", "{695AC301-6AF9-4FA1-AACD-638CEE8EEA35}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardCompanion", "KeyboardCompanion\KeyboardCompanion.csproj", "{3A49492D-E0F2-498C-985A-9894137CFB1D}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComboProcessor", "ComboProcessor\ComboProcessor.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComboProcessorSetup", "ComboProcessorSetup\ComboProcessorSetup.vcxproj", "{695AC301-6AF9-4FA1-AACD-638CEE8EEA35}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sdreader", "..\..\..\Arduino\portable\sketchbook\My Examples\sdreader\sdreader.vcxproj", "{BC9ED55A-AF9A-4F26-9971-21A0AD926F13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +23,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x64.ActiveCfg = Debug|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.ActiveCfg = Debug|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|Any CPU.ActiveCfg = Release|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x64.ActiveCfg = Release|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
 		{695AC301-6AF9-4FA1-AACD-638CEE8EEA35}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{695AC301-6AF9-4FA1-AACD-638CEE8EEA35}.Debug|x64.ActiveCfg = Debug|Win32
 		{695AC301-6AF9-4FA1-AACD-638CEE8EEA35}.Debug|x86.ActiveCfg = Debug|Win32
@@ -33,6 +31,41 @@ Global
 		{695AC301-6AF9-4FA1-AACD-638CEE8EEA35}.Release|x64.ActiveCfg = Release|Win32
 		{695AC301-6AF9-4FA1-AACD-638CEE8EEA35}.Release|x86.ActiveCfg = Release|Win32
 		{695AC301-6AF9-4FA1-AACD-638CEE8EEA35}.Release|x86.Build.0 = Release|Win32
+		{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}.Debug|x64.ActiveCfg = Debug|x64
+		{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}.Debug|x64.Build.0 = Debug|x64
+		{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}.Debug|x86.ActiveCfg = Debug|Win32
+		{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}.Debug|x86.Build.0 = Debug|Win32
+		{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}.Release|Any CPU.ActiveCfg = Release|Win32
+		{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}.Release|x64.ActiveCfg = Release|x64
+		{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}.Release|x64.Build.0 = Release|x64
+		{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}.Release|x86.ActiveCfg = Release|Win32
+		{3E6475A3-BCA4-4DC7-A23B-D6905BC77636}.Release|x86.Build.0 = Release|Win32
+		{3A49492D-E0F2-498C-985A-9894137CFB1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A49492D-E0F2-498C-985A-9894137CFB1D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3A49492D-E0F2-498C-985A-9894137CFB1D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A49492D-E0F2-498C-985A-9894137CFB1D}.Debug|x86.Build.0 = Debug|Any CPU
+		{3A49492D-E0F2-498C-985A-9894137CFB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A49492D-E0F2-498C-985A-9894137CFB1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A49492D-E0F2-498C-985A-9894137CFB1D}.Release|x64.ActiveCfg = Release|Any CPU
+		{3A49492D-E0F2-498C-985A-9894137CFB1D}.Release|x64.Build.0 = Release|Any CPU
+		{3A49492D-E0F2-498C-985A-9894137CFB1D}.Release|x86.ActiveCfg = Release|Any CPU
+		{3A49492D-E0F2-498C-985A-9894137CFB1D}.Release|x86.Build.0 = Release|Any CPU
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x64.ActiveCfg = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.ActiveCfg = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|Any CPU.ActiveCfg = Release|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x64.ActiveCfg = Release|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
+		{BC9ED55A-AF9A-4F26-9971-21A0AD926F13}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{BC9ED55A-AF9A-4F26-9971-21A0AD926F13}.Debug|x64.ActiveCfg = Debug|Win32
+		{BC9ED55A-AF9A-4F26-9971-21A0AD926F13}.Debug|x86.ActiveCfg = Debug|Win32
+		{BC9ED55A-AF9A-4F26-9971-21A0AD926F13}.Debug|x86.Build.0 = Debug|Win32
+		{BC9ED55A-AF9A-4F26-9971-21A0AD926F13}.Release|Any CPU.ActiveCfg = Release|Win32
+		{BC9ED55A-AF9A-4F26-9971-21A0AD926F13}.Release|x64.ActiveCfg = Release|Win32
+		{BC9ED55A-AF9A-4F26-9971-21A0AD926F13}.Release|x86.ActiveCfg = Release|Win32
+		{BC9ED55A-AF9A-4F26-9971-21A0AD926F13}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

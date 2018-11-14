@@ -3,6 +3,7 @@
 // 
 
 #include "I2CMatrix.h"
+#include "Variables.h"
 
 I2CMatrixClass::I2CMatrixClass(){}
 
@@ -83,7 +84,6 @@ void I2CMatrixClass::scanKeys() {
 	//rowChip->writeRegister(0xFF, MCP23017_GPPUA);
 	//rowChip->writeRegister(0xFF, MCP23017_IODIRB);
 	//rowChip->writeRegister(0xFF, MCP23017_GPPUB);
-
 	// bitMap stores ALL the keys that are being pressed.
 	for (byte c = 0; c<sizeKpd.columns; c++) {
 		colChip->pinMode(c, OUTPUT);
@@ -249,7 +249,7 @@ void I2CMatrixClass::setDebounceTime(uint debounce) {
 	debounce<1 ? debounceTime = 1 : debounceTime = debounce;
 }
 
-void I2CMatrixClass::setHoldTime(uint hold) {
+void I2CMatrixClass::setHoldTime(uint16_t hold) {
 	holdTime = hold;
 }
 

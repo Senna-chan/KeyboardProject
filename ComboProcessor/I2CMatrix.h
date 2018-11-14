@@ -3,11 +3,7 @@
 #ifndef _I2CMATRIX_h
 #define _I2CMATRIX_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
-#else
-	#include "WProgram.h"
-#endif
+#include <Arduino.h>
 
 #include "Key.h"
 #include "Adafruit_MCP23017.h"
@@ -52,7 +48,7 @@ public:
 	void begin();
 	bool isPressed(char keyChar);
 	void setDebounceTime(uint);
-	void setHoldTime(uint);
+	void setHoldTime(uint16_t hold);
 	void addEventListener(void(*listener)(char));
 	int findInList(char keyChar);
 	int findInList(int keyCode);
@@ -106,6 +102,11 @@ public:
 		return (1 == ((thebyte >> position) & 1));
 	}
 
+	uint16_t getHoldTime()
+	{
+		return holdTime;
+	}
+
 private:
 	unsigned long startTime;
 	KeyboardKeycode *keymap;
@@ -113,7 +114,7 @@ private:
 	Adafruit_MCP23017 *colChip;
 	KeypadSize sizeKpd;
 	uint debounceTime;
-	uint holdTime;
+	uint16_t holdTime;
 	bool single_key;
 
 	void scanKeys();
