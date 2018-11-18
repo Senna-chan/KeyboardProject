@@ -8,30 +8,6 @@
 #include <i2cEncoderLibV2.h>
 
 
-void handleEncoder()
-{
-	if (encoder->updateStatus()) {
-		lastEncPos = currentEncPos;
-		currentEncPos = encoder->readCounterByte();
-		if (currentEncPos != lastEncPos)
-		{
-			Serial.print("Encoder position changed from "); Serial.print(lastEncPos);
-			Serial.print(" to "); Serial.println(currentEncPos);
-		}
-		if (encoder->readStatus(PUSHR)) {
-			Serial.println("Push button Released");
-		}
-
-		if (encoder->readStatus(PUSHP)) {
-			Serial.println("Push button Pressed");
-		}
-
-		if (encoder->readStatus(PUSHD)) {
-			Serial.println("Double push!");
-		}
-	}
-	encoderInterupted = false; // Make sure it is always set to false here
-}
 
 char* appendCharToCharArray(char* array, char a)
 {
@@ -88,6 +64,32 @@ uint8_t *read1bitBMP(char *fname, int* _w, int* _h)
 	f.close();
 	*_w = w; *_h = h;
 	return img;
+}
+
+
+void handleEncoder()
+{
+	if (encoder->updateStatus()) {
+		lastEncPos = currentEncPos;
+		currentEncPos = encoder->readCounterByte();
+		if (currentEncPos != lastEncPos)
+		{
+			Serial.print("Encoder position changed from "); Serial.print(lastEncPos);
+			Serial.print(" to "); Serial.println(currentEncPos);
+		}
+		if (encoder->readStatus(PUSHR)) {
+			Serial.println("Push button Released");
+		}
+
+		if (encoder->readStatus(PUSHP)) {
+			Serial.println("Push button Pressed");
+		}
+
+		if (encoder->readStatus(PUSHD)) {
+			Serial.println("Double push!");
+		}
+	}
+	encoderInterupted = false; // Make sure it is always set to false here
 }
 
 

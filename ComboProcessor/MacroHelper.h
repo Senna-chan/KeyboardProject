@@ -12,7 +12,8 @@
 void loadMacros();
 void saveMacro();
 void genMacro(uint8_t macroPos);
+void pressMacro(uint8_t macroPos);
 // Gets the keys in a hold blocking way from the keyboard
-keyReport getMacroKeysFromKeyboard();
+KeyReport getMacroKeysFromKeyboard();
 
 #endif

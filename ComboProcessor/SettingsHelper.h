@@ -10,6 +10,8 @@ void loadSettings();
 void saveSettings();
 ConnectionConfig getConfigByName(String name);
 ConnectionConfig getConfigByBTAddress(String btaddress);
+void saveConnectionConfig(ConnectionConfig conConf);
+ConnectionConfig createConnectionConfig();
 
 #endif
 

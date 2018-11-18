@@ -29,18 +29,24 @@ namespace KeyboardCompanion
                 TabItem root = new TabItem() { Header = $"Macro {i+1}"};
                 Grid grid = new Grid();
                 StackPanel rootStackPanel = new StackPanel();
-                for (int j = 0; j < 9; j++) // Macro Keys
+                for (int j = 0; j < EditCreateMacro.macroKeyDepth; j++) // Macro Keys
                 {
                     KeyMacro macro = keyMacros[i, j];
 
                     StackPanel macroPanel = new StackPanel(){Orientation = Orientation.Horizontal, Margin = new Thickness(0,20,0,20)};
-                    macroPanel.Children.Add(new CheckBox() { IsEnabled = false, IsChecked = (macro.modifier & (1 << 0)) != 0,Content="CTLR"});
-                    macroPanel.Children.Add(new CheckBox() { IsEnabled = false, IsChecked = (macro.modifier & (1 << 1)) != 0,Content="SHIFT"});
-                    macroPanel.Children.Add(new CheckBox() { IsEnabled = false, IsChecked = (macro.modifier & (1 << 2)) != 0,Content="ALT"});
-                    macroPanel.Children.Add(new CheckBox() { IsEnabled = false, IsChecked = (macro.modifier & (1 << 3)) != 0,Content="WIN"});
-                    for (int k = 0; k < 6; k++) // Key
+                    if (macro.modifier == 0xff)
                     {
-                        macroPanel.Children.Add(new TextBlock() {Text = $"Key 1: {(KeyboardKeys)macro.keys[k]}", Margin = new Thickness(10,0,10,0) });
+                        macroPanel.Children.Add(new TextBlock() { Text = $"ConsumerKey: {Enum.ToObject(typeof(ConsumerKeys), (macro.keys[0] << 8 | macro.keys[1]))}", Margin = new Thickness(10, 0, 10, 0) });
+                    }
+                    else { 
+                        macroPanel.Children.Add(new CheckBox() { IsEnabled = false, IsChecked = (macro.modifier & (1 << 0)) != 0,Content="CTLR"});
+                        macroPanel.Children.Add(new CheckBox() { IsEnabled = false, IsChecked = (macro.modifier & (1 << 1)) != 0,Content="SHIFT"});
+                        macroPanel.Children.Add(new CheckBox() { IsEnabled = false, IsChecked = (macro.modifier & (1 << 2)) != 0,Content="ALT"});
+                        macroPanel.Children.Add(new CheckBox() { IsEnabled = false, IsChecked = (macro.modifier & (1 << 3)) != 0,Content="WIN"});
+                        for (int k = 0; k < 6; k++) // Key
+                        {
+                            macroPanel.Children.Add(new TextBlock() {Text = $"Key {k}: {Enum.ToObject(typeof(KeyboardKeys),macro.keys[k])}", Margin = new Thickness(10,0,10,0) });
+                        }
                     }
                     rootStackPanel.Children.Add(macroPanel);
                 }

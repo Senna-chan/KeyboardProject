@@ -8,10 +8,11 @@
 #include <Adafruit_SSD1306.h>
 #include <USBMassStorage.h>
 #include <Adafruit_MCP23008.h>
-#include "I2CMatrix.h"
-#include "Adafruit_SSD1306_EXT.h"
 #include <USBHID.h>
 #include <i2cEncoderLibV2.h>
+#include <Keypad.h>
+#include "KeyReport.h"
+#include "Config.h"
 
 enum OperateMode { CABLE, BLUETOOTH, CHARGING };
 
@@ -30,11 +31,7 @@ struct ConnectionConfig
 	float mouseaccel[2] = { 1.0,1.0 };
 };
 
-struct keyReport
-{
-	uint8_t modifier = 0;
-	uint8_t keys[6] = {0,0,0,0,0,0};
-};
+
 
 struct Settings {
 	String functypes[9] = { "MEDIA","PROGRAMMING","","","","","","","" };
@@ -47,18 +44,17 @@ extern Settings settings;
 extern ConnectionConfig currentConnectionConfig;
 
 extern Adafruit_MCP23008 expender;
-extern Adafruit_MCP23008 oled_expender;
 extern BPLib *bt;
 extern i2cEncoderLibV2 *encoder;
 extern bool encoderInterupted;
 extern enum OperateMode operateMode;
 extern SdFs SD;
 extern Adafruit_SSD1306 main_oled;
-extern Adafruit_SSD1306_EXT oled12;
-extern Adafruit_SSD1306_EXT oled34;
-extern Adafruit_SSD1306_EXT oled56;
-extern Adafruit_SSD1306_EXT oled78;
-extern Adafruit_SSD1306_EXT oled9;
+extern Adafruit_SSD1306 oled12;
+extern Adafruit_SSD1306 oled34;
+extern Adafruit_SSD1306 oled56;
+extern Adafruit_SSD1306 oled78;
+extern Adafruit_SSD1306 oled9;
 extern uint8_t menuindex;
 extern uint8_t settingsindex;
 extern String funcType;
@@ -69,9 +65,9 @@ extern HIDKeyboard Keyboard;
 extern HIDMouse Mouse;
 extern HIDConsumer Consumer;
 extern USBMassStorage MassStorage;
-extern I2CMatrixClass matrix;
+extern Keypad matrix;
 
-extern keyReport keyMacros[9][9]; // This holds the macro keys. Max 9 key combinations per marco(Is this overkill?)
+extern KeyReport keyMacros[9][macroKeyDepth]; // This holds the macro keys. Max 9 key combinations per marco(Is this overkill?)
 
 
 extern float batteryvoltage;
@@ -89,7 +85,7 @@ extern bool settingsActive;
 extern unsigned long menuActivationTime;
 
 
-extern keyReport curKeyReport; // Stubbern var
+extern KeyReport curKeyReport; // Stubbern var
 
 void initVars();
 

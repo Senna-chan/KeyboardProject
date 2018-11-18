@@ -55,17 +55,14 @@ void waitNoKeysPressed()
 		matrix.getKeys();
 		for (int i = 0; i < LIST_MAX; i++)   // Scan the whole key list.
 		{
-			if (matrix.key[i].kcode != 0x00)
-			{
-				keysPressed = true;
-			}
+			if (matrix.key[i].kcode != 0x00)	keysPressed = true;
 		}
 		if (!keysPressed) break;
 		delay(10);
 	}
 }
 
-keyReport getKeysFromKeyboard()
+KeyReport getKeysFromKeyboard()
 {
 	char c = 0;
 	if (matrix.getKeys())
@@ -129,7 +126,7 @@ char getAsciiFromKeyboard() {
 	char c = 0;
 	if (matrix.getKeys())
 	{
-		for (int i = 0; i < 2; i++)   // Scan only 2 keys
+		for (int i = 0; i < 2; i++)   // Scan only 2 keys(Shift and a char)
 		{
 			if (matrix.key[i].stateChanged || matrix.key[i].kstate == HOLD)   // Only find keys that have changed state or that are holded
 			{

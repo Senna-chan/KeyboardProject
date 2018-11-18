@@ -38,8 +38,7 @@
 // SD
 #define SD_CS				PA4
 #define SD_CD				PB4 // Card detect	
-#define SD_CONFIG_STARTUP	SdSpiConfig(SD_CS, SHARED_SPI, SD_SCK_MHZ(5))
-#define SD_CONFIG			SdSpiConfig(SD_CS, SHARED_SPI, SD_SCK_MHZ(40))
+#define SD_CONFIG			SdioConfig(DMA_SDIO)
 
 // ENCODER
 #define ENC_INT				PB5 // Encoder interrupt pin
@@ -51,6 +50,15 @@
 
 
 // Seconds things
-const uint8_t menuReturnSeconds = 5;
+#define menuReturnSeconds   5
+
+//Keyboard
+#define CAPS_LED			PB15
+#define NUM_LED				PB14
+#define SCROLL_LED			PC5
+#define KB_EXTRA			PB1
+
+
+#define macroKeyDepth		4
 
 #endif // _CONFIG_H

@@ -4,9 +4,11 @@
 #include "SettingsHelper.h"
 #include <ArduinoJson.h>
 #include "Config.h"
+#include "OledFunctions.h"
 
 const char* settingsFile = "settings.json";
-const size_t settings_bufferSize = JSON_ARRAY_SIZE(2) + JSON_ARRAY_SIZE(9) + JSON_ARRAY_SIZE(9) + 9 * JSON_OBJECT_SIZE(2) + JSON_OBJECT_SIZE(4) + 410;
+const size_t settings_bufferSize = 10*JSON_ARRAY_SIZE(2) + JSON_ARRAY_SIZE(3) + JSON_ARRAY_SIZE(9) + 9*JSON_OBJECT_SIZE(3) + JSON_OBJECT_SIZE(5) + 640;
+
 void loadSettings() {
 	uint64_t fileSize = 0;
 	if (sdInitialized && SD.exists(settingsFile)) {
@@ -103,6 +105,14 @@ void loadSettings() {
 
 // Saves the configuration to a file
 void saveSettings() {
+	if (!yesnoScreen(true, "Do you want to save?"))
+	{
+		if (yesnoScreen(true, "Do you want to reload?"))
+		{
+			loadSettings();
+			return;
+		}
+	}
 	// Delete existing file, otherwise the configuration is appended to the file
 	SD.remove(settingsFile);
 
@@ -160,4 +170,22 @@ ConnectionConfig getConfigByBTAddress(String btaddress) {
 	for (auto& connectionConfig : settings.connectionconfigs) {
 		if (connectionConfig.address == btaddress.begin()) return connectionConfig;
 	}
+}
+
+void saveConnectionConfig(ConnectionConfig conConf)
+{
+	for(int i = 0; i < 9; i++)
+	{
+		if (settings.connectionconfigs[i].address == conConf.address) settings.connectionconfigs[i] = conConf;
+		else if (settings.connectionconfigs[i].name == "") settings.connectionconfigs[i] = conConf;
+	}
+}
+
+ConnectionConfig createConnectionConfig()
+{
+	ConnectionConfig newConfig;
+	inputScreen(30, "Enter name", ALPHABET).toCharArray(newConfig.name, 30);
+	newConfig.mouseaccel[0] = inputScreen(5, "Enter X mouseaccel", NUMBERS).toFloat();
+	newConfig.mouseaccel[1] = inputScreen(5, "Enter Y mouseaccel", NUMBERS).toFloat();
+	return newConfig;
 }

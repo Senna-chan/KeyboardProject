@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KeyboardCompanion"
         mc:Ignorable="d"
-        Title="DisplayAllMacros" Height="450" Width="800">
+        Title="DisplayAllMacros" Height="450" Width="1000">
     <Grid>
         <TabControl x:Name="TabControl">
         </TabControl>

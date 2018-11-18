@@ -148,7 +148,7 @@ void writeConsumerKey(uint16_t key) {
 	}
 }
 
-void writeKeyReport(keyReport report)
+void writeKeyReport(KeyReport report)
 {
 	if(report.modifier == 0xFF) // Consumer key
 	{

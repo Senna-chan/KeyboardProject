@@ -39,6 +39,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,11 +60,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\UsbNotification.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Variables.cs" />
+    <Page Include="MainGridStyleRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DisplayAllMacros.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="EditCreateMacro.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -74,12 +84,19 @@
     </Compile>
     <Compile Include="Enums\ConsumerKeys.cs" />
     <Compile Include="Enums\KeyboardKeys.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="EditCreateMacro.xaml.cs">
+      <DependentUpon>EditCreateMacro.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainNotifyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainNotifyWindow.xaml.cs">
+      <DependentUpon>MainNotifyWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -105,6 +122,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExtendedWindowsControls\ExtendedWindowsControls.csproj">
+      <Project>{ef9d9a9b-c739-4606-b1ef-4f662dcf5ef9}</Project>
+      <Name>ExtendedWindowsControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AmberOrb.ico" />
+    <Resource Include="Images\BlueOrb.ico" />
+    <Resource Include="Images\GreenOrb.ico" />
+    <Resource Include="Images\Pinned.png" />
+    <Resource Include="Images\RedOrb.ico" />
+    <Resource Include="Images\Un-Pinned.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

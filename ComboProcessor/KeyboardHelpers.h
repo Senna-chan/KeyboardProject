@@ -5,11 +5,11 @@
 
 #include <Arduino.h>
 #include "Variables.h"
-
+#include "KeyReport.h"
 
 
 char getAsciiFromKeyboard();
-keyReport getKeysFromKeyboard();
+KeyReport getKeysFromKeyboard();
 char convertHIDToASCII(byte keyCode);
 void waitNoKeysPressed();
 static bool pressedShift;

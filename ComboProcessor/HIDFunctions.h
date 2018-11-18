@@ -22,7 +22,7 @@ void writeKeyboardKey(uint8_t key);
 void pressConsumerKey(uint16_t key);
 void releaseConsumerKey();
 void writeConsumerKey(uint16_t key);
-void writeKeyReport(keyReport report);
+void writeKeyReport(KeyReport report);
 
 
 #endif

@@ -13,7 +13,7 @@
 
 char* appendCharToCharArray(char* array, char a);
 uint8_t* read1bitBMP(char *fname, int* _w, int* _h);
-void handleEncoder(); // Function is in helpers because multiple files need the encoder
+void handleEncoder();
 String getStringPartByNr(String data, char separator, int index);
 
 #endif

@@ -1,3 +1,6 @@
+#include <SPI.h>
+#include "KeyReport.h"
+#include <Keypad.h>
 #include "KeyboardHelpers.h"
 #include "Config.h"
 #include "Variables.h"
@@ -20,14 +23,17 @@
 #include <Adafruit_MCP23008.h>
 #include <Adafruit_MCP23017.h>
 #include <Wire.h>
-#include "I2CMatrix.h"
 #include "Key.h"
 #include <TimedAction.h>
 #include <USBComposite.h>
-#include <SPI.h>
 
 
 
+const byte ROWS = 8;
+const byte COLS = 16;
+
+byte rowPins[ROWS] = { PD15,PD14,PD4,PD5,PD13,PD7,PB13,PB12}; //connect to the row pinouts of the keypad
+byte colPins[COLS] = { PD10, PD9, PD8, PE15, PE14,PE13,PE12,PE11,PE10,PE9,PE8,PE7,PD1,PD2,PD15,PD14 }; //connect to the column pinouts of the keypad
 
 
 
@@ -37,8 +43,6 @@
 
 
 HardwareTimer timerOne(1);
-
-Adafruit_SSD1306 main_oled(OLED_DC, OLED_RESET, OLED_CS);
 
 Adafruit_MCP23008 expender = Adafruit_MCP23008();
 bool expenderinterupted = false;
@@ -50,10 +54,7 @@ enum KeyboardLeds : uint8_t {
 	LED_CAPS_LOCK = (1 << 1),
 	LED_SCROLL_LOCK = (1 << 2)
 };
-Adafruit_MCP23017 *rowChip = new Adafruit_MCP23017();
-Adafruit_MCP23017 *colChip = new Adafruit_MCP23017();
-const byte ROWS = 8;
-const byte COLS = 16;
+
 uint8_t keys[ROWS][COLS] =
 {
 	{ KEY_LEFT_ALT,KEY_RESERVED,KEY_RESERVED,KEY_RESERVED,KEY_RESERVED,KEY_RESERVED,KEY_B,KEY_N,KEY_DOWN,KEY_LEFT,KEY_RIGHT,KEYPAD_SUBTRACT,KEY_SPACE,KEY_SLASH,KEY_RESERVED,KEY_RESERVED },
@@ -76,7 +77,7 @@ bool capsState = false, numState = false, scrollState = false;
 TimedAction doMouseStuffAction = TimedAction();
 TimedAction checkBatteryAction = TimedAction();
 TimedAction secondsTickAction = TimedAction();
-I2CMatrixClass matrix = I2CMatrixClass();
+Keypad matrix = Keypad();
 float batteryvoltage;
 String funcType = "MEDIA";
 String oldFuncType = "STARTUP";
@@ -148,22 +149,19 @@ void checkBattery() {
 	batteryvoltage = analogReadVoltage(BATPIN) * 2; // Cutting voltage in half with voltage divider to get a range of 1.5 to 2.1 volt. > 3,3 volt on ADC will kill the STM32
 	batteryvoltage = round(batteryvoltage * 10);
 	batteryvoltage = batteryvoltage / 10; // Getting one decimal after the comma i hope
-	digitalWrite(PA3, HIGH);
 	redrawhud();
-	digitalWrite(PA3, LOW);
 }
 
 
-void mcpInt(){	expenderinterupted = true;	}
-void handleEncoderInt(){	encoderInterupted = true;	}
+void mcpInt() { expenderinterupted = true; }
+void handleEncoderInt() { encoderInterupted = true; }
 bool reinitSD = false;
 void handleSDDetectInt()
 {
 	if (!digitalRead(SD_CD)) {
 		SD.end(); // We need to end the sd card because of reasons
 		if (massStarted) {
-			Serial.println("sm-");
-			//MassStorage.setDriveData(0, 0, NULL, NULL);
+			MassStorage.setDriveData(0, 0, NULL, NULL);
 			massStarted = false;
 		}
 	}
@@ -184,8 +182,6 @@ bool massSDread(uint8_t *readbuff, uint32_t startSector, uint16_t numSectors) {
 }
 
 void initSDReader() {
-	Serial.print(F("Card size"));
-	Serial.println(cardSize);
 	MassStorage.setDriveData(0, cardSize, massSDread, massSDwrite);
 	massStarted = true;
 }
@@ -193,12 +189,12 @@ void initSDReader() {
 
 void initSd(bool reinit = false)
 {
-	if(reinit)
+	if (reinit)
 	{
 		delay(2000); // Delay because the detected line is going high a lot sooner then the sd card is inserted for reading
 	}
 	Serial.println(F("Initializing SD Card "));
-	if (SD.begin(SD_CONFIG_STARTUP)) {
+	if (SD.begin(SD_CONFIG)) {
 		cardSize = SD.card()->sectorCount();
 		Serial.println(F("SD Card initialized"));
 		sdInitialized = true;
@@ -211,7 +207,7 @@ void initSd(bool reinit = false)
 		Serial.println(SD.sdErrorData(), HEX);
 		sdInitialized = false;
 	}
-	if(sdInitialized && reinit) // We need to save the stuff we may have edited
+	if (sdInitialized && reinit) // We need to save the stuff we may have edited
 	{
 		saveSettings();
 		saveMacro();
@@ -224,12 +220,12 @@ void initSd(bool reinit = false)
 	reinitSD = false;
 }
 
-void secondTick() { 
+void secondTick() {
 	seconds++;
 	Serial.println(seconds);
 	if (seconds - menuActivationTime > menuReturnSeconds && menuActive) {
 #if DEBUG
-		Serial.println(F("Timer ran out of menu"));
+		Serial.println(F("Timer of menu ran out"));
 #endif
 		menuActive = false;
 		fulloledupdate();
@@ -239,70 +235,68 @@ void secondTick() {
 
 #pragma region HIDActions
 void processPressedKey(byte key) {
-#if DEBUGKEYBOARD
-	Serial.print(F("Processing pressed key: "));
-	Serial.println(key);
-#endif
 	if (key == 0xF0) {
 		fnKeys = true;
+		releaseAllKeyboardKeys();
 	}
 	if (key >= 0xF1 && key <= 0xF9) {
 		int func = key - 0xF1;
-		// switch (funcType) {
-		// case "MEDIA":
-		// 	pressConsumerKey(mediakeys[func]);
-		// 	break;
-		// }
-		// return;
+		pressMacro(func);
 	}
 	if (fnKeys) {
 		switch (key)
 		{
 		case KEY_UP:
-			writeConsumerKey(CONSUMER_BRIGHTNESS_UP);
+			writeKeyboardKey(KEY_PAGE_UP);
 			break;
 		case KEY_DOWN:
-			writeConsumerKey(CONSUMER_BRIGHTNESS_DOWN);
+			writeKeyboardKey(KEY_PAGE_DOWN);
 			break;
 		case KEY_LEFT:
 			writeKeyboardKey(KEY_HOME);
-			// PressMouse(MOUSE_BACK);
-			// ReleaseMouse(MOUSE_BACK);
 			break;
 		case KEY_RIGHT:
 			writeKeyboardKey(KEY_END);
-			// PressMouse(MOUSE_FORWARDS);
-			// ReleaseMouse(MOUSE_FORWARDS);
+			break;
+		case KEY_F1:
+			writeConsumerKey(MEDIA_VOLUME_MUTE);
+			break;
+		case KEY_F2:
+			writeConsumerKey(MEDIA_VOLUME_DOWN);
+			break;
+		case KEY_F3:
+			writeConsumerKey(MEDIA_VOLUME_UP);
+			break;
+		case KEY_F5:
+			writeConsumerKey(CONSUMER_BRIGHTNESS_DOWN);
+			break;
+		case KEY_F6:
+			writeConsumerKey(CONSUMER_BRIGHTNESS_UP);
+			break;
+		case KEY_F10:
+			writeConsumerKey(MEDIA_PLAY_PAUSE);
+			break;
+		case KEY_F11:
+			writeConsumerKey(MEDIA_PREV);
+			break;
+		case KEY_F12:
+			writeConsumerKey(MEDIA_NEXT);
 			break;
 		default:
 			break;
 		}
 		return;
 	}
-	// From here on we know it is not a special key so we can use some special things without directly pressing the button
+	// From here on we know it is not a special key so we can just press it
 	pressKeyboardKey(key);
 }
 void processReleasedKey(uint8_t key) {
-#if DEBUGKEYBOARD
-	Serial.print(F("Processing released key: "));
-	Serial.println(key);
-#endif
 	if (key == 0xF0) {
 		fnKeys = false;
 	}
 	if (key >= 0xF1 && key <= 0xF9) {
 		int func = key - 0xF1;
-		// switch (funcType) {
-		// case MEDIA:
-		// 	releaseConsumerKey();
-		// 	break;
-		// case FNKEYS:
-  //
-		// 	break;
-		// }
-		// return;
 	}
-
 	releaseKeyboardKey(key);
 }
 void checkKeys() {
@@ -314,7 +308,7 @@ void checkKeys() {
 			{
 				switch (matrix.key[i].kstate) {  // Report active key state : IDLE, PRESSED, HOLD, or RELEASED
 				case PRESSED:
-#if DEBUG
+#if DEBUGKEYBOARD
 					Serial.print(F("pressed "));
 					Serial.println(KeyboardKeycode_string_table[(uint8_t)matrix.key[i].kcode]);
 #endif
@@ -323,7 +317,7 @@ void checkKeys() {
 #endif
 					break;
 				case RELEASED:
-#if DEBUG
+#if DEBUGKEYBOARD
 					Serial.print(F("Released "));
 					Serial.println(KeyboardKeycode_string_table[(uint8_t)matrix.key[i].kcode]);
 #endif
@@ -347,10 +341,8 @@ void checkKeys() {
 
 void doMouseStuff()
 {
-#if MOUSE_ENABLED
-	digitalWrite(PA1, HIGH);
+#if MOUSE_ENABLED && (HID_ENABLED || BT_ENABLED)
 	MouseData data = ps2_mouse.readData();
-	digitalWrite(PA1, LOW);
 	leftMouseButton = GetBit(data.status, 0);
 	rightMouseButton = GetBit(data.status, 1);
 #if DEBUGMOUSE
@@ -361,7 +353,6 @@ void doMouseStuff()
 	Serial.print(F("\tY:"));
 	Serial.println(data.position.y);
 #endif
-#if HID_ENABLED || BT_ENABLED
 	if (!fnKeys) {
 		if (leftMouseButton) {
 			pressMouse(MOUSE_LEFT);
@@ -411,7 +402,6 @@ void doMouseStuff()
 		mouseResetSend = true;
 	}
 #endif
-#endif
 }
 
 void checkForLeds() {
@@ -425,27 +415,27 @@ void checkForLeds() {
 	if (leds != oldLeds) {
 		printBits(leds, true);
 		if (leds & LED_CAPS_LOCK && !capsState) {
-			rowChip->digitalWrite(15, LOW);
+			digitalWrite(CAPS_LED, LOW);
 			capsState = true;
 		}
 		else if (capsState) {
-			rowChip->digitalWrite(15, HIGH);
+			digitalWrite(CAPS_LED, HIGH);
 			capsState = false;
 		}
 		if (leds & LED_NUM_LOCK && !numState) {
-			rowChip->digitalWrite(14, LOW);
+			digitalWrite(NUM_LED, LOW);
 			numState = true;
 		}
 		else if (numState) {
-			rowChip->digitalWrite(14, HIGH);
+			digitalWrite(NUM_LED, HIGH);
 			numState = false;
 		}
 		if (leds & LED_SCROLL_LOCK && !scrollState) {
-			rowChip->digitalWrite(13, LOW);
+			digitalWrite(SCROLL_LED, LOW);
 			scrollState = true;
 		}
 		else if (scrollState) {
-			rowChip->digitalWrite(13, HIGH);
+			digitalWrite(SCROLL_LED, HIGH);
 			scrollState = false;
 		}
 		oldLeds = leds;
@@ -456,6 +446,13 @@ void checkForLeds() {
 void setup() {
 
 	Serial.begin(115200);
+
+	pinMode(CAPS_LED, OUTPUT);
+	pinMode(NUM_LED, OUTPUT);
+	pinMode(SCROLL_LED, OUTPUT);
+	digitalWrite(CAPS_LED, LOW);
+	digitalWrite(NUM_LED, LOW);
+	digitalWrite(SCROLL_LED, LOW);
 #if DEBUG
 	delay(200);
 	Serial.println("DEBUG MODE ACTIVE. Prepare for a lot of output");
@@ -470,18 +467,6 @@ void setup() {
 	Wire.setClock(400000); // 400 kHz
 	initVars();
 	initSd();
-	Serial.println(F("Initializing keyboard wire things"));
-	delay(50);
-	rowChip->begin(B000);
-	if (!rowChip->isConnected()) {
-		Serial.println(F("Rowchip not found. Check wiring"));
-		while (1);
-	}
-	colChip->begin(B100);
-	if (!colChip->isConnected()) {
-		Serial.println(F("Colchip not found. Check wiring"));
-		while (1);
-	}
 	expender.begin(B001);
 	if (!expender.isConnected()) {
 		Serial.println(F("Expender not found. Check wiring"));
@@ -558,20 +543,7 @@ void setup() {
 #if KEYBOARD_ENABLED
 	Serial.println(F("Initializing Matrix"));
 	delay(50);
-	matrix.init(makeKeymap(keys), rowChip, colChip, ROWS, COLS);
-	Serial.println(F("Starting Matrix"));
-	digitalWrite(INIT_LED, HIGH);
-	delay(2);
-	matrix.begin();
-	delay(2);
-	digitalWrite(INIT_LED, LOW);
-	Serial.println(F("Matrix started"));
-	rowChip->pinMode(13, OUTPUT);
-	rowChip->pinMode(14, OUTPUT);
-	rowChip->pinMode(15, OUTPUT);
-	rowChip->digitalWrite(13, LOW);
-	rowChip->digitalWrite(14, LOW);
-	rowChip->digitalWrite(15, LOW);
+	matrix.init(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
 	matrix.setDebounceTime(1);
 	delay(10);
@@ -586,11 +558,12 @@ void setup() {
 	{
 		Serial.println("Encoder not found. Check wiring!");
 		while (1);
-	} else
+	}
+	else
 	{
-	#if DEBUG
+#if DEBUG
 		Serial.println(F("Found the encoder"));
-	#endif
+#endif
 	}
 	encoder->writeCounter((int32_t)0); /* Reset the counter value */
 	encoder->writeMax((int32_t)30); /* Set the maximum threshold*/
@@ -643,15 +616,31 @@ void setup() {
 	//genMacro(0);
 	fulloledupdate();
 	Serial.println(F("Initializing Done, Keyboard is ready"));
+	char key = matrix.getKey();
+	if (key != 0x00) // For special conditions
+	{
+		switch(key)
+		{
+		case KEY_B:
+			operateMode = BLUETOOTH;
+			Serial.println(F("Forced mode to bluetooth"));
+			break;
+		case KEY_C:
+			operateMode = CHARGING;
+			Serial.println(F("Forced mode to charging"));
+			break;
+		case KEY_H:
+			operateMode = CABLE;
+			Serial.println(F("Forced mode to cable(HID)"));
+			break;
+		default:
+			break;
+		}
+	}
+	digitalWrite(CAPS_LED, HIGH);
+	digitalWrite(NUM_LED, HIGH);
+	digitalWrite(SCROLL_LED, HIGH);
 
-	gpio_set_mode(GPIOB, 15, GPIO_OUTPUT_PP);
-	rowChip->digitalWrite(13, HIGH);
-	rowChip->digitalWrite(14, HIGH);
-	rowChip->digitalWrite(15, HIGH);
-	Serial.print("menuscreens sizeof ");
-	Serial.println();
-	Serial.print("settingsscreens sizeof ");
-	Serial.println();
 }
 
 
@@ -708,7 +697,7 @@ void loop() {
 		MassStorage.loop();
 	}
 	secondsTickAction.check();
-	if(CompositeSerial.available() > 0)
+	if (CompositeSerial.available() > 0)
 	{
 		CompositeSerialAction();
 	}
@@ -719,75 +708,79 @@ void loop() {
 		Serial.print(F("Expender interupted "));
 		printBits(gpio, true);
 #endif
-// 		if (!forceOperateMode) {
-// 			if (bitRead(gpio, USBMODEPIN)) {
-// 				operateMode = CABLE;
-// 			}
-// 			else if (bitRead(gpio, BTMODEPIN))
-// 			{
-// 				operateMode = BLUETOOTH;
-// 			}
-// 			else {
-// 				operateMode = CHARGING;
-// 			}
-//
-// 			switch (operateMode)
-// 			{
-// 				VERBOSECASELN(BLUETOOTH);
-// 				VERBOSECASELN(CABLE);
-// 				VERBOSECASELN(CHARGING);
-// 			}
-// 		}
-// #if MASS_ENABLED
-// 		if (bitRead(gpio, SDUSBPIN))
-// 		{
-// 			if (!massStarted && sdInitialized)
-// 			{
-// 				initSDReader();
-// 			}
-// 		}
-// 		else if (!bitRead(gpio, SDUSBPIN))
-// 		{
-// 			// if (massStarted) {
-// 			// 	MassStorage.setDriveData(0, 0, NULL);
-// 			// 	massStarted = false;
-// 			// }
-// 		}
-// #endif
+		if (!forceOperateMode) {
+		 	if (bitRead(gpio, USBMODEPIN)) {
+		 		operateMode = CABLE;
+		 	}
+		 	else if (bitRead(gpio, BTMODEPIN))
+		 	{
+		 		operateMode = BLUETOOTH;
+		 	}
+		 	else {
+		 		operateMode = CHARGING;
+		 	}
+
+		 	switch (operateMode)
+		 	{
+		 		VERBOSECASELN(BLUETOOTH);
+		 		VERBOSECASELN(CABLE);
+		 		VERBOSECASELN(CHARGING);
+		 	}
+		}
+		// #if MASS_ENABLED
+		// 		if (bitRead(gpio, SDUSBPIN))
+		// 		{
+		// 			if (!massStarted && sdInitialized)
+		// 			{
+		// 				initSDReader();
+		// 			}
+		// 		}
+		// 		else if (!bitRead(gpio, SDUSBPIN))
+		// 		{
+		// 			// if (massStarted) {
+		// 			// 	MassStorage.setDriveData(0, 0, NULL);
+		// 			// 	massStarted = false;
+		// 			// }
+		// 		}
+		// #endif
 		expenderinterupted = false;
 	}
 
 	checkBatteryAction.check();
 
-	if(reinitSD)
+	if (reinitSD)
 	{
 		Serial.println("SD Card was removed and is now connected");
 		initSd(true); // Restart SD card
 	}
 
-	if (operateMode != CHARGING) {
-		if (bt->loop())
+	while (Serial.available() > 0)
+	{
+		Serial2.write(Serial.read());
+	}
+	if (bt->loop())
+	{
+		String btEvent = bt->getEvent();
+		if (btEvent.startsWith("CONNECT"))
 		{
-			String btEvent = bt->getEvent();
-			if (btEvent.startsWith("CONNECT"))
-			{
-				bluetoothConnected = true;
-			}
-			else if (btEvent.startsWith("DISCONNECT"))
-			{
-				bluetoothConnected = false;
-			}
-
+			bluetoothConnected = true;
 		}
+		else if (btEvent.startsWith("DISCONNECT"))
+		{
+			bluetoothConnected = false;
+		}
+	}
+
+	if (operateMode != CHARGING) {
 #if MOUSE_ENABLED
 		doMouseStuffAction.check();
 #endif
 #if ENCODER_ENABLED
 		if (encoderInterupted) {
 			handleEncoder();
-			if(lastEncPos != currentEncPos)
+			if (lastEncPos != currentEncPos)
 			{
-				
+
 				if (settingsActive) {
 					if (encoder->increased())
 					{
@@ -799,7 +792,7 @@ void loop() {
 						if (settingsindex != 0)
 							settingsindex--;
 					}
-				} 
+				}
 				else if (menuActive) {
 					if (encoder->increased())
 					{
@@ -823,7 +816,7 @@ void loop() {
 						if (funcindex != 0)
 							funcindex--;
 					}
-				}	
+				}
 			}
 			if (encoder->buttonDoublePressed())
 			{
@@ -847,28 +840,28 @@ void loop() {
 				}
 			}
 		}
-	#endif
-	#if HID_ENABLED
+#endif
+#if HID_ENABLED
 		if (USBLIB->state != oldUsbState)
 		{
 			Serial.print(F("USBSTATE: "));
 			switch (USBLIB->state)
 			{
 				VERBOSECASELN(USB_UNCONNECTED)
-				VERBOSECASELN(USB_ADDRESSED)
-				VERBOSECASELN(USB_ATTACHED)
-				VERBOSECASELN(USB_POWERED)
-				VERBOSECASELN(USB_SUSPENDED)
-				VERBOSECASELN(USB_CONFIGURED)
+					VERBOSECASELN(USB_ADDRESSED)
+					VERBOSECASELN(USB_ATTACHED)
+					VERBOSECASELN(USB_POWERED)
+					VERBOSECASELN(USB_SUSPENDED)
+					VERBOSECASELN(USB_CONFIGURED)
 			}
 			oldUsbState = USBLIB->state;
 		}
-	#endif
-	#if KEYBOARD_ENABLED
-		#if HID_ENABLED
-			checkForLeds();
-		#endif
+#endif
+#if KEYBOARD_ENABLED
+#if HID_ENABLED
+		checkForLeds();
+#endif
 		checkKeys();
-	#endif
+#endif
 	}
 }

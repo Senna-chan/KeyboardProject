@@ -19,7 +19,7 @@ void loadMacros()
 			return;
 		}
 		FsFile f = SD.open((path + "macros.txt"));
-		if (f.size() != 486)
+		if (f.size() != 9 * 7 * macroKeyDepth)
 		{
 			Serial.println(F("Not a valid macro file"));
 			f.close();
@@ -27,7 +27,7 @@ void loadMacros()
 		}
 		for (int i = 0; i < 9; i++) // Macro
 		{
-			for (int j = 0; j < 9; j++) // Macro Keys
+			for (int j = 0; j < macroKeyDepth; j++) // Macro Keys
 			{
 				keyMacros[i][j].modifier = f.read();
 				for (int k = 0; k < 6; k++) // Key
@@ -44,12 +44,9 @@ void saveMacro()
 {
 	if (sdInitialized) {
 		String path = "modes/" + funcType + "/";
-		if (!SD.exists((path + "macros")))
-		{
-
-		}
+		if (SD.exists(path + "macros")) SD.remove(path + "macros");
 		FsFile f = SD.open((path + "macros.txt"), O_RDWR);
-		int16_t result = f.write(keyMacros, sizeof(keyReport) * 9 * 9);
+		int16_t result = f.write(keyMacros, sizeof(KeyReport) * 9 * 9);
 		if(result != -1)
 		{
 #if DEBUG
@@ -65,7 +62,7 @@ void saveMacro()
 
 void genMacro(uint8_t macroPos)
 {
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < macroKeyDepth; i++) {
 		keyMacros[macroPos][i] = getMacroKeysFromKeyboard();
 		if (encoder->buttonDoublePressed()) break;
 	}
@@ -85,10 +82,10 @@ void pressMacro(uint8_t macroPos)
 }
 
 
-keyReport getMacroKeysFromKeyboard()
+KeyReport getMacroKeysFromKeyboard()
 {
-	keyReport macroReport;
-	uint16_t oriMatrixHoldTime = matrix.getHoldTime();
+	KeyReport macroReport;
+	uint16_t oriMatrixHoldTime = matrix.getHoldTime(); // Original hold time 
 	matrix.setHoldTime(2000); // 2 seconds
 	releaseAllKeyboardMouse();
 	waitNoKeysPressed();
@@ -179,7 +176,7 @@ keyReport getMacroKeysFromKeyboard()
 
 
 
-void renderMacroKeysOled(keyReport keyreport)
+void renderMacroKeysOled(KeyReport keyreport)
 {
 	
 }

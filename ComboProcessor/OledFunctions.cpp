@@ -8,9 +8,11 @@
 #include "Variables.h"
 #include "Helpers.h"
 #include "CustomIcons.h"
-#include "Adafruit_SSD1306_EXT.h"
 #include <Adafruit_SSD1306.h>
 #include "KeyboardHelpers.h"
+#include "SettingsHelper.h"
+
+const int cursorBlinkTimeout = 250; // millis
 
 void fulloledupdate()
 {
@@ -78,7 +80,6 @@ void drawmenu()
 		main_oled.drawStringCenter(0, 20, MenuScreens[menuindex][0], WHITE);
 		main_oled.drawStringCenter(0, 30, MenuScreens[menuindex][1], WHITE);
 		main_oled.setTextSize(1);
-		return;
 	}
 	else if (settingsActive) {
 		main_oled.drawStringCenter(64, 20, SettingsScreens[settingsindex][0], WHITE);
@@ -89,9 +90,29 @@ void drawmenu()
 	}
 }
 
+void drawMenuAction()
+{
+	
+}
+
+void drawSettingsAction()
+{
+	if (!settingsActive) return; // Can not happen but still
+	if(settingsindex == 0)
+	{
+		saveSettings();
+		settingsActive = false;
+		menuActive = true;
+	}
+	else if(settingsindex == 1) // Create connection config
+	{
+		saveConnectionConfig(createConnectionConfig());
+	}
+	
+}
+
 void drawfunctype()
 {
-	if (!sdInitialized) return; // We need SD here
 	clearNonHudArea();
 	if (oldFuncType == funcType) return;
 	if (funcType == "fnkeys") {
@@ -102,9 +123,11 @@ void drawfunctype()
 		return;
 	}
 	oldFuncType = funcType;
+	if (!sdInitialized) return; // We need the SD card from here on
 	char *fname = NULL;
 	int w, h;
-	String path = "modes/" + funcType.toLowerCase() + "/";
+	String path = "modes/" + funcType + "/";
+	path.toLowerCase();
 	Serial.println(fname);
 	if(!SD.exists(fname))
 	{
@@ -136,7 +159,7 @@ void clearNonHudArea()
 	main_oled.fillRect(32, 32, 128, 48, BLACK);
 }
 
-bool yesnoScreen(bool defaultval, char* line1, char* line2 = "")
+bool yesnoScreen(bool defaultval, char* line1, char* line2)
 {
 	bool returnval = defaultval;
 	int yesnoYPos = 44;
@@ -156,24 +179,22 @@ bool yesnoScreen(bool defaultval, char* line1, char* line2 = "")
 	main_oled.display();
 	while (true) {
 		handleEncoder();
-		if (currentEncPos != lastEncPos)
+		if (encoder->increased() && returnval)
 		{
-			if (currentEncPos > lastEncPos && returnval)
-			{
-				main_oled.fillRect(32, yesnoYPos, yes_width, yes_height, BLACK); // Clear yes no part
-				main_oled.fillRect(72, yesnoYPos, yes_width, yes_height, BLACK); // Clear yes no part
-				returnval = false;
-				main_oled.drawBitmap(32, yesnoYPos, yes, yes_width, yes_height, WHITE);
-				main_oled.drawBitmap(72, yesnoYPos, no_inv, yes_width, yes_height, WHITE);
-			}
-			else if (currentEncPos < lastEncPos && !returnval)
-			{
-				main_oled.fillRect(32, yesnoYPos, yes_width, yes_height, BLACK); // Clear yes no part
-				main_oled.fillRect(72, yesnoYPos, yes_width, yes_height, BLACK); // Clear yes no part
-				returnval = true;
-				main_oled.drawBitmap(32, yesnoYPos, yes_inv, yes_width, yes_height, WHITE);
-				main_oled.drawBitmap(72, yesnoYPos, no, yes_width, yes_height, WHITE);
-			}
+			main_oled.fillRect(32, yesnoYPos, yes_width, yes_height, BLACK); // Clear yes no part
+			main_oled.fillRect(72, yesnoYPos, yes_width, yes_height, BLACK); // Clear yes no part
+			returnval = false;
+			main_oled.drawBitmap(32, yesnoYPos, yes, yes_width, yes_height, WHITE);
+			main_oled.drawBitmap(72, yesnoYPos, no_inv, yes_width, yes_height, WHITE);
+			main_oled.display();
+		}
+		else if (encoder->decreased() && !returnval)
+		{
+			main_oled.fillRect(32, yesnoYPos, yes_width, yes_height, BLACK); // Clear yes no part
+			main_oled.fillRect(72, yesnoYPos, yes_width, yes_height, BLACK); // Clear yes no part
+			returnval = true;
+			main_oled.drawBitmap(32, yesnoYPos, yes_inv, yes_width, yes_height, WHITE);
+			main_oled.drawBitmap(72, yesnoYPos, no, yes_width, yes_height, WHITE);
 			main_oled.display();
 		}
 		if (encoder->buttonPressed()) break;
@@ -198,17 +219,19 @@ String inputScreen(uint8_t maxLength, char* line, uint16_t startx, uint16_t star
 String inputScreen(uint8_t maxLength, char* line, uint16_t startx, uint16_t starty, String regex)
 {
 	pressedShift = false;
+	uint64_t prevBlinkMillis = millis();
+	bool blinkVisible = false;
 	while (true) {
 		clearNonHudArea();
 		main_oled.drawStringCenter(64, 20, line, WHITE);
 
 		String value = "";
 		char c = 0;
-		main_oled.setCursor(startx, starty);
+		main_oled.setCursor(startx - (maxLength * 3 * main_oled.textsize), starty);
 		main_oled.display();
 		while (true) {
 			handleEncoder();
-			if (encoder->readStatus(PUSHD) || value.length() == maxLength) break;
+			if (encoder->buttonPressed() || value.length() == maxLength) break;
 			c = getAsciiFromKeyboard();
 			if (c != 0) {
 				Serial.print(c); Serial.print(" ");
@@ -232,10 +255,20 @@ String inputScreen(uint8_t maxLength, char* line, uint16_t startx, uint16_t star
 				main_oled.drawFastHLine(0, main_oled.getCursorY() + 8, 128, BLACK); // Clear underline
 				main_oled.drawFastHLine(main_oled.getCursorX(), main_oled.getCursorY() + 8, 6, WHITE);
 				main_oled.display();
-
-				Serial.print(pressedShift);
-				Serial.print(" value:"); Serial.print(value);
-				Serial.print(" length: "); Serial.println(value.length());
+				#if DEBUG
+					Serial.print(pressedShift);
+					Serial.print(" value:"); Serial.print(value);
+					Serial.print(" length: "); Serial.println(value.length());
+				#endif
+			}
+			if(millis() - prevBlinkMillis > cursorBlinkTimeout)
+			{
+				auto oledx = main_oled.cursor_x;
+				auto oledy = main_oled.cursor_y;
+				if (blinkVisible) main_oled.setTextColor(BLACK);
+				else main_oled.setTextColor(WHITE);
+				main_oled.print("_");
+				main_oled.setCursor(oledx, oledy);
 			}
 		}
 		if (yesnoScreen(true, "Is this input good?", value.begin())) return value;

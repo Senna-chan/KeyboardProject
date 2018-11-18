@@ -3,19 +3,20 @@
 // 
 
 #include "Variables.h"
-#include "Adafruit_SSD1306_EXT.h"
+#include "Adafruit_SSD1306.h"
 #include <Adafruit_MCP23008.h>
 #include "Config.h"
+#include <SPI.h>
 
 
-Adafruit_MCP23008 oled_expender = Adafruit_MCP23008();
-Adafruit_SSD1306_EXT oled12 = Adafruit_SSD1306_EXT(oled_expender, OLED_DC, OLED_RESET, 1);
-Adafruit_SSD1306_EXT oled34 = Adafruit_SSD1306_EXT(oled_expender, OLED_DC, OLED_RESET, 2);
-Adafruit_SSD1306_EXT oled56 = Adafruit_SSD1306_EXT(oled_expender, OLED_DC, OLED_RESET, 3);
-Adafruit_SSD1306_EXT oled78 = Adafruit_SSD1306_EXT(oled_expender, OLED_DC, OLED_RESET, 4);
-Adafruit_SSD1306_EXT oled9  = Adafruit_SSD1306_EXT(oled_expender, OLED_DC, OLED_RESET, 5);
-keyReport keyMacros[9][9];
-keyReport curKeyReport;
+Adafruit_SSD1306 oled12		(128, 32, &SPI, OLED_DC, OLED_RESET, 1);
+Adafruit_SSD1306 oled34		(128, 32, &SPI, OLED_DC, OLED_RESET, 2);
+Adafruit_SSD1306 oled56		(128, 32, &SPI, OLED_DC, OLED_RESET, 3);
+Adafruit_SSD1306 oled78		(128, 32, &SPI, OLED_DC, OLED_RESET, 4);
+Adafruit_SSD1306 oled9		(128, 32, &SPI, OLED_DC, OLED_RESET, 5);
+Adafruit_SSD1306 main_oled	(128, 64, &SPI, OLED_DC, OLED_RESET, OLED_CS);
+KeyReport keyMacros[9][macroKeyDepth];
+KeyReport curKeyReport;
 unsigned long seconds = 0;
 bool menuActive = false;
 bool settingsActive = false;
@@ -25,10 +26,13 @@ uint8_t settingsindex = 0;
 ConnectionConfig currentConnectionConfig = settings.connectionconfigs[0];
 
 const char* MenuScreens[][2]{
-	{"Settings",""}
+	{"Return"},
+	{"Settings",""},
+	{"Connect to"}
 };
 
 const char* SettingsScreens[][2]{
+	{"Return",""},
 	{"Connection","Configs"},
 	{"Mouse","Acceleration"}
 };
@@ -37,7 +41,6 @@ void initVars()
 {
 	Serial.println("Setting up some vars");
 	Settings settings;
-	oled_expender.begin(B010);
 	oled12.begin();
 	oled12.display();
 	oled34.begin();
